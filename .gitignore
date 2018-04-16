@@ -3,6 +3,9 @@
 # removing .idea
 .idea
 
+# remove .vscode
+.vscode
+
 # OS Files
 .DS_Store
 Thumbs.db
