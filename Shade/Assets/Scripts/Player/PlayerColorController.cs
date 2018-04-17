@@ -8,7 +8,7 @@ public class PlayerColorController : MonoBehaviour {
 
     public void Start()
     {
-        playerMat = gameObject.GetComponent<Material>();
+        playerMat = gameObject.GetComponent<MeshRenderer>().material;
     }
 
     /// <summary>
