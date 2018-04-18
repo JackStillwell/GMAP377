@@ -46,7 +46,7 @@ public class ColorRaycaster : MonoBehaviour
 
     public bool colorCheck()
     {
-        if (currentlyColliding.Count > 1)
+        if (currentlyColliding.Count >= 1)
         {
             bool foundTarget = false;
 
