@@ -13,44 +13,47 @@ public class EnemyAI : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-
+	void Start () 
+	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
 
-
-		ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster> ();
-
+		ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
 
 		PlayerColor = colorRaycaster.playerView;
 		//StartCoroutine ("waitThreeSeconds");
-
-
-
 	}
 
 	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
+		PlayerColor = GetComponent<ColorRaycaster>().playerView;
 
-
-		//Debug.Log (PlayerColor);
-		//Debug.Log (EnemyColor);
-
-
-
-		if (IsEqualTo (PlayerColor, EnemyColor)) {
-			Debug.Log ("Same Color right here");
+		if (IsEqualTo (PlayerColor, EnemyColor)) 
+		{
+			//Debug.Log ("Same Color right here");
 		} else {
-			Debug.Log ("Color is not the same");
+			//Debug.Log ("Color is not the same");
 		}
 
 	}
 
 	public  bool IsEqualTo(Color me, Color other)
 	{
-		return me.r == other.r&& me.g == other.g && me.b == other.b && me.a == other.a;
+		bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
+		if (Mathf.Abs(other.r - me.r) < .1)
+		{
+			//Debug.Log(other);
+			//Debug.Log(me);
+			//Debug.Log(Mathf.Abs(other.r - me.r));
+			isRedSimilar = true;
+		}
+		if (Mathf.Abs(other.b - me.b) < .1)
+			isBlueSimilar = true;
+		if (Mathf.Abs(other.g - me.g) < .1)
+			isGreenSimilar = true;
+
+		return isRedSimilar && isBlueSimilar && isGreenSimilar;
 	}
 //	// change Player's color
 //	IEnumerator waitThreeSeconds(){

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorRaycaster : MonoBehaviour {
-
-
+public class ColorRaycaster : MonoBehaviour 
+{
     public PlayerColorController target;
     private RaycastHit hitInfo;
 
@@ -13,14 +12,15 @@ public class ColorRaycaster : MonoBehaviour {
     private List<GameObject> currentlyColliding;
 
 	// Use this for initialization
-	void Start () {
-
+	void Start () 
+    {
         //playerMat = playerObject.GetComponent<Material>();
         currentlyColliding = new List<GameObject>();
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 	}
 
     /// <summary>
@@ -45,8 +45,7 @@ public class ColorRaycaster : MonoBehaviour {
 
     public bool colorCheck()
     {
-
-        if (currentlyColliding.Count > 1)
+        if (currentlyColliding.Count >= 1)
         {
             bool foundTarget = false;
 
@@ -59,12 +58,13 @@ public class ColorRaycaster : MonoBehaviour {
                 }       
             }
 
-
             if (foundTarget)
             {
-
+                Debug.Log("beep");
                 //now see if player is behind or in front of object
                 Physics.Raycast(gameObject.transform.position, (target.transform.position - gameObject.transform.position), out hitInfo);
+                Debug.Log(target.name);
+                Debug.Log(hitInfo.transform.gameObject.name);
                 if (hitInfo.transform.gameObject.name != target.name)
                 {
                     
@@ -87,7 +87,11 @@ public class ColorRaycaster : MonoBehaviour {
 
                     return true;
                 }
-                else return false;
+                else 
+                {
+                    playerView = target.transform.GetComponent<Renderer>().material.color;
+                    return false;
+                }
             }
             else return false;
             
