@@ -6,9 +6,12 @@ public class PlayerColorController : MonoBehaviour {
 
     public Material playerMat;
 
+    public Color realColor;
+
     public void Start()
     {
         playerMat = gameObject.GetComponent<MeshRenderer>().material;
+        realColor = playerMat.color;
     }
 
     /// <summary>
@@ -17,6 +20,7 @@ public class PlayerColorController : MonoBehaviour {
     /// <param name="newColor">The new Color to tint to</param>
 	public void changePlayerColor(Color newColor)
     {
+        realColor = newColor;
         playerMat.color = newColor;
 
 
