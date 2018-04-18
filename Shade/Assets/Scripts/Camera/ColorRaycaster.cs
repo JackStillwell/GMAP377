@@ -29,7 +29,6 @@ public class ColorRaycaster : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("beep");
         currentlyColliding.Add(other.gameObject);
         colorCheck();
     }
@@ -64,6 +63,8 @@ public class ColorRaycaster : MonoBehaviour
                 Debug.Log("beep");
                 //now see if player is behind or in front of object
                 Physics.Raycast(gameObject.transform.position, (target.transform.position - gameObject.transform.position), out hitInfo);
+                Debug.Log(target.name);
+                Debug.Log(hitInfo.transform.gameObject.name);
                 if (hitInfo.transform.gameObject.name != target.name)
                 {
                     
@@ -86,7 +87,11 @@ public class ColorRaycaster : MonoBehaviour
 
                     return true;
                 }
-                else return false;
+                else 
+                {
+                    playerView = target.transform.GetComponent<Renderer>().material.color;
+                    return false;
+                }
             }
             else return false;
             
