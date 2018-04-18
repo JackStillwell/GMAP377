@@ -23,12 +23,8 @@ GameObject:
   - component: {fileID: 136771928052957930}
   - component: {fileID: 23458953532342914}
   - component: {fileID: 54980662424922672}
-<<<<<<< HEAD
-  - component: {fileID: 114440795450981580}
-=======
   - component: {fileID: 65287887214797498}
   - component: {fileID: 114493609513306012}
->>>>>>> master
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -105,9 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-<<<<<<< HEAD
---- !u!114 &114440795450981580
-=======
+
 --- !u!65 &65287887214797498
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -121,7 +115,6 @@ BoxCollider:
   m_Size: {x: 1, y: 0.69642925, z: 35.659206}
   m_Center: {x: 0, y: 0.78752804, z: -17.449427}
 --- !u!114 &114493609513306012
->>>>>>> master
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -129,18 +122,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1930772047670548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-=======
+
   m_Script: {fileID: 11500000, guid: 42c497aaa518e954683656772df9b711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   playerView: {r: 0, g: 0, b: 0, a: 0}
->>>>>>> master
+
 --- !u!136 &136771928052957930
 CapsuleCollider:
   m_ObjectHideFlags: 1
