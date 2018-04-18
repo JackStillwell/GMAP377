@@ -16,10 +16,13 @@ public class EnemyAI : MonoBehaviour {
 	void Start () {
 
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		Debug.Log (EnemyColor);
-		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-		//ColorRaycaster colorRaycaster = 
-		StartCoroutine ("waitThreeSeconds");
+
+
+		ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster> ();
+
+
+		PlayerColor = colorRaycaster.playerView;
+		//StartCoroutine ("waitThreeSeconds");
 
 
 
@@ -32,12 +35,15 @@ public class EnemyAI : MonoBehaviour {
 		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
 
 
+		//Debug.Log (PlayerColor);
+		//Debug.Log (EnemyColor);
 
 
 
-
-		if (IsEqualTo(PlayerColor, EnemyColor)) {
+		if (IsEqualTo (PlayerColor, EnemyColor)) {
 			Debug.Log ("Same Color right here");
+		} else {
+			Debug.Log ("Color is not the same");
 		}
 
 	}
@@ -46,30 +52,30 @@ public class EnemyAI : MonoBehaviour {
 	{
 		return me.r == other.r&& me.g == other.g && me.b == other.b && me.a == other.a;
 	}
-	// change Player's color
-	IEnumerator waitThreeSeconds(){
-		Player.GetComponent<Renderer> ().material.color = Color.yellow;
-		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-		Debug.Log (PlayerColor);
-			yield return new WaitForSeconds (3);
-		Player.GetComponent<Renderer> ().material.color = Color.blue;
-		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-		Debug.Log (PlayerColor);
-			yield return new WaitForSeconds (3);
-		Player.GetComponent<Renderer> ().material.color = Color.green;
-		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-		Debug.Log (PlayerColor);
-			yield return new WaitForSeconds (3);
-		Player.GetComponent<Renderer> ().material.color = EnemyColor;
-		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-		Debug.Log (PlayerColor);
-
-	
-
-
-
-	}
-
+//	// change Player's color
+//	IEnumerator waitThreeSeconds(){
+//		Player.GetComponent<Renderer> ().material.color = Color.yellow;
+//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
+//		Debug.Log (PlayerColor);
+//			yield return new WaitForSeconds (3);
+//		Player.GetComponent<Renderer> ().material.color = Color.blue;
+//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
+//		Debug.Log (PlayerColor);
+//			yield return new WaitForSeconds (3);
+//		Player.GetComponent<Renderer> ().material.color = Color.green;
+//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
+//		Debug.Log (PlayerColor);
+//			yield return new WaitForSeconds (3);
+//		Player.GetComponent<Renderer> ().material.color = EnemyColor;
+//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
+//		Debug.Log (PlayerColor);
+//
+//	
+//
+//
+//
+//	}
+//
 
 
 
