@@ -42,12 +42,7 @@ public class EnemyAI : MonoBehaviour {
 	{
 		bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
 		if (Mathf.Abs(other.r - me.r) < .1)
-		{
-			//Debug.Log(other);
-			//Debug.Log(me);
-			//Debug.Log(Mathf.Abs(other.r - me.r));
 			isRedSimilar = true;
-		}
 		if (Mathf.Abs(other.b - me.b) < .1)
 			isBlueSimilar = true;
 		if (Mathf.Abs(other.g - me.g) < .1)
