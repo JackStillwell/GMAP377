@@ -221,10 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1110e9375b94a92bc698da98df1a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glassLayer: 7
-  puddleLayer: 7
-  spotlightLayer: 7
-  colorModifiers: 000000000000000000000000
 --- !u!4 &79831355 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4499254798897132, guid: 239d911b4611e4c859741c4176fe70cf,
@@ -420,6 +416,25 @@ Prefab:
     - target: {fileID: 4146598474970300, guid: 995bfc15d7e7a439ab90e534f43696b0, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108134024497315712, guid: 995bfc15d7e7a439ab90e534f43696b0,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.034482718
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670736420383672, guid: 995bfc15d7e7a439ab90e534f43696b0, type: 2}
+      propertyPath: m_TagString
+      value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 108134024497315712, guid: 995bfc15d7e7a439ab90e534f43696b0,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108134024497315712, guid: 995bfc15d7e7a439ab90e534f43696b0,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 995bfc15d7e7a439ab90e534f43696b0, type: 2}

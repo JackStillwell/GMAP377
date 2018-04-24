@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ColorName { Red, Orange, Yellow, Green, Cyan, Violet, Pink, Null };
+
 public class ColorArray : MonoBehaviour
 {
-    public enum ColorName { Red, Orange, Yellow, Green, Cyan, Violet, Pink, Null };
+   
     private ColorName glassLayer = ColorName.Null;
     private ColorName puddleLayer = ColorName.Null;
     private ColorName spotlightLayer = ColorName.Null;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ColoredLight : MonoBehaviour
@@ -33,11 +34,13 @@ public class ColoredLight : MonoBehaviour
 
 
         //So this should work fine, but I can't figure out how to get the enum to be a global value so that I can reference it.
-        //other.gameObject.GetComponent<ColorArray>().addColorToLayer("Light", lightColor);
+        ColorName colorName = (ColorName) Enum.Parse(typeof(ColorName), this.transform.tag);
+         
+        other.gameObject.GetComponent<ColorArray>().addColorToLayer("Spotlight", colorName);
     }
 
     private void OnTriggerExit(Collider other)
     {
-		other.gameObject.GetComponent<ColorArray>().removeColorFromLayer("Light");
+		other.gameObject.GetComponent<ColorArray>().removeColorFromLayer("Spotlight");
     }
 }
