@@ -21,15 +21,15 @@ public class CameraController : MonoBehaviour {
     private void Update()
     {
         //take in axis info from our mouse
+        //currentX += Input.GetAxis("Mouse X");
         currentX += Input.GetAxis("Mouse X");
         currentY -= Input.GetAxis("Mouse Y");
     }
 
-
     private void FixedUpdate()
     {
         //set our z distance away from the PC
-        Vector3 dir = new Vector3(0, 0, -camDistance);
+        Vector3 dir = new Vector3(0, 0, camDistance);
         //set the rotation of the camera
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
 
