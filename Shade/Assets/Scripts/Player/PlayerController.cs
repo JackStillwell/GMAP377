@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
     {
         var y = Input.GetAxis("Mouse X");
         var z = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+
+        var x = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
         
         transform.Rotate(0, y, 0);
-        transform.Translate(0, 0, z);
+        transform.Translate(x, 0, z);
     }
 }
