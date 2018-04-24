@@ -7,21 +7,23 @@ public class CameraController : MonoBehaviour {
     public GameObject followObj;
 
     [SerializeField]
-    private float camDistance = 30f;
-    private float currentX = 180.0f;
-    private float currentY = 0.0f;
+    private float camDistance = 10f;
+    private float currentY;
+    private float currentX=180f;
+
+    private Rigidbody followObjRigidbody;
 
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        followObjRigidbody = followObj.GetComponent<Rigidbody>();
     }
     
     private void Update()
     {
         //take in axis info from our mouse
-        //currentX += Input.GetAxis("Mouse X");
         currentX += Input.GetAxis("Mouse X");
         currentY -= Input.GetAxis("Mouse Y");
     }
