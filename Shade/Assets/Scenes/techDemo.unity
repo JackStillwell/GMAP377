@@ -210,6 +210,21 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1310280872}
   m_Script: {fileID: 11500000, guid: d3c818e2e70f62c43bb41bdd7ef79716, type: 3}
+--- !u!114 &79831350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 79831348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1110e9375b94a92bc698da98df1a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glassLayer: 7
+  puddleLayer: 7
+  spotlightLayer: 7
+  colorModifiers: 000000000000000000000000
 --- !u!4 &79831355 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4499254798897132, guid: 239d911b4611e4c859741c4176fe70cf,
