@@ -33,24 +33,27 @@ public class EnemyAI : MonoBehaviour {
 		PlayerColor = GetComponent<ColorRaycaster>().playerView;
 		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
 
-		if (IsEqualTo (PlayerColor, EnemyColor)) 
-		{
+		//if (IsEqualTo (PlayerColor, EnemyColor)) 
+		//{
 			
 
 			
 
-		} else {
-			if (PlayerInSight) {
+		//} 
+		//else 
+		//{
+			if (PlayerInSight) 
+			{
 				
 				GetComponent<NavMeshAgent> ().SetDestination (Player.transform.position);
 
 				Debug.Log ("Chasing");
 			}
-		}
+		//}
 
 	}
 
-	public  bool IsEqualTo(Color me, Color other)
+	public bool IsEqualTo(Color me, Color other)
 	{
 		bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
 		if (Mathf.Abs(other.r - me.r) < .1)
