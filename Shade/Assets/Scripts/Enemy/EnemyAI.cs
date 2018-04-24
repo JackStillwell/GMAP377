@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
 	[SerializeField]
@@ -9,6 +10,7 @@ public class EnemyAI : MonoBehaviour {
 	private GameObject Camera;
 	private Color PlayerColor;
 	private Color EnemyColor;
+	private bool PlayerInSight;
 
 
 
@@ -18,6 +20,7 @@ public class EnemyAI : MonoBehaviour {
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
 
 		ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
+		EnemySight enemySight = GetComponent<EnemySight> ();
 
 		PlayerColor = colorRaycaster.playerView;
 		//StartCoroutine ("waitThreeSeconds");
@@ -28,12 +31,21 @@ public class EnemyAI : MonoBehaviour {
 	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
 		PlayerColor = GetComponent<ColorRaycaster>().playerView;
+		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
 
 		if (IsEqualTo (PlayerColor, EnemyColor)) 
 		{
-			//Debug.Log ("Same Color right here");
+			
+
+			
+
 		} else {
-			//Debug.Log ("Color is not the same");
+			if (PlayerInSight) {
+				
+				GetComponent<NavMeshAgent> ().SetDestination (Player.transform.position);
+
+				Debug.Log ("Chasing");
+			}
 		}
 
 	}
