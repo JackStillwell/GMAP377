@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ColorName { Red, Orange, Yellow, Green, Cyan, Violet, Pink, Null };
+public enum ColorName { Red, Orange, Yellow, Green, Cyan, Violet, Pink, Null, White };
 
 public class ColorArray : MonoBehaviour
 {
@@ -15,7 +15,9 @@ public class ColorArray : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        colorModifiers[0] = ColorName.White;
+        colorModifiers[1] = ColorName.White;
+        colorModifiers[2] = ColorName.White;
     }
 
     // Update is called once per frame
@@ -46,8 +48,7 @@ public class ColorArray : MonoBehaviour
         int nonNullColors = 0;
         for (int i = 0; i < colorModifiers.Length; i++)
         {
-            if (colorModifiers[i] != ColorName
-    .Null)
+            if (colorModifiers[i] != ColorName.Null)
                 nonNullColors++;
         }
 
@@ -67,7 +68,9 @@ public class ColorArray : MonoBehaviour
     private Color GetColorValue(ColorName c)
     {
         Color colorValue = new Color(0, 0, 0, 0);
-
+        Debug.Log("Glass: " + colorModifiers[0]);
+        Debug.Log("Puddle: " + colorModifiers[1]);
+        Debug.Log("Light: " + colorModifiers[2]);
         switch (c)
         {
             case ColorName.Red:
@@ -91,8 +94,14 @@ public class ColorArray : MonoBehaviour
             case ColorName.Pink:
                 colorValue = new Color(1, .4f, .87f, 1);
                 break;
+            case ColorName.White:
+                colorValue = new Color(1, 1, 1, 1);
+                break;
             case ColorName.Null:
                 colorValue = new Color(0, 0, 0, 0);
+                break;
+            default:
+                colorValue = Color.white;
                 break;
         }
         return colorValue;
