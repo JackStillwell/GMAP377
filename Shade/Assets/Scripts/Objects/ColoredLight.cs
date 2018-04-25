@@ -21,7 +21,7 @@ public class ColoredLight : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         /*
-                originalColor = other.gameObject.GetComponent<Renderer>().material.color;
+        originalColor = other.gameObject.GetComponent<Renderer>().material.color;
         Color lightColor = transform.GetComponent<Light>().color;
         Color newColor = Color.white;
 

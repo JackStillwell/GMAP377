@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerColorController : MonoBehaviour {
-
+public class PlayerColorController : MonoBehaviour 
+{
     public Material playerMat;
 
+    [HideInInspector]
     public Color realColor;
 
     public void Start()

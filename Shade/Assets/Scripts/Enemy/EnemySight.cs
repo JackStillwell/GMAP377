@@ -28,11 +28,12 @@ public class EnemySight : MonoBehaviour
 
 	void Update()
 	{
-		if (PlayerInSight) {
-		
+		if (PlayerInSight) 
+		{
 			Debug.Log ("Player is in sight");
-		} else {
-			Debug.Log ("Player not found");
+		} else 
+		{
+			//Debug.Log ("Player not found");
 		}
 	}
 
@@ -48,12 +49,16 @@ public class EnemySight : MonoBehaviour
 			float angle = Vector3.Angle(direction, transform.forward);
 			if (angle < fieldOfViewAngle * 0.5f) 
 			{
+				
 				RaycastHit hit;
-				if (Physics.Raycast (transform.position + transform.up, direction.normalized, out hit)) {
-					if (hit.collider.gameObject == Player) {
+				if (Physics.Raycast (transform.position + transform.up, direction.normalized, out hit, col.radius)) 
+				{
+					Debug.Log(hit.collider.gameObject);
+					//if (hit.collider.gameObject == Player) 
+					//{
+						Debug.Log("Recognizes");
 						PlayerInSight = true;
-					
-					}	
+					//}	
 				}
 			}
 		}

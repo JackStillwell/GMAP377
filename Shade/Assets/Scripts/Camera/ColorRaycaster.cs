@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class ColorRaycaster : MonoBehaviour 
 {
-    public PlayerColorController target;
+    public GameObject target;
     private RaycastHit hitInfo;
 
-    public Color playerView;
+    [HideInInspector]
+    public Color playerView = new Color();
 
     private List<GameObject> currentlyColliding;
 
 	// Use this for initialization
-	void Start () 
+	void Start() 
     {
-        //playerMat = playerObject.GetComponent<Material>();
+        
         currentlyColliding = new List<GameObject>();
     }
 	
 	// Update is called once per frame
-	void Update () 
+	void Update() 
     {
 	}
 
@@ -63,13 +64,11 @@ public class ColorRaycaster : MonoBehaviour
                 Debug.Log("beep");
                 //now see if player is behind or in front of object
                 Physics.Raycast(gameObject.transform.position, (target.transform.position - gameObject.transform.position), out hitInfo);
-                Debug.Log(target.name);
-                Debug.Log(hitInfo.transform.gameObject.name);
                 if (hitInfo.transform.gameObject.name != target.name)
                 {
                     
                     //get the color of both objects and then math needs to happen
-                    Color playerColor = target.realColor;
+                    Color playerColor = target.GetComponent<Renderer>().material.color;
                     // GameObject hitobj = hitInfo.transform.gameObject;
                     Color objColor = hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material.color;
 
