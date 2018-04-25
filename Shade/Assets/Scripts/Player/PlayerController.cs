@@ -2,21 +2,35 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float _moveSpeed = 3.0f;
 
-    private Rigidbody pcRigidbody;
+    private float _x;
+    private float _y;
+    private float _z;
+
+    private Rigidbody _pcRigidbody;
 
     void Start()
     {
-        pcRigidbody = GetComponent<Rigidbody>();
+        _pcRigidbody = GetComponent<Rigidbody>();
+        // Freezes X and Z rotation so the player cannot fall over and can only rotate side to side.
+        _pcRigidbody.constraints = (RigidbodyConstraints) 80;
     }
-    
+
     void Update()
     {
-        var y = Input.GetAxis("Mouse X");
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        _y = Input.GetAxis("Mouse X");
+
+        _z = Input.GetAxis("Vertical") * Time.deltaTime * _moveSpeed;
+        _x = Input.GetAxis("Horizontal") * Time.deltaTime * _moveSpeed;
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 moveVector = _pcRigidbody.position + _pcRigidbody.rotation * new Vector3(_x, 0, _z);
+        Quaternion moveQuaternion = Quaternion.Euler(new Vector3(0, _y, 0));
         
-        transform.Rotate(0, y, 0);
-        transform.Translate(0, 0, z);
+        _pcRigidbody.MoveRotation(transform.rotation * moveQuaternion);
+        _pcRigidbody.MovePosition(moveVector);
     }
 }

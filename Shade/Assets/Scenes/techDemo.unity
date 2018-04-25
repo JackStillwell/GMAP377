@@ -542,8 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92011e3e91fae4358b13e0ec4c4ce1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followObj: {fileID: 79831348}
-  camDistance: 10
+  FollowObj: {fileID: 79831348}
+  _camDistance: 10
 --- !u!1001 &1310280872
 Prefab:
   m_ObjectHideFlags: 0
@@ -606,7 +606,7 @@ Prefab:
     - target: {fileID: 54297133768916190, guid: 239d911b4611e4c859741c4176fe70cf,
         type: 2}
       propertyPath: m_Constraints
-      value: 32
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 23779599909713690, guid: 239d911b4611e4c859741c4176fe70cf,
         type: 2}
