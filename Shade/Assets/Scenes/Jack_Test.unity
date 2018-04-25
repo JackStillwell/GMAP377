@@ -499,6 +499,16 @@ Prefab:
       propertyPath: FollowObj
       value: 
       objectReference: {fileID: 2126302839}
+    - target: {fileID: 114954846496749286, guid: a7f7cc0eca0ed4f54ba18513bc3202ab,
+        type: 2}
+      propertyPath: _jumpForce
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114954846496749286, guid: a7f7cc0eca0ed4f54ba18513bc3202ab,
+        type: 2}
+      propertyPath: _moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7f7cc0eca0ed4f54ba18513bc3202ab, type: 2}
   m_IsPrefabParent: 0
