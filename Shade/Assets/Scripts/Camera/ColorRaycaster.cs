@@ -61,7 +61,7 @@ public class ColorRaycaster : MonoBehaviour
 
             if (foundTarget)
             {
-                Debug.Log("beep");
+                
                 //now see if player is behind or in front of object
                 Physics.Raycast(gameObject.transform.position, (target.transform.position - gameObject.transform.position), out hitInfo);
                 if (hitInfo.transform.gameObject.name != target.name)
@@ -80,7 +80,6 @@ public class ColorRaycaster : MonoBehaviour
                     newColor.g = ((playerColor.g + (objColor.g * objColor.a)) / 2);
                     newColor.b = ((playerColor.b + (objColor.b * objColor.a)) / 2);
 
-                    Debug.Log("YES");
 
                     playerView = newColor;
 

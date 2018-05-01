@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour {
 	private Color PlayerColor;
 	private Color EnemyColor;
 	private bool PlayerInSight;
+	public NavMeshAgent navAgent;
 
 
 
@@ -19,10 +20,11 @@ public class EnemyAI : MonoBehaviour {
 	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
 
-		ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
+		//ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
 		EnemySight enemySight = GetComponent<EnemySight> ();
+		navAgent = GetComponent<NavMeshAgent> ();
 
-		PlayerColor = colorRaycaster.playerView;
+		PlayerColor = enemySight.playerView;
 		//StartCoroutine ("waitThreeSeconds");
 	}
 
@@ -30,26 +32,21 @@ public class EnemyAI : MonoBehaviour {
 	void Update ()
 	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		PlayerColor = GetComponent<ColorRaycaster>().playerView;
+		PlayerColor = GetComponent<EnemySight>().playerView;
 		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
+		if (IsEqualTo (PlayerColor, EnemyColor)) 
+		{
 
-		//if (IsEqualTo (PlayerColor, EnemyColor)) 
-		//{
-			
-
-			
-
-		//} 
-		//else 
-		//{
+		} 
+		else 
+		{
 			if (PlayerInSight) 
 			{
-				
-				GetComponent<NavMeshAgent> ().SetDestination (Player.transform.position);
-
-				Debug.Log ("Chasing");
+			navAgent.updatePosition = true;
+			navAgent.updateRotation = true;
+			navAgent.SetDestination (Player.transform.position);
 			}
-		//}
+		}
 
 	}
 
@@ -70,30 +67,6 @@ public class EnemyAI : MonoBehaviour {
 
 		return isRedSimilar && isBlueSimilar && isGreenSimilar;
 	}
-//	// change Player's color
-//	IEnumerator waitThreeSeconds(){
-//		Player.GetComponent<Renderer> ().material.color = Color.yellow;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//			yield return new WaitForSeconds (3);
-//		Player.GetComponent<Renderer> ().material.color = Color.blue;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//			yield return new WaitForSeconds (3);
-//		Player.GetComponent<Renderer> ().material.color = Color.green;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//			yield return new WaitForSeconds (3);
-//		Player.GetComponent<Renderer> ().material.color = EnemyColor;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//
-//	
-//
-//
-//
-//	}
-//
 
 
 
