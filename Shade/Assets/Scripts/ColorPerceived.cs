@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class ColorPerceived : MonoBehaviour 
 {
-	public GameObject enemy;
-	private Color perceivedColor;
+	[SerializeField] private GameObject _enemy;
+	private Color _perceivedColor;
 	// Use this for initialization
 	void Start() 
 	{
-		perceivedColor = enemy.GetComponent<ColorRaycaster>().PlayerView;
+		_perceivedColor = _enemy.GetComponent<ColorRaycaster>().GetPercievedColor();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		perceivedColor = enemy.GetComponent<ColorRaycaster>().PlayerView;
-		transform.GetComponentInParent<Image>().color = perceivedColor;
+		_perceivedColor = _enemy.GetComponent<ColorRaycaster>().GetPercievedColor();
+		transform.GetComponentInParent<Image>().color = _perceivedColor;
 	}
 }
