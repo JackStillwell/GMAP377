@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour {
 	private bool PlayerInSight;
 	private NavMeshAgent navAgent;
 
-
+	private Spawn _spawnManager;
 
 	// Use this for initialization
 	void Start () 
@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour {
 		//ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
 		EnemySight enemySight = GetComponent<EnemySight> ();
 		navAgent = GetComponent<NavMeshAgent> ();
-
+		_spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
 		PlayerColor = enemySight.playerView;
 		//StartCoroutine ("waitThreeSeconds");
 	}
@@ -45,6 +45,9 @@ public class EnemyAI : MonoBehaviour {
 			navAgent.updatePosition = true;
 			navAgent.updateRotation = true;
 			navAgent.SetDestination (Player.transform.position);
+			if (!navAgent.pathPending && navAgent.remainingDistance < 0.5f) {
+					_spawnManager.TriggerRespawn(Player);			
+			}
 			}
 		}
 
