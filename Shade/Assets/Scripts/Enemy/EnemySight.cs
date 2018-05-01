@@ -12,8 +12,8 @@ public class EnemySight : MonoBehaviour
 
 	public GameObject Player;
 	private SphereCollider col;
-
-
+	public Color playerView = new Color();
+	public EnemyAI enemyAI;
 	private NavMeshAgent Nav;
 	//private NavMeshAgent nav;
 
@@ -21,7 +21,7 @@ public class EnemySight : MonoBehaviour
 	{
 		Nav = GetComponent<NavMeshAgent> ();
 		col = GetComponent<SphereCollider> ();
-
+	    enemyAI = gameObject.GetComponent<EnemyAI> ();
 
 	}
 
@@ -30,7 +30,6 @@ public class EnemySight : MonoBehaviour
 	{
 		if (PlayerInSight) 
 		{
-			Debug.Log ("Player is in sight");
 		} else 
 		{
 			//Debug.Log ("Player not found");
@@ -41,32 +40,57 @@ public class EnemySight : MonoBehaviour
 
 	void OnTriggerStay(Collider other)
 	{
+		// if the player enters trigger
 		if(other.gameObject == Player)
 		{
+			
 			PlayerInSight = false;
-
+			//get the direction of the player
 			Vector3 direction = other.transform.position - transform.position;
 			float angle = Vector3.Angle(direction, transform.forward);
+			// check if the player is in sight
 			if (angle < fieldOfViewAngle * 0.5f) 
 			{
-				
 				RaycastHit hit;
-				if (Physics.Raycast (transform.position + transform.up, direction.normalized, out hit, col.radius)) 
+				// raycast to player's direction
+				if (Physics.Raycast (transform.position, direction.normalized, out hit, col.radius)) 
 				{
-					Debug.Log(hit.collider.gameObject);
-					//if (hit.collider.gameObject == Player) 
-					//{
-						Debug.Log("Recognizes");
+					// if enemy directly "sees" player
+					if (hit.collider.gameObject == Player) {
+						playerView = Player.transform.GetComponent<Renderer>().material.color;
 						PlayerInSight = true;
-					//}	
+					} 
+					//if enemy does not directly "sees" player
+					else {
+
+						//get the color of both objects and then math needs to happen
+						Color playerColor = Player.GetComponent<Renderer>().material.color;
+						// GameObject hitobj = hitInfo.transform.gameObject;
+						Color objColor = hit.transform.gameObject.GetComponent<MeshRenderer>().material.color;
+
+						Color newColor = Color.white;
+
+						newColor.a = playerColor.a;
+
+						newColor.r = ((playerColor.r + (objColor.r * objColor.a)) / 2);
+						newColor.g = ((playerColor.g + (objColor.g * objColor.a)) / 2);
+						newColor.b = ((playerColor.b + (objColor.b * objColor.a)) / 2);
+
+						Debug.Log("YES");
+
+						playerView = newColor;
+					}
 				}
 			}
 		}
 	}
 	void OnTriggerExit(Collider other)
 	{
-		if(other.gameObject == Player)	
+		if (other.gameObject == Player) {
 			PlayerInSight = false;
+			enemyAI.navAgent.updatePosition = false;
+			enemyAI.navAgent.updateRotation = false;
+		}
 	}
 
 
