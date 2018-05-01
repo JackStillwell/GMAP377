@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class StaticEnemyAI : MonoBehaviour
 {
-	private Collider _sight;
-	private bool _playerIsVisible;
-	
-	// Use this for initialization
-	void Start ()
+	private Spawn _spawnManager;
+		
+	private void Start()
 	{
-		_sight = GetComponent<Collider>();
+		_spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
 	}
-	
+
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.name == "Player")
-			_playerIsVisible = true;
-	}
-
-	private void OnTriggerExit(Collider other)
-	{
-		if (other.name == "Player")
-			_playerIsVisible = false;
-	}
-
-	public bool IsPlayerVisible()
-	{
-		return _playerIsVisible;
+		if (other.name == "Player(Clone)")
+		{
+			_spawnManager.TriggerRespawn(other.gameObject);
+		}
 	}
 }

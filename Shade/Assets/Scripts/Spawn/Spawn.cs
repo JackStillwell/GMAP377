@@ -17,15 +17,16 @@ public class Spawn : MonoBehaviour
 	{
 		gameObject.tag = "SpawnManager";
 		
-		_spawnPoints = new List<GameObject>();
 		_currentSpawn = 0;
 		
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
+
+		_spawnPoints = new List<GameObject>(new GameObject[spawns.Length]);
 		
-		foreach(GameObject go in spawns)
+		foreach (var go in spawns)
 		{
 			SpawnPoint sp = go.GetComponent<SpawnPoint>();
-			_spawnPoints.Insert(sp.GetSpawnNumber(), go);
+			_spawnPoints[sp.GetSpawnNumber()] = sp.gameObject;
 		}
 		
 		TriggerSpawn();

@@ -6,11 +6,14 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] private int _spawnNumber;
+    private Spawn _spawnManager;
 
     // Use this for initialization
     void Start ()
     {
 	    gameObject.tag = "Spawnpoint";
+
+        _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
     }
 
     public int GetSpawnNumber()
@@ -22,7 +25,7 @@ public class SpawnPoint : MonoBehaviour
     {
         if (other.name == "Player(Clone)")
         {
-            GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>().SetCurrentSpawnNumber(_spawnNumber); 
+            _spawnManager.SetCurrentSpawnNumber(_spawnNumber); 
         }
     }
 }
