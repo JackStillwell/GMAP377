@@ -23,7 +23,7 @@ public class SpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player(Clone)")
+		if (other.tag=="Player")
         {
             _spawnManager.SetCurrentSpawnNumber(_spawnNumber); 
         }
