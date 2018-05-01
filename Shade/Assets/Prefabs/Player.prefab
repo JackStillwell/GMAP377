@@ -189,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92011e3e91fae4358b13e0ec4c4ce1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followObj: {fileID: 1213332047107518}
-  camDistance: 10
+  FollowObj: {fileID: 1213332047107518}
+  _camDistance: 10
 --- !u!114 &114589772570259866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3abd458733843a49d4cc82dfb91d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  _moveSpeed: 10
+  _jumpForce: 200
+  _groundDistance: 0.5
 --- !u!124 &124502985665275054
 Behaviour:
   m_ObjectHideFlags: 1
