@@ -25,7 +25,7 @@ public class EnemySight : MonoBehaviour
 		col = GetComponent<SphereCollider> ();
 	    enemyAI = gameObject.GetComponent<EnemyAI> ();
 
-		Player = GameObject.FindGameObjectsWithTag("Player");
+		Player = GameObject.FindGameObjectWithTag("Player");
 
 	}
 	void Update()

@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour {
 	void Start () 
 	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		Player = GameObject.FindGameObjectsWithTag("Player");
+		Player = GameObject.FindGameObjectWithTag("Player");
 		//ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
 		EnemySight enemySight = GetComponent<EnemySight> ();
 		navAgent = GetComponent<NavMeshAgent> ();
