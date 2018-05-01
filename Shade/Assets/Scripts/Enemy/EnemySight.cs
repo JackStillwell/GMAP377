@@ -10,10 +10,10 @@ public class EnemySight : MonoBehaviour
 	//public string targetTag;
 	public bool PlayerInSight;
 
-	public GameObject Player;
+	private GameObject Player;
 	private SphereCollider col;
 	public Color playerView = new Color();
-	public EnemyAI enemyAI;
+	private EnemyAI enemyAI;
 	private NavMeshAgent Nav;
 	private EnemyPatrolAI patrolAI;
 	//private NavMeshAgent nav;
@@ -24,6 +24,8 @@ public class EnemySight : MonoBehaviour
 		Nav = GetComponent<NavMeshAgent> ();
 		col = GetComponent<SphereCollider> ();
 	    enemyAI = gameObject.GetComponent<EnemyAI> ();
+
+		Player = GameObject.FindGameObjectsWithTag("Player");
 
 	}
 	void Update()
