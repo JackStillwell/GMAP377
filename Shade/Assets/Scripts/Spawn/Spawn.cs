@@ -15,6 +15,8 @@ public class Spawn : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		gameObject.tag = "SpawnManager";
+		
 		_spawnPoints = new List<GameObject>();
 		_currentSpawn = 0;
 		
