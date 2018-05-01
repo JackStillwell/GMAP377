@@ -15,10 +15,12 @@ public class EnemySight : MonoBehaviour
 	public Color playerView = new Color();
 	public EnemyAI enemyAI;
 	private NavMeshAgent Nav;
+	private EnemyPatrolAI patrolAI;
 	//private NavMeshAgent nav;
 
 	void Awake()
 	{
+		patrolAI = GetComponent<EnemyPatrolAI> ();
 		Nav = GetComponent<NavMeshAgent> ();
 		col = GetComponent<SphereCollider> ();
 	    enemyAI = gameObject.GetComponent<EnemyAI> ();
@@ -76,7 +78,7 @@ public class EnemySight : MonoBehaviour
 						newColor.g = ((playerColor.g + (objColor.g * objColor.a)) / 2);
 						newColor.b = ((playerColor.b + (objColor.b * objColor.a)) / 2);
 
-						Debug.Log("YES");
+						//Debug.Log("YES");
 
 						playerView = newColor;
 					}
@@ -88,8 +90,7 @@ public class EnemySight : MonoBehaviour
 	{
 		if (other.gameObject == Player) {
 			PlayerInSight = false;
-			enemyAI.navAgent.updatePosition = false;
-			enemyAI.navAgent.updateRotation = false;
+			patrolAI.NextPoint ();
 		}
 	}
 

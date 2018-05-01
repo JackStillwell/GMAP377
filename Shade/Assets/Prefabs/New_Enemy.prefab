@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 195940595007254024}
   - component: {fileID: 114083319891756496}
   - component: {fileID: 114527907478971248}
+  - component: {fileID: 114830506144402978}
   m_Layer: 0
   m_Name: New_Enemy
   m_TagString: Untagged
@@ -206,6 +207,18 @@ MonoBehaviour:
   Player: {fileID: 0}
   Camera: {fileID: 0}
   navAgent: {fileID: 0}
+--- !u!114 &114830506144402978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926617358399554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475ae935b941e46a68acb504e8e5c72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WayPoints: []
 --- !u!135 &135061514087975222
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -259,7 +272,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
