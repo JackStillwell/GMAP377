@@ -82,4 +82,9 @@ public class ColorRaycaster : MonoBehaviour
             _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
         }
     }
+
+    public Color GetPercievedColor()
+    {
+        return _percievedPlayerColor;
+    }
 }
