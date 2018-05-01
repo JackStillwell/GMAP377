@@ -26,16 +26,8 @@ public class EnemySight : MonoBehaviour
 	    enemyAI = gameObject.GetComponent<EnemyAI> ();
 
 	}
-
-
 	void Update()
 	{
-		if (PlayerInSight) 
-		{
-		} else 
-		{
-			//Debug.Log ("Player not found");
-		}
 	}
 
 
@@ -45,7 +37,6 @@ public class EnemySight : MonoBehaviour
 		// if the player enters trigger
 		if(other.gameObject == Player)
 		{
-			
 			PlayerInSight = false;
 			//get the direction of the player
 			Vector3 direction = other.transform.position - transform.position;
@@ -54,6 +45,7 @@ public class EnemySight : MonoBehaviour
 			if (angle < fieldOfViewAngle * 0.5f) 
 			{
 				RaycastHit hit;
+				// player detection engine 
 				// raycast to player's direction
 				if (Physics.Raycast (transform.position, direction.normalized, out hit, col.radius)) 
 				{
@@ -66,6 +58,7 @@ public class EnemySight : MonoBehaviour
 					else {
 
 						//get the color of both objects and then math needs to happen
+						//Color check engine 
 						Color playerColor = Player.GetComponent<Renderer>().material.color;
 						// GameObject hitobj = hitInfo.transform.gameObject;
 						Color objColor = hit.transform.gameObject.GetComponent<MeshRenderer>().material.color;
