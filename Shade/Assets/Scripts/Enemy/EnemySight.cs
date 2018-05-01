@@ -18,7 +18,7 @@ public class EnemySight : MonoBehaviour
 	private EnemyPatrolAI patrolAI;
 	//private NavMeshAgent nav;
 
-	void Awake()
+	void Start()
 	{
 		patrolAI = GetComponent<EnemyPatrolAI> ();
 		Nav = GetComponent<NavMeshAgent> ();
@@ -26,7 +26,6 @@ public class EnemySight : MonoBehaviour
 	    enemyAI = gameObject.GetComponent<EnemyAI> ();
 
 		Player = GameObject.FindGameObjectWithTag("Player");
-
 	}
 	void Update()
 	{
@@ -36,6 +35,7 @@ public class EnemySight : MonoBehaviour
 
 	void OnTriggerStay(Collider other)
 	{
+		
 		// if the player enters trigger
 		if(other.gameObject == Player)
 		{
@@ -46,13 +46,15 @@ public class EnemySight : MonoBehaviour
 			// check if the player is in sight
 			if (angle < fieldOfViewAngle * 0.5f) 
 			{
+				Debug.Log(fieldOfViewAngle);
 				RaycastHit hit;
 				// player detection engine 
 				// raycast to player's direction
 				if (Physics.Raycast (transform.position, direction.normalized, out hit, col.radius)) 
 				{
 					// if enemy directly "sees" player
-					if (hit.collider.gameObject == Player) {
+					if (hit.collider.gameObject == Player) 
+					{
 						playerView = Player.transform.GetComponent<Renderer>().material.color;
 						PlayerInSight = true;
 					} 

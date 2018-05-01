@@ -17,23 +17,31 @@ public class Puddle : MonoBehaviour
 
     }
 
-    private void onTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        ColorName colorName = (ColorName)Enum.Parse(typeof(ColorName), this.transform.tag);
+        if (other.tag == "Player")
+        {
+            Debug.Log("Beep");
+            ColorName colorName = (ColorName)Enum.Parse(typeof(ColorName), this.transform.tag);
 
-        other.gameObject.GetComponent<ColorArray>().addColorToLayer("Puddle", colorName);
-        
+            other.gameObject.GetComponent<ColorArray>().addColorToLayer("Puddle", colorName);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        DelayColorRemove(other);
+        if (other.tag == "Player")
+        {
+            Debug.Log("Boop");
+            DelayColorRemove(other);
+        }
     }
 
     IEnumerator DelayColorRemove(Collider other)
     {
-        yield return new WaitForSeconds(30);
-		other.gameObject.GetComponent<ColorArray>().removeColorFromLayer("Puddle");
+        Debug.Log("WAKE ME UP");
+        yield return new WaitForSeconds(2);
+        other.gameObject.GetComponent<ColorArray>().removeColorFromLayer("Puddle");
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ColoredLight : MonoBehaviour
 {
-	Color originalColor;
+    Color originalColor;
     // Use this for initialization
     void Start()
     {
@@ -34,13 +34,19 @@ public class ColoredLight : MonoBehaviour
 
 
         //So this should work fine, but I can't figure out how to get the enum to be a global value so that I can reference it.
-        ColorName colorName = (ColorName) Enum.Parse(typeof(ColorName), this.transform.tag);
-         
-        other.gameObject.GetComponent<ColorArray>().addColorToLayer("Spotlight", colorName);
+        if (other.tag == "Player")
+        {
+            ColorName colorName = (ColorName)Enum.Parse(typeof(ColorName), this.transform.tag);
+
+            other.gameObject.GetComponent<ColorArray>().addColorToLayer("Spotlight", colorName);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-		other.gameObject.GetComponent<ColorArray>().removeColorFromLayer("Spotlight");
+        if (other.tag == "Player")
+        {
+            other.gameObject.GetComponent<ColorArray>().removeColorFromLayer("Spotlight");
+        }
     }
 }

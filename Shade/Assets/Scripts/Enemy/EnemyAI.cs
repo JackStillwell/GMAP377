@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
 	
+
 	private GameObject Player;
 	[SerializeField]
 	private GameObject Camera;
@@ -13,6 +14,8 @@ public class EnemyAI : MonoBehaviour {
 	private bool PlayerInSight;
 	private NavMeshAgent navAgent;
 
+	[SerializeField]
+	private float catchDistance;
 	private Spawn _spawnManager;
 
 	// Use this for initialization
@@ -45,7 +48,7 @@ public class EnemyAI : MonoBehaviour {
 			navAgent.updatePosition = true;
 			navAgent.updateRotation = true;
 			navAgent.SetDestination (Player.transform.position);
-			if (!navAgent.pathPending && navAgent.remainingDistance < 0.5f) {
+			if (!navAgent.pathPending && navAgent.remainingDistance < catchDistance) {
 					_spawnManager.TriggerRespawn(Player);			
 			}
 			}
