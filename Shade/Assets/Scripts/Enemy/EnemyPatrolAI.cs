@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyPatrolAI : MonoBehaviour {
 
-	public Transform[] WayPoints;
+	[SerializeField] private Transform[] _wayPoints;
 	private NavMeshAgent _navAgent;
 	private int _nextPoint; 
 
@@ -21,9 +21,9 @@ public class EnemyPatrolAI : MonoBehaviour {
 
 	}
 	public void NextPoint() {
-		if (WayPoints.Length == 0)
+		if (_wayPoints.Length == 0)
 			return;
-		_navAgent.destination = WayPoints[_nextPoint].position;
-		_nextPoint = (_nextPoint + 1) % WayPoints.Length;
+		_navAgent.destination = _wayPoints[_nextPoint].position;
+		_nextPoint = (_nextPoint + 1) % _wayPoints.Length;
 	}
 }
