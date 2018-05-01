@@ -23,7 +23,6 @@ public class SpawnPoint : MonoBehaviour
         if (other.name == "Player(Clone)")
         {
             GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>().SetCurrentSpawnNumber(_spawnNumber); 
-            Debug.Log("I set the spawn to " + _spawnNumber);
         }
     }
 }
