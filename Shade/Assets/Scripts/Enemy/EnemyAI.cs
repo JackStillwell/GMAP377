@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
-	[SerializeField]
+	
 	private GameObject Player;
 	[SerializeField]
 	private GameObject Camera;
 	private Color PlayerColor;
 	private Color EnemyColor;
 	private bool PlayerInSight;
-	public NavMeshAgent navAgent;
+	private NavMeshAgent navAgent;
 
 
 
@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour {
 	void Start () 
 	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-
+		Player = GameObject.FindGameObjectWithTag("Player");
 		//ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
 		EnemySight enemySight = GetComponent<EnemySight> ();
 		navAgent = GetComponent<NavMeshAgent> ();
