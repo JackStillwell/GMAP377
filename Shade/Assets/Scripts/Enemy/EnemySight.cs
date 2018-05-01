@@ -62,17 +62,11 @@ public class EnemySight : MonoBehaviour
 						Color playerColor = Player.GetComponent<Renderer>().material.color;
 						// GameObject hitobj = hitInfo.transform.gameObject;
 						Color objColor = hit.transform.gameObject.GetComponent<MeshRenderer>().material.color;
-
 						Color newColor = Color.white;
-
 						newColor.a = playerColor.a;
-
 						newColor.r = ((playerColor.r + (objColor.r * objColor.a)) / 2);
 						newColor.g = ((playerColor.g + (objColor.g * objColor.a)) / 2);
 						newColor.b = ((playerColor.b + (objColor.b * objColor.a)) / 2);
-
-						//Debug.Log("YES");
-
 						playerView = newColor;
 					}
 				}

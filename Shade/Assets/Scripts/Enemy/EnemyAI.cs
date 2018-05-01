@@ -12,14 +12,14 @@ public class EnemyAI : MonoBehaviour {
 	private Color EnemyColor;
 	private bool PlayerInSight;
 	public NavMeshAgent navAgent;
-	private EnemyPatrolAI patrolAI;
+
 
 
 	// Use this for initialization
 	void Start () 
 	{
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		patrolAI = GetComponent<EnemyPatrolAI> ();
+
 		//ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
 		EnemySight enemySight = GetComponent<EnemySight> ();
 		navAgent = GetComponent<NavMeshAgent> ();
@@ -34,7 +34,6 @@ public class EnemyAI : MonoBehaviour {
 		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
 		PlayerColor = GetComponent<EnemySight>().playerView;
 		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
-
 		if (IsEqualTo (PlayerColor, EnemyColor)) 
 		{
 
@@ -46,8 +45,6 @@ public class EnemyAI : MonoBehaviour {
 			navAgent.updatePosition = true;
 			navAgent.updateRotation = true;
 			navAgent.SetDestination (Player.transform.position);
-			
-		
 			}
 		}
 

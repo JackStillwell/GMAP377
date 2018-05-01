@@ -16,17 +16,13 @@ public class EnemyPatrolAI : MonoBehaviour {
 		NextPoint ();
 		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
 	}
-	
-
 
 	void Update () {
 		if (!NavAgent.pathPending && NavAgent.remainingDistance < 0.5f)
 			NextPoint();
 
 	}
-
 	public void NextPoint() {
-		// Returns if no points have been set up
 		if (WayPoints.Length == 0)
 			return;
 		NavAgent.destination = WayPoints[nextPoint].position;
