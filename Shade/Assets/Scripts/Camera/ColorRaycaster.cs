@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class ColorRaycaster : MonoBehaviour 
 {
-    public GameObject target;
-    private RaycastHit hitInfo;
+    private GameObject _player;
+    private RaycastHit[] _hitInfoArray;
 
-    [HideInInspector]
-    public Color playerView = new Color();
+    private Color _percievedPlayerColor;
 
-    private List<GameObject> currentlyColliding;
+    private List<GameObject> _currentlyColliding;
 
 	// Use this for initialization
 	void Start() 
     {
+        _currentlyColliding = new List<GameObject>();
         
-        currentlyColliding = new List<GameObject>();
+        _player = GameObject.Find("Player(Clone)");
+        
+        _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
     }
-	
-	// Update is called once per frame
-	void Update() 
-    {
-	}
 
     /// <summary>
     /// Adds the new object to the currentlyColliding list
@@ -30,8 +27,10 @@ public class ColorRaycaster : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        currentlyColliding.Add(other.gameObject);
-        colorCheck();
+        _currentlyColliding.Add(other.gameObject);
+
+        if(_currentlyColliding.Contains(_player))
+            ColorCheck();
     }
 
     /// <summary>
@@ -40,65 +39,47 @@ public class ColorRaycaster : MonoBehaviour
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
-        currentlyColliding.Remove(other.gameObject);
-        colorCheck();
+        _currentlyColliding.Remove(other.gameObject);
+        
+        if(_currentlyColliding.Contains(_player))
+            ColorCheck();
     }
 
-    public bool colorCheck()
+    private void ColorCheck()
     {
-        if (currentlyColliding.Count >= 1)
+        if (_currentlyColliding.Count > 1)
         {
-            bool foundTarget = false;
+            //now see if player is behind or in front of object
+            _hitInfoArray = Physics.RaycastAll(gameObject.transform.position, _player.transform.position - gameObject.transform.position);
 
-            foreach(GameObject g in currentlyColliding)
-            {                
-                if(g.name == target.name)
-                {
-                    foundTarget = true;
-                    break;
-                }       
-            }
-
-            if (foundTarget)
+            foreach (var hitInfo in _hitInfoArray)
             {
-                
-                //now see if player is behind or in front of object
-                Physics.Raycast(gameObject.transform.position, (target.transform.position - gameObject.transform.position), out hitInfo);
-                if (hitInfo.transform.gameObject.name != target.name)
+                if (hitInfo.transform.gameObject != _player)
                 {
-                    
-                    //get the color of both objects and then math needs to happen
-                    Color playerColor = target.GetComponent<Renderer>().material.color;
                     // GameObject hitobj = hitInfo.transform.gameObject;
                     Color objColor = hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material.color;
 
                     Color newColor = Color.white;
 
-                    newColor.a = playerColor.a;
+                    newColor.a = _percievedPlayerColor.a;
 
-                    newColor.r = ((playerColor.r + (objColor.r * objColor.a)) / 2);
-                    newColor.g = ((playerColor.g + (objColor.g * objColor.a)) / 2);
-                    newColor.b = ((playerColor.b + (objColor.b * objColor.a)) / 2);
+                    newColor.r = ((_percievedPlayerColor.r + (objColor.r * objColor.a)) / 2);
+                    newColor.g = ((_percievedPlayerColor.g + (objColor.g * objColor.a)) / 2);
+                    newColor.b = ((_percievedPlayerColor.b + (objColor.b * objColor.a)) / 2);
 
-
-                    playerView = newColor;
-
-                    return true;
+                    _percievedPlayerColor = newColor;
                 }
-                else 
+
+                else
                 {
-                    playerView = target.transform.GetComponent<Renderer>().material.color;
-                    return false;
+                    break;
                 }
             }
-            else return false;
-            
         }
+
         else
         {
-            return false;
+            _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
         }
-
-
     }
 }

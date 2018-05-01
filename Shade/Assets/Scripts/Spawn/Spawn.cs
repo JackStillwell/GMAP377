@@ -45,7 +45,7 @@ public class Spawn : MonoBehaviour
 	
 	public void TriggerRespawn(GameObject player)
 	{
-		Destroy(player);
-		TriggerSpawn();
+		player.transform.position = _spawnPoints[_currentSpawn].transform.position;
+		player.transform.rotation = _spawnPoints[_currentSpawn].transform.rotation;
 	}
 }
