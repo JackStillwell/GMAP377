@@ -11,6 +11,8 @@ TagManager:
   - Cyan
   - Violet
   - Pink
+  - Spawnpoint
+  - SpawnManager
   layers:
   - Default
   - TransparentFX
