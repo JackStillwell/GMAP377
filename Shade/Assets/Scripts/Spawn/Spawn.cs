@@ -18,8 +18,6 @@ public class Spawn : MonoBehaviour
 		_spawnPoints = new List<GameObject>();
 		_currentSpawn = 0;
 		
-		gameObject.tag = "SpawnManager";
-
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
 		
 		foreach(GameObject go in spawns)
@@ -36,7 +34,7 @@ public class Spawn : MonoBehaviour
 		_currentSpawn = number;
 	}
 
-	public void TriggerSpawn()
+	private void TriggerSpawn()
 	{
 		Instantiate(_playerPrefab, 
 			_spawnPoints[_currentSpawn].transform.position, 
