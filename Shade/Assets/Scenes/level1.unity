@@ -235,21 +235,21 @@ Prefab:
     - target: {fileID: 108134024497315712, guid: 995bfc15d7e7a439ab90e534f43696b0,
         type: 2}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108134024497315712, guid: 995bfc15d7e7a439ab90e534f43696b0,
         type: 2}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.13103437
       objectReference: {fileID: 0}
     - target: {fileID: 108134024497315712, guid: 995bfc15d7e7a439ab90e534f43696b0,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1670736420383672, guid: 995bfc15d7e7a439ab90e534f43696b0, type: 2}
       propertyPath: m_TagString
-      value: Red
+      value: Cyan
       objectReference: {fileID: 0}
     - target: {fileID: 108134024497315712, guid: 995bfc15d7e7a439ab90e534f43696b0,
         type: 2}
@@ -513,7 +513,7 @@ Prefab:
     - target: {fileID: 195940595007254024, guid: 024bca09e78f027438c6207b77bd9457,
         type: 2}
       propertyPath: m_Speed
-      value: 200
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1926617358399554, guid: 024bca09e78f027438c6207b77bd9457, type: 2}
       propertyPath: m_Name
@@ -538,6 +538,21 @@ Prefab:
         type: 2}
       propertyPath: _fieldOfViewAngle
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 195940595007254024, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: m_AngularSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 195940595007254024, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: m_Acceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 195940595007254024, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: m_AutoBraking
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024bca09e78f027438c6207b77bd9457, type: 2}
