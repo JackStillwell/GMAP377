@@ -36,6 +36,7 @@ public class EnemyAI : MonoBehaviour {
 
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
+            Debug.Log("REEEEEEEEET");
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);
