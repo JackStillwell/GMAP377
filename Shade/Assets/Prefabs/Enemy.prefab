@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  Camera: {fileID: 0}
+  _catchDistance: 0.5
+  _playerColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114908446273657944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,9 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9de51312815d40bb80306e2d7b8f864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfViewAngle: 120
-  PlayerInSight: 0
-  Player: {fileID: 0}
+  _fieldOfViewAngle: 120
+  _seeThroughThreshold: 0.9
 --- !u!135 &135253519242295160
 SphereCollider:
   m_ObjectHideFlags: 1
