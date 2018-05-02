@@ -87,18 +87,17 @@ public class ColorArray : MonoBehaviour
         return colorValue;
     }
 
-    public int AddColor(ColorName inColor)
+    public void AddColor(ColorName inColor)
     {
         Debug.Log("Added color: " + inColor);
         _colorModifiers.Add(inColor);
         ChangePlayerColor();
-        return _colorModifiers.LastIndexOf(inColor);
     }
     
-    public void RemoveColor(int colorIndex)
+    public void RemoveColor(ColorName inColor)
     {
-        Debug.Log("Removed color: " + GetColorValue(_colorModifiers[colorIndex]));
-        _colorModifiers.RemoveAt(colorIndex);
+        Debug.Log("Removed color: " + inColor);
+        _colorModifiers.Remove(inColor);
         ChangePlayerColor();
     }
 }
