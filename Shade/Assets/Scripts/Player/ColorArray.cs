@@ -1,76 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum ColorName { Red, Orange, Yellow, Green, Cyan, Violet, Pink, Null, White };
 
 public class ColorArray : MonoBehaviour
 {
-   
-    private ColorName glassLayer = ColorName.Null;
-    private ColorName puddleLayer = ColorName.Null;
-    private ColorName spotlightLayer = ColorName.Null;
-    //public Array<ColorName> colorModifiers = new List<ColorName>(){glassLayer, puddleLayer, spotlightLayer};
-    private ColorName[] colorModifiers = new ColorName[3];
-    // Use this for initialization
-    void Start()
+    private List<ColorName> _colorModifiers;
+
+    [SerializeField] private Color _baseColor = Color.white;
+
+    private void Start()
     {
-        colorModifiers[0] = ColorName.White;
-        colorModifiers[1] = ColorName.White;
-        colorModifiers[2] = ColorName.White;
+        _colorModifiers = new List<ColorName>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-	public void changePlayerColor()
+    private void ChangePlayerColor()
 	{
-		if (colorModifiers[1] != ColorName.Null)
-		{
-			applyColor(1);
-			if (colorModifiers[2] != ColorName.Null)
-				applyColor(2);
-		}
-		else if (colorModifiers[2] != ColorName.Null)
-			applyColor(2);
-
+        ApplyColor(CombineColors());
 	}
 
-	public void applyColor(int layer)
+    private void ApplyColor(Color inColor)
 	{
-		this.transform.GetComponent<Renderer>().material.color = GetColorValue(colorModifiers[layer]);
+	    gameObject.GetComponent<Renderer>().material.color = inColor;
 	}
-    public Color combineColors()
+
+    private Color CombineColors()
     {
-        int nonNullColors = 0;
-        for (int i = 0; i < colorModifiers.Length; i++)
-        {
-            if (colorModifiers[i] != ColorName.Null)
-                nonNullColors++;
-        }
-
-        Color glassColor = GetColorValue(colorModifiers[0]);
-        Color puddleColor = GetColorValue(colorModifiers[1]);
-        Color spotlightColor = GetColorValue(colorModifiers[2]);
-
         Color combinedColor = new Color();
 
-        combinedColor.r = ((glassColor.r * glassColor.a) + (puddleColor.r * puddleColor.a) + (spotlightColor.r * spotlightColor.a));
-        combinedColor.g = ((glassColor.g * glassColor.a) + (puddleColor.g * puddleColor.a) + (spotlightColor.g * spotlightColor.a));
-        combinedColor.b = ((glassColor.b * glassColor.a) + (puddleColor.b * puddleColor.a) + (spotlightColor.b * spotlightColor.a));
+        // add all colors in the array
+        foreach (var color in _colorModifiers)
+        {
+            Color value = GetColorValue(color);
 
-        return combinedColor;
+            combinedColor.r += value.r * value.a;
+            combinedColor.g += value.g * value.a;
+            combinedColor.b += value.b * value.a;
+        }
+
+        // finally, add the consistent base color
+        return combinedColor + _baseColor;
     }
 
     private Color GetColorValue(ColorName c)
     {
-        Color colorValue = new Color(0, 0, 0, 0);
-        Debug.Log("Glass: " + colorModifiers[0]);
-        Debug.Log("Puddle: " + colorModifiers[1]);
-        Debug.Log("Light: " + colorModifiers[2]);
+        Color colorValue;
+        
         switch (c)
         {
             case ColorName.Red:
@@ -107,44 +82,18 @@ public class ColorArray : MonoBehaviour
         return colorValue;
     }
 
-    public void addColorToLayer(string layerName, ColorName layerColor)
+    public int AddColor(ColorName inColor)
     {
-        switch (layerName)
-        {
-            case "Glass":
-                colorModifiers[0] = layerColor;
-                break;
-            case "Puddle":
-                colorModifiers[1] = layerColor;
-				changePlayerColor();
-                break;
-            case "Spotlight":
-                colorModifiers[2] = layerColor;
-				changePlayerColor();
-                break;
-            default:
-                Debug.Log("no plz");
-                break;
-        }
+        Debug.Log("Added color: " + inColor);
+        _colorModifiers.Add(inColor);
+        ChangePlayerColor();
+        return _colorModifiers.LastIndexOf(inColor);
     }
-    public void removeColorFromLayer(string layerName)
+    
+    public void RemoveColor(int colorIndex)
     {
-        switch (layerName)
-        {
-            case "Glass":
-                colorModifiers[0] = ColorName.Null;
-                break;
-            case "Puddle":
-                colorModifiers[1] = ColorName.Null;
-				changePlayerColor();
-                break;
-            case "Spotlight":
-                colorModifiers[2] = ColorName.Null;
-				changePlayerColor();
-                break;
-            default:
-                Debug.Log("no");
-                break;
-        }
+        Debug.Log("Removed color: " + GetColorValue(_colorModifiers[colorIndex]));
+        _colorModifiers.RemoveAt(colorIndex);
+        ChangePlayerColor();
     }
 }

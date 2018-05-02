@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
-public class ColoredLight : MonoBehaviour
+public class Puddle : MonoBehaviour
 {
-    private int _colorArrayIndex;
 
+    private int _colorArrayIndex;
+    
     private void OnTriggerEnter(Collider other)
     {
-        //So this should work fine, but I can't figure out how to get the enum to be a global value so that I can reference it.
         if (other.CompareTag("Player"))
         {
             ColorName colorName = (ColorName)Enum.Parse(typeof(ColorName), transform.tag);
@@ -20,7 +21,14 @@ public class ColoredLight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<ColorArray>().RemoveColor(_colorArrayIndex);
+            StartCoroutine(DelayColorRemove(other));
         }
+    }
+
+    IEnumerator DelayColorRemove(Collider other)
+    {
+        yield return new WaitForSecondsRealtime(2);
+        Debug.Log("MUAKE IT RAOUNN BEIEBBBYYY");
+        other.gameObject.GetComponent<ColorArray>().RemoveColor(_colorArrayIndex);
     }
 }
