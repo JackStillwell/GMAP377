@@ -1,85 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
-	
+    private GameObject _player;
+    
+    [SerializeField] private float _catchDistance = 0.5f;
+    [SerializeField] private Color _playerColor;
+    
+    private Color _enemyColor;
+    private bool _playerVisible;
+    private NavMeshAgent _navAgent;
 
-	private GameObject Player;
-	[SerializeField]
-	private GameObject Camera;
-	private Color PlayerColor;
-	private Color EnemyColor;
-	private bool PlayerInSight;
-	private NavMeshAgent navAgent;
+    private Spawn _spawnManager;
 
-	[SerializeField]
-	private float catchDistance;
-	private Spawn _spawnManager;
+    // Use this for initialization
+    void Start () 
+    {
+        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _player = GameObject.FindGameObjectWithTag("Player");
 
-	// Use this for initialization
-	void Start () 
-	{
-		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		Player = GameObject.FindGameObjectWithTag("Player");
-		//ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
-		EnemySight enemySight = GetComponent<EnemySight> ();
-		navAgent = GetComponent<NavMeshAgent> ();
-		_spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
-		PlayerColor = enemySight.playerView;
-		//StartCoroutine ("waitThreeSeconds");
-	}
+        EnemySight enemySight = GetComponent<EnemySight> ();
+        _navAgent = GetComponent<NavMeshAgent> ();
+        
+        _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
+        
+        _playerColor = enemySight.GetPercievedColor();
+    }
 
-	// Update is called once per frame
-	void Update ()
-	{
-		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		PlayerColor = GetComponent<EnemySight>().playerView;
-		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
-		if (IsEqualTo (PlayerColor, EnemyColor)) 
-		{
+    // Update is called once per frame
+    void Update ()
+    {
+        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _playerColor = GetComponent<EnemySight>().GetPercievedColor();
+        _playerVisible = GetComponent<EnemySight> ().IsPlayerVisible();
 
-		} 
-		else 
-		{
-			if (PlayerInSight) 
-			{
-			navAgent.updatePosition = true;
-			navAgent.updateRotation = true;
-			navAgent.SetDestination (Player.transform.position);
-			if (!navAgent.pathPending && navAgent.remainingDistance < catchDistance) {
-					_spawnManager.TriggerRespawn(Player);			
-			}
-			}
-		}
+        if (!IsEqualTo(_playerColor, _enemyColor) && _playerVisible)
+        {
+            _navAgent.updatePosition = true;
+            _navAgent.updateRotation = true;
+            _navAgent.SetDestination(_player.transform.position);
+            
+            if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
+            {
+                _spawnManager.TriggerRespawn(_player);
+            }
+        }
+    }
 
-	}
+    private static bool IsEqualTo(Color me, Color other)
+    {
+        bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
+        if (Mathf.Abs(other.r - me.r) < .1)
+            isRedSimilar = true;
+        if (Mathf.Abs(other.b - me.b) < .1)
+            isBlueSimilar = true;
+        if (Mathf.Abs(other.g - me.g) < .1)
+            isGreenSimilar = true;
 
-	public bool IsEqualTo(Color me, Color other)
-	{
-		bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
-		if (Mathf.Abs(other.r - me.r) < .1)
-		{
-			//Debug.Log(other);
-			//Debug.Log(me);
-			//Debug.Log(Mathf.Abs(other.r - me.r));
-			isRedSimilar = true;
-		}
-		if (Mathf.Abs(other.b - me.b) < .1)
-			isBlueSimilar = true;
-		if (Mathf.Abs(other.g - me.g) < .1)
-			isGreenSimilar = true;
-
-		return isRedSimilar && isBlueSimilar && isGreenSimilar;
-	}
-
-
-
-
-
-		
-
-
-
+        return isRedSimilar && isBlueSimilar && isGreenSimilar;
+    }
 }

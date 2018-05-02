@@ -5,27 +5,25 @@ using UnityEngine.AI;
 
 public class EnemyPatrolAI : MonoBehaviour {
 
-	public Transform[] WayPoints;
-	private NavMeshAgent NavAgent;
-	private int nextPoint; 
-	private bool PlayerInSight;
+	[SerializeField] private Transform[] _wayPoints;
+	private NavMeshAgent _navAgent;
+	private int _nextPoint; 
 
 	void Start () {
-		NavAgent = gameObject.GetComponent<NavMeshAgent> ();
-		NavAgent.autoBraking = false; 
+		_navAgent = gameObject.GetComponent<NavMeshAgent> ();
+		_navAgent.autoBraking = false; 
 		NextPoint ();
-		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
 	}
 
 	void Update () {
-		if (!NavAgent.pathPending && NavAgent.remainingDistance < 0.5f)
+		if (!_navAgent.pathPending && _navAgent.remainingDistance < 0.5f)
 			NextPoint();
 
 	}
 	public void NextPoint() {
-		if (WayPoints.Length == 0)
+		if (_wayPoints.Length == 0)
 			return;
-		NavAgent.destination = WayPoints[nextPoint].position;
-		nextPoint = (nextPoint + 1) % WayPoints.Length;
+		_navAgent.destination = _wayPoints[_nextPoint].position;
+		_nextPoint = (_nextPoint + 1) % _wayPoints.Length;
 	}
 }
