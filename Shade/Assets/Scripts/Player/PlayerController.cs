@@ -49,4 +49,14 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         return Physics.Raycast(_pcRigidbody.transform.position, Vector3.down, out hit, _groundDistance);
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        _pcRigidbody.angularVelocity = Vector3.zero;
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        _pcRigidbody.angularVelocity = Vector3.zero;
+    }
 }
