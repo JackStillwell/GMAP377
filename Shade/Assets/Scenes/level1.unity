@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465934, g: 0.49642956, b: 0.5748249, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -436,6 +436,11 @@ Prefab:
       propertyPath: WayPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114830506144402978, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _wayPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4258226180201436, guid: 024bca09e78f027438c6207b77bd9457, type: 2}
       propertyPath: m_LocalPosition.x
       value: 34.3
@@ -513,6 +518,21 @@ Prefab:
     - target: {fileID: 1926617358399554, guid: 024bca09e78f027438c6207b77bd9457, type: 2}
       propertyPath: m_Name
       value: Enemy_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114830506144402978, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 501039707}
+    - target: {fileID: 114830506144402978, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _wayPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1820552412}
+    - target: {fileID: 114527907478971248, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _catchDistance
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024bca09e78f027438c6207b77bd9457, type: 2}
@@ -643,6 +663,11 @@ Prefab:
       propertyPath: WayPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114830506144402978, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _wayPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4258226180201436, guid: 024bca09e78f027438c6207b77bd9457, type: 2}
       propertyPath: m_LocalPosition.x
       value: 84.9
@@ -720,6 +745,21 @@ Prefab:
         type: 2}
       propertyPath: m_Speed
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114830506144402978, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1078522105}
+    - target: {fileID: 114830506144402978, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _wayPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1834394105}
+    - target: {fileID: 114527907478971248, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: _catchDistance
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024bca09e78f027438c6207b77bd9457, type: 2}

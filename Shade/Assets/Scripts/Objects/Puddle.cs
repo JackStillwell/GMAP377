@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Puddle : MonoBehaviour
 {
-
     private int _colorArrayIndex;
     
     private void OnTriggerEnter(Collider other)

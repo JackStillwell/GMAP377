@@ -21,6 +21,7 @@ public class ColorArray : MonoBehaviour
 
     private void ApplyColor(Color inColor)
 	{
+	    Debug.Log(inColor);
 	    gameObject.GetComponent<Renderer>().material.color = inColor;
 	}
 
@@ -29,17 +30,21 @@ public class ColorArray : MonoBehaviour
         Color combinedColor = new Color();
 
         // add all colors in the array
-        foreach (var color in _colorModifiers)
+        if (_colorModifiers.Count > 1)
         {
-            Color value = GetColorValue(color);
+            foreach (var color in _colorModifiers)
+            {
+                Color value = GetColorValue(color);
 
-            combinedColor.r += value.r * value.a;
-            combinedColor.g += value.g * value.a;
-            combinedColor.b += value.b * value.a;
+                combinedColor.r = (combinedColor.r + value.r) / 2;
+                combinedColor.g = (combinedColor.g + value.g) / 2;
+                combinedColor.b = (combinedColor.b + value.b) / 2;
+            }
+
+            return combinedColor;
         }
 
-        // finally, add the consistent base color
-        return combinedColor + _baseColor;
+        return _colorModifiers.Count == 1 ? GetColorValue(_colorModifiers[0]) : _baseColor;
     }
 
     private Color GetColorValue(ColorName c)

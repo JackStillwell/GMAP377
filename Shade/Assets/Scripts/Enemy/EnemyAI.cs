@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour {
         _playerColor = GetComponent<EnemySight>().GetPercievedColor();
         _playerVisible = GetComponent<EnemySight> ().IsPlayerVisible();
 
-        if (!IsEqualTo(_playerColor, _enemyColor) && _playerVisible)
+        if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
@@ -56,7 +56,7 @@ public class EnemyAI : MonoBehaviour {
             isBlueSimilar = true;
         if (Mathf.Abs(other.g - me.g) < .1)
             isGreenSimilar = true;
-
+        
         return isRedSimilar && isBlueSimilar && isGreenSimilar;
     }
 }
