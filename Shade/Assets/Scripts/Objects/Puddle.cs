@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Puddle : MonoBehaviour
 {
+    
     private ColorName _colorName;
+    [SerializeField] private int effectDuration;
 
     private void Start()
     {
@@ -29,7 +31,7 @@ public class Puddle : MonoBehaviour
 
     IEnumerator DelayColorRemove(Collider other)
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(effectDuration);
         Debug.Log("MUAKE IT RAOUNN BEIEBBBYYY");
         other.gameObject.GetComponent<ColorArray>().RemoveColor(_colorName);
     }
