@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
-	    private GameObject _player;
+	  private GameObject _player;
     
     [SerializeField] private float _catchDistance = 0.5f;
     [SerializeField] private Color _playerColor;
