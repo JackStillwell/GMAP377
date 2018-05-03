@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 114527907478971248}
   - component: {fileID: 114830506144402978}
   m_Layer: 0
-  m_Name: New_Enemy
+  m_Name: Enemy_OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,9 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9de51312815d40bb80306e2d7b8f864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfViewAngle: 120
-  PlayerInSight: 0
-  playerView: {r: 0, g: 0, b: 0, a: 0}
+  _fieldOfViewAngle: 120
+  _seeThroughThreshold: 0.9
 --- !u!114 &114527907478971248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
-  catchDistance: 5
+  _catchDistance: 0.5
+  _playerColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114830506144402978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ae935b941e46a68acb504e8e5c72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WayPoints: []
+  _wayPoints: []
 --- !u!135 &135061514087975222
 SphereCollider:
   m_ObjectHideFlags: 1
