@@ -894,7 +894,7 @@ Prefab:
     - target: {fileID: 195940595007254024, guid: 024bca09e78f027438c6207b77bd9457,
         type: 2}
       propertyPath: m_Speed
-      value: 200
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114830506144402978, guid: 024bca09e78f027438c6207b77bd9457,
         type: 2}
@@ -915,6 +915,16 @@ Prefab:
         type: 2}
       propertyPath: _fieldOfViewAngle
       value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 195940595007254024, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: m_AngularSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 195940595007254024, guid: 024bca09e78f027438c6207b77bd9457,
+        type: 2}
+      propertyPath: m_Acceleration
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 024bca09e78f027438c6207b77bd9457, type: 2}
