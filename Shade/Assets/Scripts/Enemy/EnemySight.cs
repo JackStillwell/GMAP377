@@ -42,7 +42,7 @@ public class EnemySight : MonoBehaviour
 	    float angle = Vector3.Angle(direction, transform.forward);
 	    
 	    // check if the object is in sight
-	    if (angle < _fieldOfViewAngle * 0.5f) 
+	    if (angle < _fieldOfViewAngle * 0.5f && ChangesColor(other.tag)) 
 		    _allObjectsInSight.Add(other.gameObject);
 
 	    if(_allObjectsInSight.Contains(_player))
@@ -57,7 +57,7 @@ public class EnemySight : MonoBehaviour
 	    // get the angle between forward and the object
 	    float angle = Vector3.Angle(direction, transform.forward);
 
-		if (angle < _fieldOfViewAngle * 0.5f && !_allObjectsInSight.Contains(other.gameObject))
+		if (angle < _fieldOfViewAngle * 0.5f && !_allObjectsInSight.Contains(other.gameObject) && ChangesColor(other.tag))
 			_allObjectsInSight.Add(other.gameObject);
 		
 	    // remove objects in collider but not in sight
@@ -179,5 +179,18 @@ public class EnemySight : MonoBehaviour
 
 		}
 		return pathLength;
+	}
+
+	bool ChangesColor(string tag)
+	{
+		return tag.Equals("Red") ||
+		       tag.Equals("Orange") ||
+		       tag.Equals("Yellow") ||
+		       tag.Equals("Green") ||
+		       tag.Equals("Cyan") ||
+		       tag.Equals("Violet") ||
+		       tag.Equals("Pink") ||
+		       tag.Equals("White") ||
+		       tag.Equals("Player");
 	}
 }
