@@ -4,95 +4,62 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
-	[SerializeField]
-	private GameObject Player;
-	[SerializeField]
-	private GameObject Camera;
-	private Color PlayerColor;
-	private Color EnemyColor;
-	private bool PlayerInSight;
+	    private GameObject _player;
+    
+    [SerializeField] private float _catchDistance = 0.5f;
+    [SerializeField] private Color _playerColor;
+    
+    private Color _enemyColor;
+    private bool _playerVisible;
+    private NavMeshAgent _navAgent;
 
+    private Spawn _spawnManager;
 
+    // Use this for initialization
+    void Start () 
+    {
+        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _player = GameObject.FindGameObjectWithTag("Player");
 
-	// Use this for initialization
-	void Start () 
-	{
-		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        EnemySight enemySight = GetComponent<EnemySight> ();
+        _navAgent = GetComponent<NavMeshAgent> ();
+        
+        _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
+        
+        _playerColor = enemySight.GetPercievedColor();
+    }
 
-		ColorRaycaster colorRaycaster = GetComponent<ColorRaycaster>();
-		EnemySight enemySight = GetComponent<EnemySight> ();
+    // Update is called once per frame
+    void Update ()
+    {
+        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _playerColor = GetComponent<EnemySight>().GetPercievedColor();
+        _playerVisible = GetComponent<EnemySight> ().IsPlayerVisible();
 
-		PlayerColor = colorRaycaster.playerView;
-		//StartCoroutine ("waitThreeSeconds");
-	}
+        if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
+        {
+            Debug.Log("REEEEEEEEET");
+            _navAgent.updatePosition = true;
+            _navAgent.updateRotation = true;
+            _navAgent.SetDestination(_player.transform.position);
+            
+            if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
+            {
+                _spawnManager.TriggerRespawn(_player);
+            }
+        }
+    }
 
-	// Update is called once per frame
-	void Update ()
-	{
-		EnemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-		PlayerColor = GetComponent<ColorRaycaster>().playerView;
-		PlayerInSight = GetComponent<EnemySight> ().PlayerInSight;
-
-		if (IsEqualTo (PlayerColor, EnemyColor)) 
-		{
-			
-
-			
-
-		} else {
-			if (PlayerInSight) {
-				
-				GetComponent<NavMeshAgent> ().SetDestination (Player.transform.position);
-
-				Debug.Log ("Chasing");
-			}
-		}
-
-	}
-
-	public  bool IsEqualTo(Color me, Color other)
-	{
-		bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
-		if (Mathf.Abs(other.r - me.r) < .1)
-			isRedSimilar = true;
-		if (Mathf.Abs(other.b - me.b) < .1)
-			isBlueSimilar = true;
-		if (Mathf.Abs(other.g - me.g) < .1)
-			isGreenSimilar = true;
-
-		return isRedSimilar && isBlueSimilar && isGreenSimilar;
-	}
-//	// change Player's color
-//	IEnumerator waitThreeSeconds(){
-//		Player.GetComponent<Renderer> ().material.color = Color.yellow;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//			yield return new WaitForSeconds (3);
-//		Player.GetComponent<Renderer> ().material.color = Color.blue;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//			yield return new WaitForSeconds (3);
-//		Player.GetComponent<Renderer> ().material.color = Color.green;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//			yield return new WaitForSeconds (3);
-//		Player.GetComponent<Renderer> ().material.color = EnemyColor;
-//		PlayerColor = Player.GetComponent<Renderer>().material.GetColor("_Color");
-//		Debug.Log (PlayerColor);
-//
-//	
-//
-//
-//
-//	}
-//
-
-
-
-
-
-		
-
-
-
+    private static bool IsEqualTo(Color me, Color other)
+    {
+        bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
+        if (Mathf.Abs(other.r - me.r) < .1)
+            isRedSimilar = true;
+        if (Mathf.Abs(other.b - me.b) < .1)
+            isBlueSimilar = true;
+        if (Mathf.Abs(other.g - me.g) < .1)
+            isGreenSimilar = true;
+        
+        return isRedSimilar && isBlueSimilar && isGreenSimilar;
+    }
 }
