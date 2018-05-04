@@ -23,6 +23,10 @@ public class Puddle : MonoBehaviour
             other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
             playerArray = other.gameObject.GetComponentInChildren<ColorArray>();
         }
+        else if (other.CompareTag("Untagged"))
+        {
+            Debug.LogError("Tag the puddle, dumbass!");
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -36,7 +40,7 @@ public class Puddle : MonoBehaviour
     IEnumerator DelayColorRemove(Collider other)
     {
         yield return new WaitForSecondsRealtime(effectDuration);
-        Debug.Log("MUAKE IT RAOUNN BEIEBBBYYY");
+        
         playerArray.RemoveColor(_colorName);
         playerArray = null;
 
