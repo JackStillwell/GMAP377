@@ -56,7 +56,7 @@ public class EnemySight : MonoBehaviour
 	    
 	    // get the angle between forward and the object
 	    float angle = Vector3.Angle(direction, transform.forward);
-
+		
 		if (angle < _fieldOfViewAngle * 0.5f && !_allObjectsInSight.Contains(other.gameObject) && ChangesColor(other.tag))
 			_allObjectsInSight.Add(other.gameObject);
 		
@@ -114,29 +114,37 @@ public class EnemySight : MonoBehaviour
             //now see if player is behind or in front of object
             _hitArray = Physics.RaycastAll(gameObject.transform.position, _player.transform.position - gameObject.transform.position);
 
-            foreach (var hitInfo in _hitArray)
-            {
-                if (hitInfo.transform.gameObject != _player)
-                {
-                    // GameObject hitobj = hitInfo.transform.gameObject;
-                    Color objColor = hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material.color;
+	        if (_hitArray.Length > 1)
+	        {
+		        foreach (var hitInfo in _hitArray)
+		        {
+			        if (hitInfo.transform.gameObject != _player)
+			        {
+				        // GameObject hitobj = hitInfo.transform.gameObject;
+				        Color objColor = hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material.color;
 
-                    Color newColor = Color.white;
+				        Color newColor = Color.white;
 
-                    newColor.a = _percievedPlayerColor.a;
+				        newColor.a = _percievedPlayerColor.a;
 
-                    newColor.r = ((_percievedPlayerColor.r + (objColor.r * objColor.a)) / 2);
-                    newColor.g = ((_percievedPlayerColor.g + (objColor.g * objColor.a)) / 2);
-                    newColor.b = ((_percievedPlayerColor.b + (objColor.b * objColor.a)) / 2);
+				        newColor.r = ((_percievedPlayerColor.r + (objColor.r * objColor.a)) / 2);
+				        newColor.g = ((_percievedPlayerColor.g + (objColor.g * objColor.a)) / 2);
+				        newColor.b = ((_percievedPlayerColor.b + (objColor.b * objColor.a)) / 2);
 
-                    _percievedPlayerColor = newColor;
-                }
+				        _percievedPlayerColor = newColor;
+			        }
 
-                else
-                {
-                    break;
-                }
-            }
+			        else
+			        {
+				        break;
+			        }
+		        }
+	        }
+
+	        else
+	        {
+		        _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+	        }
         }
 
         else
