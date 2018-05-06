@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4141937873398068}
   - component: {fileID: 33639415325802896}
   - component: {fileID: 23404459921839378}
+  - component: {fileID: 114622332595532546}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -39,7 +40,6 @@ GameObject:
   - component: {fileID: 136254522914644904}
   - component: {fileID: 54929424458314612}
   - component: {fileID: 114954846496749286}
-  - component: {fileID: 114589772570259866}
   m_Layer: 0
   m_Name: Player_OLD
   m_TagString: Player
@@ -178,7 +178,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857352800901036}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -1.59, z: -0.0088691}
   m_LocalScale: {x: 0.4544735, y: 0.45447344, z: 0.45447344}
   m_Children:
@@ -186,7 +186,7 @@ Transform:
   - {fileID: 4141937873398068}
   m_Father: {fileID: 4916211281684618}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4281298579758384
 Transform:
   m_ObjectHideFlags: 1
@@ -220,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213332047107518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4519544526054348}
@@ -278,7 +278,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ec448d140ab115b4db99bd3e52bf806b, type: 3}
+  - {fileID: 2100000, guid: ed813f2a881f145de8d3aec36e47da8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -439,12 +439,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowObj: {fileID: 1213332047107518}
   _camDistance: 3
---- !u!114 &114589772570259866
+--- !u!114 &114622332595532546
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1213332047107518}
+  m_GameObject: {fileID: 1129261473158036}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c1110e9375b94a92bc698da98df1a7a, type: 3}

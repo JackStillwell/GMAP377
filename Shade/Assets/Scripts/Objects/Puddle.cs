@@ -8,16 +8,24 @@ public class Puddle : MonoBehaviour
     private ColorName _colorName;
     [SerializeField] private int effectDuration;
 
+    private ColorArray playerArray;
+
     private void Start()
     {
         _colorName = (ColorName)Enum.Parse(typeof(ColorName), transform.tag);
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<ColorArray>().AddColor(_colorName);
+            other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
+            playerArray = other.gameObject.GetComponentInChildren<ColorArray>();
+        }
+        else if (other.CompareTag("Untagged"))
+        {
+            Debug.LogError("Tag the puddle, dumbass!");
         }
     }
 
@@ -32,7 +40,9 @@ public class Puddle : MonoBehaviour
     IEnumerator DelayColorRemove(Collider other)
     {
         yield return new WaitForSecondsRealtime(effectDuration);
-        Debug.Log("MUAKE IT RAOUNN BEIEBBBYYY");
-        other.gameObject.GetComponent<ColorArray>().RemoveColor(_colorName);
+        
+        playerArray.RemoveColor(_colorName);
+        playerArray = null;
+
     }
 }

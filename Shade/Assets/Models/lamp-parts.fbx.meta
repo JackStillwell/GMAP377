@@ -1,18 +1,31 @@
 fileFormatVersion: 2
-guid: eee8c650c12b44c459726d24a5b1b93f
-timeCreated: 1525207760
+guid: 104d90c68ae29794384aa52e482272df
+timeCreated: 1525557551
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: box
-    100002: //RootNode
-    400000: box
-    400002: //RootNode
-    2100000: boxMat
-    2300000: box
-    3300000: box
-    4300000: box
+    100000: bulb
+    100002: hanger
+    100004: lamp
+    100006: //RootNode
+    100008: shell
+    400000: bulb
+    400002: hanger
+    400004: lamp
+    400006: //RootNode
+    400008: shell
+    2100000: phong1
+    2300000: bulb
+    2300002: hanger
+    2300004: shell
+    3300000: bulb
+    3300002: hanger
+    3300004: shell
+    4300000: hanger
+    4300002: bulb
+    4300004: shell
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -43,7 +56,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -87,7 +100,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
