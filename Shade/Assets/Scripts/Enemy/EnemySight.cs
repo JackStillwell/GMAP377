@@ -13,7 +13,7 @@ public class EnemySight : MonoBehaviour
 	private bool _playerVisible;
 
 	private GameObject _player;
-	private SphereCollider _col;
+	private Collider _col;
 	private Color _percievedPlayerColor;
 	private NavMeshAgent _nav;
 	private EnemyPatrolAI _patrolAi;
@@ -25,10 +25,10 @@ public class EnemySight : MonoBehaviour
 	{
 		_patrolAi = GetComponent<EnemyPatrolAI> ();
 		_nav = GetComponent<NavMeshAgent> ();
-		_col = GetComponent<SphereCollider> ();
+		_col = GetComponent<Collider> ();
 		_player = GameObject.FindGameObjectWithTag("Player");
 
-		_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+		_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 		_allObjectsInSight = new List<GameObject>();
 		_playerVisible = false;
 	}
@@ -54,9 +54,11 @@ public class EnemySight : MonoBehaviour
 		}
 		Debug.Log (_allObjectsInSight.Count);*/
 
+	    Debug.Log("I see you...");
+	    
 	    if (other.tag == "Player")
 	    {
-			_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 		    _playerVisible = true;
 	    }
     }
@@ -65,7 +67,7 @@ public class EnemySight : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 		}
 		/*
 		Debug.Log (_playerVisible);
@@ -107,7 +109,7 @@ public class EnemySight : MonoBehaviour
 	    }
 	}
 
-	private void VisibleCheck()
+	/* private void VisibleCheck()
 	{
 		
 		var direction = _player.transform.position - transform.position;
@@ -136,7 +138,7 @@ public class EnemySight : MonoBehaviour
 				break;
 			}	
 		}
-	}
+	} */
 
 	private void ColorPercievedUpdate()
     {
