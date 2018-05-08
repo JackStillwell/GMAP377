@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 54284741963265550}
   - component: {fileID: 114831889981258468}
   m_Layer: 0
-  m_Name: Player_OLD 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObj: {fileID: 1492681970819790}
-  _camDistance: 3
+  _camDistance: 10
 --- !u!114 &114831889981258468
 MonoBehaviour:
   m_ObjectHideFlags: 1

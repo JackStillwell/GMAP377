@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 64102258798283566}
   - component: {fileID: 208739162786029676}
   m_Layer: 0
-  m_Name: Glass_Default (1)
+  m_Name: Glass_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

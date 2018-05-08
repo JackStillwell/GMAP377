@@ -74,8 +74,6 @@ public class EnemyAI : MonoBehaviour
                     return mat.color;
             }
         }
-        
-        Debug.Log("GET ENEMY COLOR FAILURE");
         return Color.white;
     }
 }
