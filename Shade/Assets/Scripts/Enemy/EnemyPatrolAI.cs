@@ -7,7 +7,7 @@ public class EnemyPatrolAI : MonoBehaviour {
 
 	[SerializeField] private Transform[] _wayPoints;
 	private NavMeshAgent _navAgent;
-	private int _nextPoint; 
+	private int _nextPoint = 0; 
 
 	void Start () {
 		_navAgent = gameObject.GetComponent<NavMeshAgent> ();
@@ -16,8 +16,10 @@ public class EnemyPatrolAI : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!_navAgent.pathPending && _navAgent.remainingDistance < 0.5f)
-			NextPoint();
+		if (!_navAgent.pathPending && _navAgent.remainingDistance < 0.5f) {
+			
+			NextPoint ();
+		}
 
 	}
 	public void NextPoint() {
