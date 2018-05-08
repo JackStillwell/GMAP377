@@ -12,6 +12,7 @@ public class ColorArray : MonoBehaviour
     private void Start()
     {
         _colorModifiers = new List<ColorName>();
+        ApplyColor(_baseColor);
     }
 
     private void ChangePlayerColor()
