@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Win : MonoBehaviour {
+public class Win : MonoBehaviour 
+{
 
 	public int winScreen;
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
 	}
 
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(winScreen);
+		if (other.CompareTag("Player"))
+			UnityEngine.SceneManagement.SceneManager.LoadScene(winScreen);
 	}
 	 
 }
