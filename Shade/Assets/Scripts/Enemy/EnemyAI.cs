@@ -14,9 +14,9 @@ public class EnemyAI : MonoBehaviour {
     private Spawn _spawnManager;
 
     // Use this for initialization
-    void Start () 
+    void Start ()
     {
-        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _enemyColor = GetComponent<Renderer>().material.color;
         _player = GameObject.FindGameObjectWithTag("Player");
 
         EnemySight enemySight = GetComponent<EnemySight> ();
@@ -30,13 +30,15 @@ public class EnemyAI : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _enemyColor = GetComponent<Renderer>().material.color;
         _playerColor = GetComponent<EnemySight>().GetPercievedColor();
         _playerVisible = GetComponent<EnemySight> ().IsPlayerVisible();
 
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
-      
+            Debug.Log("Player: " + _playerColor);
+            Debug.Log("Enemy: " + _enemyColor);
+            
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);

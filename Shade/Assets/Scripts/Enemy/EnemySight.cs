@@ -28,7 +28,7 @@ public class EnemySight : MonoBehaviour
 		_col = GetComponent<Collider> ();
 		_player = GameObject.FindGameObjectWithTag("Player");
 
-		_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
+		_percievedPlayerColor = GetPlayerColor(_player);
 		_allObjectsInSight = new List<GameObject>();
 		_playerVisible = false;
 	}
@@ -54,11 +54,9 @@ public class EnemySight : MonoBehaviour
 		}
 		Debug.Log (_allObjectsInSight.Count);*/
 
-	    Debug.Log("I see you...");
-	    
 	    if (other.tag == "Player")
 	    {
-			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
+		    _percievedPlayerColor = GetPlayerColor(_player);
 		    _playerVisible = true;
 	    }
     }
@@ -67,7 +65,7 @@ public class EnemySight : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
+			_percievedPlayerColor = GetPlayerColor(_player);
 		}
 		/*
 		Debug.Log (_playerVisible);
@@ -91,7 +89,6 @@ public class EnemySight : MonoBehaviour
 			Debug.Log("visible check 2");
 			VisibleCheck();
 		} */
-		   
 	}
 
 	void OnTriggerExit(Collider other)
@@ -238,5 +235,22 @@ public class EnemySight : MonoBehaviour
 		       tag.Equals("Pink") ||
 		       tag.Equals("White") ||
 		       tag.Equals("Player");
+	}
+
+	private Color GetPlayerColor(GameObject player)
+	{
+		foreach (var renderer in player.GetComponentsInChildren<Renderer>())
+		{
+			foreach (var mat in renderer.materials)
+			{
+				if (mat.name == "Player (Instance)")
+				{
+					return mat.color;
+				}
+			}
+		}
+
+		Debug.Log("GET COLOR FAILURE");
+		return Color.white;
 	}
 }
