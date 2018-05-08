@@ -11,7 +11,7 @@ public class EnemySight : MonoBehaviour
     private MeshCollider _col;
 
     private Color _percievedPlayerColor;
-    private NavMeshAgent _nav;
+    private NavMeshAgent _nav; // may be used in future
     private EnemyPatrolAI _patrolAi;
 
     private RaycastHit[] _hitArray;
@@ -19,7 +19,7 @@ public class EnemySight : MonoBehaviour
     void Start()
     {
         _patrolAi = GetComponent<EnemyPatrolAI> ();
-        _nav = GetComponent<NavMeshAgent> ();
+        _nav = GetComponent<NavMeshAgent> (); // may be used in future
         _col = GetComponent<MeshCollider> ();
         _player = GameObject.FindGameObjectWithTag("Player");
 
@@ -121,7 +121,7 @@ public class EnemySight : MonoBehaviour
     }
 	
     // Not currently used
-    float CalculatePathLength(Vector3 targetPosition)
+    float CalculatePathLength(Vector3 targetPosition) // may be used in future
     {
         NavMeshPath path = new NavMeshPath ();
         if (_nav.enabled)
