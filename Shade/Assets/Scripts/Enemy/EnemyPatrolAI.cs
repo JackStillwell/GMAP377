@@ -24,7 +24,6 @@ public class EnemyPatrolAI : MonoBehaviour
 		{
 			NextPoint();
 		}
-
 	}
 	public void NextPoint() 
 	{

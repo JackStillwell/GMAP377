@@ -4,60 +4,36 @@ using UnityEngine.AI;
 
 public class EnemySight : MonoBehaviour
 {
-	// How wide of an angle the object can see
-	[SerializeField] private float _fieldOfViewAngle = 120f;
-
-	[SerializeField] private float _seeThroughThreshold = .9f;
-
 	// Is true only if Player is in FoV and wrong color
 	private bool _playerVisible;
 
 	private GameObject _player;
-	private Collider _col;
+	private MeshCollider _col;
+
 	private Color _percievedPlayerColor;
 	private NavMeshAgent _nav;
 	private EnemyPatrolAI _patrolAi;
 
-	private List<GameObject> _allObjectsInSight;
 	private RaycastHit[] _hitArray;
 
 	void Start()
 	{
 		_patrolAi = GetComponent<EnemyPatrolAI> ();
 		_nav = GetComponent<NavMeshAgent> ();
-		_col = GetComponent<Collider> ();
+		_col = GetComponent<MeshCollider> ();
 		_player = GameObject.FindGameObjectWithTag("Player");
 
 		_percievedPlayerColor = GetPlayerColor(_player);
-		_allObjectsInSight = new List<GameObject>();
+		_player = GameObject.FindGameObjectWithTag("Player");
 		_playerVisible = false;
 	}
 	
 	private void OnTriggerEnter(Collider other)
     {
-	    /*//get the direction of the object
-	    Vector3 direction = other.transform.position - transform.position;
-	    
-	    // get the angle between forward and the object
-	    float angle = Vector3.Angle(direction, transform.forward);
-	    
-	    // check if the object is in sight
-		if (angle < _fieldOfViewAngle * 0.5f && ChangesColor (other.tag) && !_allObjectsInSight.Contains (other.gameObject)) {
-			Debug.Log (other.gameObject);
-			_allObjectsInSight.Add (other.gameObject);
-		}
-
-		if (_allObjectsInSight.Contains (_player)) {
-			Debug.Log("visible check 1");
-			VisibleCheck ();
-			Debug.Log (_playerVisible);
-		}
-		Debug.Log (_allObjectsInSight.Count);*/
-
-	    if (other.CompareTag("Player") == true)
+	    if (other.CompareTag("Player"))
 	    {
 		    _percievedPlayerColor = GetPlayerColor(_player);
-		    _playerVisible = true;
+		    VisibleCheck();
 	    }
     }
 
@@ -106,36 +82,21 @@ public class EnemySight : MonoBehaviour
 	    }
 	}
 
-	/* private void VisibleCheck()
+	private void VisibleCheck()
 	{
-		
 		var direction = _player.transform.position - transform.position;
-		_hitArray = Physics.RaycastAll(transform.position, direction.normalized, _col.radius);
+		_hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
 
 		foreach (var hit in _hitArray)
-		{	Debug.Log ("ff");
-			Debug.Log (hit.collider.gameObject);
+		{	
 			if (hit.collider.gameObject == _player)
 			{
-				Debug.Log ("ff");
 				ColorPercievedUpdate();
 				_playerVisible = true;
 				break;
 			}
-
-			try
-			{
-				Renderer objectRenderer = hit.collider.gameObject.GetComponentInChildren<Renderer>();
-				//if (objectRenderer.material.color.a > _seeThroughThreshold)
-					//break;
-			}
-
-			catch (MissingComponentException x)
-			{
-				break;
-			}	
 		}
-	} */
+	}
 
 	private void ColorPercievedUpdate()
     {
