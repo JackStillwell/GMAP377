@@ -22,7 +22,7 @@ public class ColorArray : MonoBehaviour
     private void ApplyColor(Color inColor)
 	{
 	    Debug.Log(inColor);
-	    gameObject.GetComponent<Renderer>().material.color = inColor;
+	    gameObject.GetComponentInChildren<Renderer>().material.color = inColor;
 	}
 
     private Color CombineColors()

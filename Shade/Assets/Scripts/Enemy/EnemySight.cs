@@ -186,7 +186,7 @@ public class EnemySight : MonoBehaviour
 
         else
 		{
-            _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+            _percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 			Debug.Log (_percievedPlayerColor);
         }
     }
