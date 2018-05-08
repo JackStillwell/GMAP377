@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour {
         EnemySight enemySight = GetComponent<EnemySight> ();
         _navAgent = GetComponent<NavMeshAgent> ();
         
-      //  _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
+        _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
         
         _playerColor = enemySight.GetPercievedColor();
     }
@@ -39,11 +39,11 @@ public class EnemyAI : MonoBehaviour {
       
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
-            //_navAgent.SetDestination(_player.transform.position);
+            _navAgent.SetDestination(_player.transform.position);
             
             if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
             {
-               // _spawnManager.TriggerRespawn(_player);
+                _spawnManager.TriggerRespawn(_player);
             }
         }
     }
