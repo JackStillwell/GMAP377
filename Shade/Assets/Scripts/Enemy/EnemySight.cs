@@ -35,6 +35,7 @@ public class EnemySight : MonoBehaviour
 	
 	private void OnTriggerEnter(Collider other)
     {
+		
 	    //get the direction of the object
 	    Vector3 direction = other.transform.position - transform.position;
 	    
@@ -42,31 +43,43 @@ public class EnemySight : MonoBehaviour
 	    float angle = Vector3.Angle(direction, transform.forward);
 	    
 	    // check if the object is in sight
-	    if (angle < _fieldOfViewAngle * 0.5f && ChangesColor(other.tag)) 
-		    _allObjectsInSight.Add(other.gameObject);
+		if (angle < _fieldOfViewAngle * 0.5f && ChangesColor (other.tag) && !_allObjectsInSight.Contains (other.gameObject)) {
+			Debug.Log (other.gameObject);
+			_allObjectsInSight.Add (other.gameObject);
+		}
 
-	    if(_allObjectsInSight.Contains(_player))
-		    VisibleCheck();
+		if (_allObjectsInSight.Contains (_player)) {
+			Debug.Log("visible check 1");
+			VisibleCheck ();
+			Debug.Log (_playerVisible);
+		}
+		Debug.Log (_allObjectsInSight.Count);
     }
 
 	private void OnTriggerStay(Collider other)
 	{
+		Debug.Log (_playerVisible);
+		//Debug.Log (other.gameObject);
 		//get the direction of the object
 	    Vector3 direction = other.transform.position - transform.position;
 	    
 	    // get the angle between forward and the object
 	    float angle = Vector3.Angle(direction, transform.forward);
-		
+		// note: Playervua
 		if (angle < _fieldOfViewAngle * 0.5f && !_allObjectsInSight.Contains(other.gameObject) && ChangesColor(other.tag))
 			_allObjectsInSight.Add(other.gameObject);
+		
 		
 	    // remove objects in collider but not in sight
 	    if (!(angle < _fieldOfViewAngle * 0.5f) && _allObjectsInSight.Contains(other.gameObject)) 
 		    _allObjectsInSight.Remove(other.gameObject);
 
 		// after all that, see if player is in the list and check visibility
-	    if(_allObjectsInSight.Contains(_player))
-		    VisibleCheck();
+		if (_allObjectsInSight.Contains (_player)) {
+			Debug.Log("visible check 2");
+			VisibleCheck();
+		}
+		   
 	}
 
 	void OnTriggerExit(Collider other)
@@ -81,13 +94,16 @@ public class EnemySight : MonoBehaviour
 
 	private void VisibleCheck()
 	{
+		
 		var direction = _player.transform.position - transform.position;
 		_hitArray = Physics.RaycastAll(transform.position, direction.normalized, _col.radius);
 
 		foreach (var hit in _hitArray)
-		{
+		{	Debug.Log ("ff");
+			Debug.Log (hit.collider.gameObject);
 			if (hit.collider.gameObject == _player)
 			{
+				Debug.Log ("ff");
 				ColorPercievedUpdate();
 				_playerVisible = true;
 				break;
@@ -96,8 +112,8 @@ public class EnemySight : MonoBehaviour
 			try
 			{
 				Renderer objectRenderer = hit.collider.gameObject.GetComponent<Renderer>();
-				if (objectRenderer.material.color.a > _seeThroughThreshold)
-					break;
+				//if (objectRenderer.material.color.a > _seeThroughThreshold)
+					//break;
 			}
 
 			catch (MissingComponentException x)
@@ -111,27 +127,31 @@ public class EnemySight : MonoBehaviour
     {
         if (_allObjectsInSight.Count > 1)
         {
+			Debug.Log ("Color with glass");
             //now see if player is behind or in front of object
-            _hitArray = Physics.RaycastAll(gameObject.transform.position, _player.transform.position - gameObject.transform.position);
+			RaycastHit[] _hitArray1;
+            _hitArray1 = Physics.RaycastAll(gameObject.transform.position, _player.transform.position - gameObject.transform.position);
 
-	        if (_hitArray.Length > 1)
+	        if (_hitArray1.Length > 1)
 	        {
-		        foreach (var hitInfo in _hitArray)
+				foreach (var hitInfo in _hitArray1)
 		        {
 			        if (hitInfo.transform.gameObject != _player)
 			        {
 				        // GameObject hitobj = hitInfo.transform.gameObject;
-				        Color objColor = hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material.color;
-
-				        Color newColor = Color.white;
-
-				        newColor.a = _percievedPlayerColor.a;
-
-				        newColor.r = ((_percievedPlayerColor.r + (objColor.r * objColor.a)) / 2);
-				        newColor.g = ((_percievedPlayerColor.g + (objColor.g * objColor.a)) / 2);
-				        newColor.b = ((_percievedPlayerColor.b + (objColor.b * objColor.a)) / 2);
-
-				        _percievedPlayerColor = newColor;
+//				        Color objColor = hitInfo.transform.gameObject.GetComponent<MeshRenderer>().material.color;
+//
+//				        Color newColor = Color.white;
+//
+//				        newColor.a = _percievedPlayerColor.a;
+//
+//				        newColor.r = ((_percievedPlayerColor.r + (objColor.r * objColor.a)) / 2);
+//				        newColor.g = ((_percievedPlayerColor.g + (objColor.g * objColor.a)) / 2);
+//				        newColor.b = ((_percievedPlayerColor.b + (objColor.b * objColor.a)) / 2);
+//
+//				        _percievedPlayerColor = newColor;
+						_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+						Debug.Log (_percievedPlayerColor);
 			        }
 
 			        else
@@ -148,8 +168,9 @@ public class EnemySight : MonoBehaviour
         }
 
         else
-        {
+		{
             _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+			Debug.Log (_percievedPlayerColor);
         }
     }
 
