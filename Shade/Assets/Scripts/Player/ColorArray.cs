@@ -12,6 +12,7 @@ public class ColorArray : MonoBehaviour
     private void Start()
     {
         _colorModifiers = new List<ColorName>();
+        ApplyColor(_baseColor);
     }
 
     private void ChangePlayerColor()
@@ -21,8 +22,16 @@ public class ColorArray : MonoBehaviour
 
     private void ApplyColor(Color inColor)
 	{
-	    Debug.Log(inColor);
-	    gameObject.GetComponent<Renderer>().material.color = inColor;
+	    foreach (var rend in GetComponentsInParent<Renderer>())
+	    {
+	        foreach (var mat in rend.materials)
+	        {
+	            if (mat.name == "Player (Instance)")
+	            {
+	                mat.color = inColor;
+	            }
+	        }
+	    }
 	}
 
     private Color CombineColors()

@@ -13,7 +13,7 @@ public class EnemySight : MonoBehaviour
 	private bool _playerVisible;
 
 	private GameObject _player;
-	private SphereCollider _col;
+	private Collider _col;
 	private Color _percievedPlayerColor;
 	private NavMeshAgent _nav;
 	private EnemyPatrolAI _patrolAi;
@@ -25,10 +25,10 @@ public class EnemySight : MonoBehaviour
 	{
 		_patrolAi = GetComponent<EnemyPatrolAI> ();
 		_nav = GetComponent<NavMeshAgent> ();
-		_col = GetComponent<SphereCollider> ();
+		_col = GetComponent<Collider> ();
 		_player = GameObject.FindGameObjectWithTag("Player");
 
-		_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
+		_percievedPlayerColor = GetPlayerColor(_player);
 		_allObjectsInSight = new List<GameObject>();
 		_playerVisible = false;
 	}
@@ -56,9 +56,7 @@ public class EnemySight : MonoBehaviour
 
 	    if (other.CompareTag("Player") == true)
 	    {
-			Color bodyColor = _player.GetComponentInChildren<Renderer>().material.color;
-			Debug.LogWarning("Sneep Snoop: " + bodyColor);
-			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
+		    _percievedPlayerColor = GetPlayerColor(_player);
 		    _playerVisible = true;
 	    }
     }
@@ -67,7 +65,7 @@ public class EnemySight : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
+			_percievedPlayerColor = GetPlayerColor(_player);
 		}
 		/*
 		Debug.Log (_playerVisible);
@@ -91,7 +89,6 @@ public class EnemySight : MonoBehaviour
 			Debug.Log("visible check 2");
 			VisibleCheck();
 		} */
-		   
 	}
 
 	void OnTriggerExit(Collider other)
@@ -109,7 +106,7 @@ public class EnemySight : MonoBehaviour
 	    }
 	}
 
-	private void VisibleCheck()
+	/* private void VisibleCheck()
 	{
 		
 		var direction = _player.transform.position - transform.position;
@@ -138,7 +135,7 @@ public class EnemySight : MonoBehaviour
 				break;
 			}	
 		}
-	}
+	} */
 
 	private void ColorPercievedUpdate()
     {
@@ -238,5 +235,22 @@ public class EnemySight : MonoBehaviour
 		       tag.Equals("Pink") ||
 		       tag.Equals("White") ||
 		       tag.Equals("Player");
+	}
+
+	private Color GetPlayerColor(GameObject player)
+	{
+		foreach (var renderer in player.GetComponentsInChildren<Renderer>())
+		{
+			foreach (var mat in renderer.materials)
+			{
+				if (mat.name == "Player (Instance)")
+				{
+					return mat.color;
+				}
+			}
+		}
+
+		Debug.Log("GET COLOR FAILURE");
+		return Color.white;
 	}
 }
