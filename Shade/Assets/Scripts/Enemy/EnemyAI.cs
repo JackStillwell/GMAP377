@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour {
+public class EnemyAI : MonoBehaviour 
+{
     private GameObject _player;
     
     [SerializeField] private float _catchDistance = 0.5f;
-    [SerializeField] private Color _playerColor;
+    private Color _playerColor;
     
     private Color _enemyColor;
     private bool _playerVisible;
@@ -14,13 +15,14 @@ public class EnemyAI : MonoBehaviour {
     private Spawn _spawnManager;
 
     // Use this for initialization
-    void Start ()
+    void Start() 
     {
-        _enemyColor = GetComponent<Renderer>().material.color;
+        _enemyColor = GetComponentInChildren<Renderer>().material.GetColor("_Color");
+
         _player = GameObject.FindGameObjectWithTag("Player");
 
-        EnemySight enemySight = GetComponent<EnemySight> ();
-        _navAgent = GetComponent<NavMeshAgent> ();
+        EnemySight enemySight = GetComponent<EnemySight>();
+        _navAgent = GetComponent<NavMeshAgent>();
         
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
         
@@ -30,7 +32,9 @@ public class EnemyAI : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        _enemyColor = GetComponent<Renderer>().material.color;
+
+        _enemyColor = GetComponentInChildren<Renderer>().material.GetColor("_Color");
+
         _playerColor = GetComponent<EnemySight>().GetPercievedColor();
         _playerVisible = GetComponent<EnemySight> ().IsPlayerVisible();
 
