@@ -35,8 +35,7 @@ public class EnemySight : MonoBehaviour
 	
 	private void OnTriggerEnter(Collider other)
     {
-		
-	    //get the direction of the object
+	    /*//get the direction of the object
 	    Vector3 direction = other.transform.position - transform.position;
 	    
 	    // get the angle between forward and the object
@@ -53,10 +52,15 @@ public class EnemySight : MonoBehaviour
 			VisibleCheck ();
 			Debug.Log (_playerVisible);
 		}
-		Debug.Log (_allObjectsInSight.Count);
+		Debug.Log (_allObjectsInSight.Count);*/
+
+	    if (other.tag == "Player")
+	    {
+		    _playerVisible = true;
+	    }
     }
 
-	private void OnTriggerStay(Collider other)
+	/*private void OnTriggerStay(Collider other)
 	{
 		Debug.Log (_playerVisible);
 		//Debug.Log (other.gameObject);
@@ -80,16 +84,21 @@ public class EnemySight : MonoBehaviour
 			VisibleCheck();
 		}
 		   
-	}
+	}*/
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject == _player)
+		/*if (other.gameObject == _player)
 		{
 			_allObjectsInSight.Remove(other.gameObject);
 			_playerVisible = false;
 			_patrolAi.NextPoint ();
-		}
+		}*/
+
+		if (other.tag == "Player")
+	    {
+		    _playerVisible = false;
+	    }
 	}
 
 	private void VisibleCheck()
