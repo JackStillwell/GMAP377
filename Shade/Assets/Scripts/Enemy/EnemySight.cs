@@ -28,7 +28,7 @@ public class EnemySight : MonoBehaviour
 		_col = GetComponent<SphereCollider> ();
 		_player = GameObject.FindGameObjectWithTag("Player");
 
-		_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+		_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 		_allObjectsInSight = new List<GameObject>();
 		_playerVisible = false;
 	}
@@ -54,9 +54,11 @@ public class EnemySight : MonoBehaviour
 		}
 		Debug.Log (_allObjectsInSight.Count);*/
 
-	    if (other.tag == "Player")
+	    if (other.CompareTag("Player") == true)
 	    {
-			_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+			Color bodyColor = _player.GetComponentInChildren<Renderer>().material.color;
+			Debug.LogWarning("Sneep Snoop: " + bodyColor);
+			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 		    _playerVisible = true;
 	    }
     }
@@ -65,7 +67,7 @@ public class EnemySight : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+			_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 		}
 		/*
 		Debug.Log (_playerVisible);
@@ -126,7 +128,7 @@ public class EnemySight : MonoBehaviour
 
 			try
 			{
-				Renderer objectRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+				Renderer objectRenderer = hit.collider.gameObject.GetComponentInChildren<Renderer>();
 				//if (objectRenderer.material.color.a > _seeThroughThreshold)
 					//break;
 			}
@@ -165,7 +167,7 @@ public class EnemySight : MonoBehaviour
 //				        newColor.b = ((_percievedPlayerColor.b + (objColor.b * objColor.a)) / 2);
 //
 //				        _percievedPlayerColor = newColor;
-						_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+						_percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 						Debug.Log (_percievedPlayerColor);
 			        }
 
@@ -178,13 +180,13 @@ public class EnemySight : MonoBehaviour
 
 	        else
 	        {
-		        _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+		        _percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 	        }
         }
 
         else
 		{
-            _percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+            _percievedPlayerColor = _player.GetComponentInChildren<Renderer>().material.color;
 			Debug.Log (_percievedPlayerColor);
         }
     }
