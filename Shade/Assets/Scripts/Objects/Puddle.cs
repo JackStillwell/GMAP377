@@ -23,7 +23,7 @@ public class Puddle : MonoBehaviour
             other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
             playerArray = other.gameObject.GetComponentInChildren<ColorArray>();
         }
-        else if (other.CompareTag("Untagged"))
+        else if (this.CompareTag("Untagged"))
         {
             Debug.LogError("Tag the puddle, dumbass!");
         }
