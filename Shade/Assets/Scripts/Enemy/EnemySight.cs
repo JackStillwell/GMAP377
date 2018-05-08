@@ -56,12 +56,18 @@ public class EnemySight : MonoBehaviour
 
 	    if (other.tag == "Player")
 	    {
+			_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
 		    _playerVisible = true;
 	    }
     }
 
-	/*private void OnTriggerStay(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
+		if (other.tag == "Player")
+		{
+			_percievedPlayerColor = _player.GetComponent<Renderer>().material.color;
+		}
+		/*
 		Debug.Log (_playerVisible);
 		//Debug.Log (other.gameObject);
 		//get the direction of the object
@@ -82,9 +88,9 @@ public class EnemySight : MonoBehaviour
 		if (_allObjectsInSight.Contains (_player)) {
 			Debug.Log("visible check 2");
 			VisibleCheck();
-		}
+		} */
 		   
-	}*/
+	}
 
 	void OnTriggerExit(Collider other)
 	{
