@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33711224127092988}
   - component: {fileID: 23904714500814524}
   m_Layer: 0
-  m_Name: Light-With-Model
+  m_Name: Light_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
