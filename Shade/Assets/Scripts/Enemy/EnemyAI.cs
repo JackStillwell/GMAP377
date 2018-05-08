@@ -32,7 +32,6 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-
         _enemyColor = GetComponentInChildren<Renderer>().material.GetColor("_Color");
 
         _playerColor = GetComponent<EnemySight>().GetPercievedColor();

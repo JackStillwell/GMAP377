@@ -21,7 +21,8 @@ public class ColorArray : MonoBehaviour
 	}
 
     private void ApplyColor(Color inColor)
-	{
+    {
+        bool setColor = false;
 	    foreach (var rend in GetComponentsInParent<Renderer>())
 	    {
 	        foreach (var mat in rend.materials)
@@ -29,9 +30,15 @@ public class ColorArray : MonoBehaviour
 	            if (mat.name == "Player (Instance)")
 	            {
 	                mat.color = inColor;
+	                setColor = true;
 	            }
 	        }
 	    }
+
+        if (!setColor)
+        {
+            Debug.Log("APPLY COLOR FAILURE");
+        }
 	}
 
     private Color CombineColors()
@@ -98,14 +105,12 @@ public class ColorArray : MonoBehaviour
 
     public void AddColor(ColorName inColor)
     {
-        Debug.Log("Added color: " + inColor);
         _colorModifiers.Add(inColor);
         ChangePlayerColor();
     }
     
     public void RemoveColor(ColorName inColor)
     {
-        Debug.Log("Removed color: " + inColor);
         _colorModifiers.Remove(inColor);
         ChangePlayerColor();
     }

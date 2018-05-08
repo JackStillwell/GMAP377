@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.AI;
 
 public class EnemySight : MonoBehaviour
@@ -28,7 +27,7 @@ public class EnemySight : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerVisible = false;
     }
-	
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -40,7 +39,7 @@ public class EnemySight : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             _percievedPlayerColor = GetPlayerColor(_player);
         }	
@@ -48,9 +47,10 @@ public class EnemySight : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             _playerVisible = false;
+            _patrolAi.NextPoint();
         }
     }
 
