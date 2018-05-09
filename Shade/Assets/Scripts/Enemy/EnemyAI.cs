@@ -44,8 +44,8 @@ public class EnemyAI : MonoBehaviour
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);
-            Debug.Log(_navAgent.remainingDistance);
-            Debug.Log(_navAgent.pathPending);
+            //Debug.Log(_navAgent.remainingDistance);
+            //Debug.Log(_navAgent.pathPending);
 
             if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
             {
