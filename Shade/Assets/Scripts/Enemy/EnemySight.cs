@@ -55,6 +55,7 @@ public class EnemySight : MonoBehaviour
 
     private void VisibleCheck()
     {
+		Debug.Log("Sneep");
         var direction = _player.transform.position - transform.position;
         _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
 
@@ -62,6 +63,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.gameObject == _player)
             {
+				Debug.Log("Snoop");
                 ColorPercievedUpdate();
                 _playerVisible = true;
                 break;
