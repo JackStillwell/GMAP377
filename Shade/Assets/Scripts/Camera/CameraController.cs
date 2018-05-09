@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour {
     [SerializeField] private float _maxCamDistance = 10f;
     private float _camDistance = 5f;
     [SerializeField] private float _minCamDistance = 3f;
+
+    [SerializeField] private float _scrollSpeed = 1f;
     
     private float _currentX;
 
@@ -26,7 +28,7 @@ public class CameraController : MonoBehaviour {
         //take in axis info from our mouse
         // I honestly don't know why it's swapped but this is correct
         _currentX -= Input.GetAxis("Mouse Y");
-        _camDistance += Input.GetAxis("Mouse ScrollWheel");
+        _camDistance -= Input.GetAxis("Mouse ScrollWheel") * _scrollSpeed;
     }
 
     private void FixedUpdate()
