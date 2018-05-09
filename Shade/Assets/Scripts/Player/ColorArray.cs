@@ -46,8 +46,13 @@ public class ColorArray : MonoBehaviour
         Color combinedColor = new Color();
 
         // add all colors in the array
-        if (_colorModifiers.Count > 1)
+        if (_colorModifiers.Count > 0)
         {
+            if (_baseColor != Color.white)
+            {
+                combinedColor = _baseColor;
+            }
+            
             foreach (var color in _colorModifiers)
             {
                 Color value = GetColorValue(color);
@@ -60,7 +65,7 @@ public class ColorArray : MonoBehaviour
             return combinedColor;
         }
 
-        return _colorModifiers.Count == 1 ? GetColorValue(_colorModifiers[0]) : _baseColor;
+        return _baseColor;
     }
 
     private Color GetColorValue(ColorName c)
