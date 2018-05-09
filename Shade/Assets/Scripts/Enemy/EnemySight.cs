@@ -30,7 +30,7 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("I see you!");
+            //Debug.Log("I see you!");
             _percievedPlayerColor = GetPlayerColor(_player);
             VisibleCheck();
         }
@@ -40,6 +40,7 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+			VisibleCheck();
             _percievedPlayerColor = GetPlayerColor(_player);
         }	
     }
@@ -48,6 +49,7 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+			Debug.Log("Player Not Visible");
             _playerVisible = false;
             _patrolAi.NextPoint();
         }
@@ -55,7 +57,6 @@ public class EnemySight : MonoBehaviour
 
     private void VisibleCheck()
     {
-		Debug.Log("Sneep");
         var direction = _player.transform.position - transform.position;
         _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
 
@@ -63,7 +64,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.gameObject == _player)
             {
-				Debug.Log("Snoop");
+				Debug.Log("Player is Visible");
                 ColorPercievedUpdate();
                 _playerVisible = true;
                 break;
