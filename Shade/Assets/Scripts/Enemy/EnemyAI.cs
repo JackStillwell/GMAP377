@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     private Color _enemyColor;
     private bool _playerVisible;
     private NavMeshAgent _navAgent;
+    private EnemySight _enemySight;
 
     private Spawn _spawnManager;
 
@@ -22,22 +23,20 @@ public class EnemyAI : MonoBehaviour
 
         _player = GameObject.FindGameObjectWithTag("Player");
 
-        EnemySight enemySight = GetComponent<EnemySight>();
+        _enemySight = GetComponentInChildren<EnemySight>();
         _navAgent = GetComponent<NavMeshAgent>();
         
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
         
-        _playerColor = enemySight.GetPercievedColor();
+        _playerColor = _enemySight.GetPercievedColor();
     }
 
     // Update is called once per frame
     void Update ()
     {
-        _enemyColor = GetEnemyColor();
-
-        _playerColor = GetComponent<EnemySight>().GetPercievedColor();
-        _playerVisible = GetComponent<EnemySight> ().IsPlayerVisible();
-
+        _playerColor = _enemySight.GetPercievedColor();
+        _playerVisible = _enemySight.IsPlayerVisible();
+       
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
             _navAgent.updatePosition = true;
@@ -66,7 +65,7 @@ public class EnemyAI : MonoBehaviour
 
     private Color GetEnemyColor()
     {
-        foreach (var rend in GetComponents<Renderer>())
+        foreach (var rend in GetComponentsInChildren<Renderer>())
         {
             foreach (var mat in rend.materials)
             {
@@ -74,6 +73,8 @@ public class EnemyAI : MonoBehaviour
                     return mat.color;
             }
         }
+        
+        Debug.Log("GET ENEMY COLOR FAILURE");
         return Color.white;
     }
 }

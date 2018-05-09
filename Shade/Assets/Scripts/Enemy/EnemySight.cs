@@ -8,8 +8,7 @@ public class EnemySight : MonoBehaviour
     private bool _playerVisible;
 
     private GameObject _player;
-    private MeshCollider _col;
-
+    
     private Color _percievedPlayerColor;
     private NavMeshAgent _nav; // may be used in future
     private EnemyPatrolAI _patrolAi;
@@ -18,9 +17,8 @@ public class EnemySight : MonoBehaviour
 
     void Start()
     {
-        _patrolAi = GetComponent<EnemyPatrolAI> ();
-        _nav = GetComponent<NavMeshAgent> (); // may be used in future
-        _col = GetFoVCollider(); 
+        _patrolAi = GetComponentInParent<EnemyPatrolAI> ();
+        _nav = GetComponentInParent<NavMeshAgent> (); // may be used in future
         _player = GameObject.FindGameObjectWithTag("Player");
 
         _percievedPlayerColor = GetPlayerColor(_player);
@@ -32,6 +30,7 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("I see you!");
             _percievedPlayerColor = GetPlayerColor(_player);
             VisibleCheck();
         }
@@ -120,20 +119,6 @@ public class EnemySight : MonoBehaviour
         return _playerVisible;
     }
 
-    private MeshCollider GetFoVCollider()
-    {
-        foreach (var col in GetComponentsInChildren<MeshCollider>())
-        {
-            if (col.name == "Enemy_FOV_Cone")
-            {
-                return col;
-            }
-        }
-        
-        Debug.Log("FOV COLLIDER FETCH FAILURE");
-        return new MeshCollider();
-    }
-	
     // Not currently used
     float CalculatePathLength(Vector3 targetPosition) // may be used in future
     {
