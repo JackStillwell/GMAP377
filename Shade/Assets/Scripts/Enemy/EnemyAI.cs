@@ -1,42 +1,44 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour {
+public class EnemyAI : MonoBehaviour 
+{
     private GameObject _player;
     
     [SerializeField] private float _catchDistance = 0.5f;
-    [SerializeField] private Color _playerColor;
+    private Color _playerColor;
     
     private Color _enemyColor;
     private bool _playerVisible;
     private NavMeshAgent _navAgent;
+    private EnemySight _enemySight;
 
     private Spawn _spawnManager;
 
     // Use this for initialization
-    void Start () 
+    void Start()
     {
-        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _enemyColor = GetEnemyColor(); 
+
         _player = GameObject.FindGameObjectWithTag("Player");
 
-        EnemySight enemySight = GetComponent<EnemySight> ();
-        _navAgent = GetComponent<NavMeshAgent> ();
+        _enemySight = GetComponentInChildren<EnemySight>();
+        _navAgent = GetComponent<NavMeshAgent>();
         
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
         
-        _playerColor = enemySight.GetPercievedColor();
+        _playerColor = _enemySight.GetPercievedColor();
     }
 
     // Update is called once per frame
     void Update ()
     {
-        _enemyColor = GetComponent<Renderer>().material.GetColor("_Color");
-        _playerColor = GetComponent<EnemySight>().GetPercievedColor();
-        _playerVisible = GetComponent<EnemySight> ().IsPlayerVisible();
-
+        _playerColor = _enemySight.GetPercievedColor();
+        _playerVisible = _enemySight.IsPlayerVisible();
+       
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
-      
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);
@@ -59,5 +61,20 @@ public class EnemyAI : MonoBehaviour {
             isGreenSimilar = true;
         
         return isRedSimilar && isBlueSimilar && isGreenSimilar;
+    }
+
+    private Color GetEnemyColor()
+    {
+        foreach (var rend in GetComponentsInChildren<Renderer>())
+        {
+            foreach (var mat in rend.materials)
+            {
+                if (mat.name == "Enemy (Instance)")
+                    return mat.color;
+            }
+        }
+        
+        Debug.Log("GET ENEMY COLOR FAILURE");
+        return Color.white;
     }
 }

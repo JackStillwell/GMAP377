@@ -14,13 +14,27 @@ public class StaticEnemyAI : MonoBehaviour
 		_sight = GetComponent<EnemySight>();
 	}
 
-	private void OnTriggerEnter(Collider other)
+	/* private void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player") && 
-		    _sight.IsPlayerVisible() &&
-		    _sight.GetPercievedColor() == gameObject.GetComponent<Renderer>().material.color)
+		
+		Debug.Log("PlayerVisible: " + _sight.IsPlayerVisible());
+		
+		if (other.CompareTag("Player"))
 		{
 			_spawnManager.TriggerRespawn(other.gameObject);
 		}
+	} */
+
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.CompareTag("Player") && _sight.IsPlayerVisible() && _sight.GetPercievedColor() != GetEnemyColor())
+		{
+			_spawnManager.TriggerRespawn(other.gameObject);
+		}
+	}
+
+	private Color GetEnemyColor()
+	{
+		return GetComponent<Renderer>().material.color;
 	}
 }

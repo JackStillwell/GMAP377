@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4969278303479886}
   - component: {fileID: 64555692321265246}
   - component: {fileID: 114750297988798014}
+  - component: {fileID: 65650321144287032}
   m_Layer: 0
   m_Name: Puddle_Default
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,9 +65,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750026008056414}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.36, y: 0.01, z: 1.0699259}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 60.433025, y: -6.599383, z: -18.858759}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 4926455632540906}
   m_Father: {fileID: 0}
@@ -86,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4af4e54c8521540b6be6e12ea590b15d, type: 2}
+  - {fileID: 2100000, guid: ce30d22bdfb1c4ab094ef37dd3ad8317, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,12 +122,24 @@ MeshCollider:
   m_GameObject: {fileID: 1750026008056414}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: b91f95d18591cbb4596e3b72196ff9ea, type: 3}
+--- !u!65 &65650321144287032
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750026008056414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9778382, y: 0.09643487, z: 1.4808383}
+  m_Center: {x: -0.11971304, y: 0.034568176, z: -0.018682277}
 --- !u!114 &114750297988798014
 MonoBehaviour:
   m_ObjectHideFlags: 1
