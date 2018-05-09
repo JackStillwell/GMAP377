@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 4095675866395386}
   - component: {fileID: 33407016511940024}
   - component: {fileID: 23474424577845092}
-  - component: {fileID: 64962262924991676}
   m_Layer: 0
   m_Name: blob
   m_TagString: Untagged
@@ -96,6 +95,7 @@ GameObject:
   - component: {fileID: 95970976716159620}
   - component: {fileID: 54102009375154844}
   - component: {fileID: 64846407027362844}
+  - component: {fileID: 135508855964787716}
   m_Layer: 0
   m_Name: Enemy_Model
   m_TagString: Untagged
@@ -151,8 +151,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476011874274784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.008, y: 0.506, z: 0.058}
-  m_LocalScale: {x: 1.139297, y: 0.5171603, z: 1.5081354}
+  m_LocalPosition: {x: -0.0070082, y: 0.506, z: 0.058}
+  m_LocalScale: {x: 2.1099925, y: 0.5171603, z: 1.5081354}
   m_Children: []
   m_Father: {fileID: 4978128561996342}
   m_RootOrder: 0
@@ -308,7 +308,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!64 &64644277445046590
 MeshCollider:
@@ -332,7 +332,7 @@ MeshCollider:
   m_GameObject: {fileID: 1822611895331272}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -352,20 +352,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 62205d97d13f554499b2194b8fe76c98, type: 3}
---- !u!64 &64962262924991676
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1527201284939428}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: 62205d97d13f554499b2194b8fe76c98, type: 3}
 --- !u!95 &95361784281006810
 Animator:
   serializedVersion: 3
@@ -437,6 +423,18 @@ MonoBehaviour:
   _wayPoints:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!135 &135508855964787716
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822611895331272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.55
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195918993739282338
 NavMeshAgent:
   m_ObjectHideFlags: 1
