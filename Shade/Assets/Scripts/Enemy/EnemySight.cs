@@ -91,7 +91,7 @@ public class EnemySight : MonoBehaviour
             
             if (_percievedPlayerColor == Color.white)
             {
-                Color objColor = GetColorValue((ColorName) Enum.Parse(typeof(ColorName), _hitArray[0].collider.tag));
+                Color objColor = GetColorValue((ColorName) Enum.Parse(typeof(ColorName), _hitArray[index].collider.tag));
                 _percievedPlayerColor = objColor;
 
                 index++;
