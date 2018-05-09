@@ -51,7 +51,8 @@ public class EnemySight : MonoBehaviour
         {
 			Debug.Log("Player Not Visible");
             _playerVisible = false;
-            _patrolAi.NextPoint();
+			if (!transform.parent.CompareTag("Enemy_Static"))	
+				_patrolAi.NextPoint();        
         }
     }
 
