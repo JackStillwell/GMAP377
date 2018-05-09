@@ -30,8 +30,6 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("I see you!");
-            _percievedPlayerColor = GetPlayerColor(_player);
             VisibleCheck();
         }
     }
@@ -41,7 +39,6 @@ public class EnemySight : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 			VisibleCheck();
-            _percievedPlayerColor = GetPlayerColor(_player);
         }	
     }
 
@@ -49,7 +46,6 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-			Debug.Log("Player Not Visible");
             _playerVisible = false;
 			if (!transform.parent.CompareTag("Enemy_Static"))	
 				_patrolAi.NextPoint();        
@@ -67,6 +63,7 @@ public class EnemySight : MonoBehaviour
             {
 				Debug.Log("Player is Visible");
                 ColorPercievedUpdate();
+                Debug.Log("The Player's Color Is: " + _percievedPlayerColor);
                 _playerVisible = true;
                 break;
             }
@@ -81,10 +78,29 @@ public class EnemySight : MonoBehaviour
 
     private void ColorPercievedUpdate()
     {
+        /* Debugging Loop 
+        foreach (var hit in _hitArray)
+        {
+             Debug.Log("Enemy sees: " + hit.collider.name);
+        }
+        */
+
         if (_hitArray.Length > 1)
         {
-            foreach (var hitInfo in _hitArray)
+            int index = 0;
+            
+            if (_percievedPlayerColor == Color.white)
             {
+                Color objColor = GetColorValue((ColorName) Enum.Parse(typeof(ColorName), _hitArray[0].collider.tag));
+                _percievedPlayerColor = objColor;
+
+                index++;
+            }
+            
+            while(index < _hitArray.Length)
+            {
+                var hitInfo = _hitArray[index];
+                
                 if (hitInfo.transform.gameObject != _player)
                 {
                     Color objColor = GetColorValue((ColorName) Enum.Parse(typeof(ColorName), hitInfo.collider.tag));
@@ -104,13 +120,18 @@ public class EnemySight : MonoBehaviour
                 {
                     break;
                 }
+
+                index++;
             }
         }
 
         else
         {
+            Debug.Log("Enemy sees only the Player");
             _percievedPlayerColor = GetPlayerColor(_player);
         }
+        
+        Debug.Log("The Player's Percieved Color Is: " + _percievedPlayerColor);
     }
 
     public Color GetPercievedColor()

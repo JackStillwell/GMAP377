@@ -20,11 +20,10 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         _enemyColor = GetEnemyColor(); 
-
-        _player = GameObject.FindGameObjectWithTag("Player");
-
         _enemySight = GetComponentInChildren<EnemySight>();
         _navAgent = GetComponent<NavMeshAgent>();
+        
+        _player = GameObject.FindGameObjectWithTag("Player");
         
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
         
@@ -36,16 +35,12 @@ public class EnemyAI : MonoBehaviour
     {
         _playerColor = _enemySight.GetPercievedColor();
         _playerVisible = _enemySight.IsPlayerVisible();
-       
-        //Debug.Log("Is Player Visible: " + _playerVisible);
-        //Debug.Log("Is Player Same Color as Enemy: " + IsEqualTo(_playerColor, _enemyColor));
+      
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);
-            //Debug.Log(_navAgent.remainingDistance);
-            //Debug.Log(_navAgent.pathPending);
 
             if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
             {
