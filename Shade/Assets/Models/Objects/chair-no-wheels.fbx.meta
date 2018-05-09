@@ -1,18 +1,26 @@
 fileFormatVersion: 2
-guid: 76708390e91247d45abe0a5a3978e739
-timeCreated: 1525018158
+guid: dededaf3e905a504f987ae268ca20ad3
+timeCreated: 1525836211
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: default
+    100000: chair 1
     100002: //RootNode
-    400000: default
+    100004: stand
+    100006: wheels
+    400000: chair 1
     400002: //RootNode
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
+    400004: stand
+    400006: wheels
+    2100000: phong1
+    2300000: chair 1
+    2300002: stand
+    3300000: chair 1
+    3300002: stand
+    4300000: chair
+    4300002: stand
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +95,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

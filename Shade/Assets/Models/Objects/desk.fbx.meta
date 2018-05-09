@@ -1,18 +1,59 @@
 fileFormatVersion: 2
-guid: 76708390e91247d45abe0a5a3978e739
-timeCreated: 1525018158
+guid: a8af722c4cce15c4d8d09aa1aecdf921
+timeCreated: 1525836211
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
+    100000: //RootNode
+    100002: handle1
+    100004: handle2
+    100006: handle3
+    100008: handle4
+    100010: handle5
+    100012: handle6
+    100014: handle7
+    100016: handle8
+    100018: handles
+    400000: //RootNode
+    400002: handle1
+    400004: handle2
+    400006: handle3
+    400008: handle4
+    400010: handle5
+    400012: handle6
+    400014: handle7
+    400016: handle8
+    400018: handles
+    2100000: phong1
+    2300000: //RootNode
+    2300002: handle1
+    2300004: handle2
+    2300006: handle3
+    2300008: handle4
+    2300010: handle5
+    2300012: handle6
+    2300014: handle7
+    2300016: handle8
+    3300000: //RootNode
+    3300002: handle1
+    3300004: handle2
+    3300006: handle3
+    3300008: handle4
+    3300010: handle5
+    3300012: handle6
+    3300014: handle7
+    3300016: handle8
+    4300000: desk
+    4300002: handle1
+    4300004: handle2
+    4300006: handle3
+    4300008: handle4
+    4300010: handle5
+    4300012: handle6
+    4300014: handle7
+    4300016: handle8
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +128,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
