@@ -8,8 +8,6 @@ public class Puddle : MonoBehaviour
     private ColorName _colorName;
     [SerializeField] private int effectDuration;
 
-    private ColorArray playerArray;
-
     private void Start()
     {
         try
@@ -20,9 +18,6 @@ public class Puddle : MonoBehaviour
         {
             Debug.LogError("Tag the puddle, dumbass!");
         }
-            
-
-        //playerArray = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ColorArray>();
 
     }
 
@@ -31,7 +26,6 @@ public class Puddle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
-            playerArray = other.gameObject.GetComponentInChildren<ColorArray>();
         }
         else if (this.CompareTag("Untagged"))
         {
@@ -51,9 +45,5 @@ public class Puddle : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(effectDuration);
         other.gameObject.GetComponentInChildren<ColorArray>().RemoveColor(_colorName);
-        //playerArray = other.gameObject.GetComponentInChildren<ColorArray>();
-        //playerArray.RemoveColor(_colorName);
-        //playerArray = null;
-
     }
 }
