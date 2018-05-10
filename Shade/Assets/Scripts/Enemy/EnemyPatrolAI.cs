@@ -14,6 +14,7 @@ public class EnemyPatrolAI : MonoBehaviour
 	private float patrolTimer = 0f;
 	private float originalSpeed = 0f;
 	private Rigidbody rb;
+	private bool movingFlag = false;
 
 	void Start () 
 	{
@@ -29,23 +30,39 @@ public class EnemyPatrolAI : MonoBehaviour
 
 	void Update () 
 	{
-		
+//		if (_navAgent.pathPending) {
+//			Debug.Log ("gg");
+//		}
+//		if (movingFlag) {
+//			patrolTimer += Time.deltaTime;
+//
+//		}
 
 		if (!_navAgent.pathPending && _navAgent.remainingDistance < 0.1f) 
 		{
-			patrolTimer += Time.deltaTime;
-			Debug.Log (patrolTimer);
-			rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
-			Debug.Log ("Freeze");
+			
+			//patrolTimer += Time.deltaTime;
+			//Debug.Log (patrolTimer);
+			//rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+			//Debug.Log (Time.deltaTime);
+			//
 			//originalSpeed = _navAgent.speed;
-			//_navAgent.speed = 0.01f;
+			//Debug.Log (originalSpeed);
+			//Debug.Log (_navAgent.remainingDistance);
+			//Debug.Log (_navAgent.pathPending);
 
-			if (patrolTimer > waitTime) {
-				rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+			//_navAgent.speed = 0f;
+
+//			if (patrolTimer > waitTime) {
+//				movingFlag = false;
+				//rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+				//_navAgent.speed = originalSpeed;
+
 				NextPoint ();
-				patrolTimer = 0f;
-				waitTime = Random.Range (0f, maxWaitTime);
-			}
+//				patrolTimer = 0f;
+//				waitTime = Random.Range (0f, maxWaitTime);
+//				Debug.Log (waitTime);
+//			}
 
 		}
 	}
@@ -53,15 +70,12 @@ public class EnemyPatrolAI : MonoBehaviour
 
 
 	public void NextPoint() 
-	{		Debug.Log ("ff");
+	{		
+		
 
 		if (_wayPoints.Length == 0)
 			return;
-
-	
 		_navAgent.destination = _wayPoints[_nextPoint].position;
-		_nextPoint = (_nextPoint + 1) % _wayPoints.Length;
-
 
 	}
 
