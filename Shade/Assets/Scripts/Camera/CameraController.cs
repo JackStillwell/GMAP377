@@ -6,8 +6,12 @@ public class CameraController : MonoBehaviour {
 
     public GameObject FollowObj;
 
-    [SerializeField]
-    private float _camDistance = 10f;
+    [SerializeField] private float _maxCamDistance = 10f;
+    private float _camDistance = 5f;
+    [SerializeField] private float _minCamDistance = 3f;
+
+    [SerializeField] private float _scrollSpeed = 1f;
+    
     private float _currentX;
 
     private Rigidbody _followObjRigidbody;
@@ -24,12 +28,14 @@ public class CameraController : MonoBehaviour {
         //take in axis info from our mouse
         // I honestly don't know why it's swapped but this is correct
         _currentX -= Input.GetAxis("Mouse Y");
+        _camDistance -= Input.GetAxis("Mouse ScrollWheel") * _scrollSpeed;
     }
 
     private void FixedUpdate()
     {
         // Clamp rotation to 90 degrees
-        _currentX = Mathf.Clamp(_currentX, 0f, 90f);
+        _currentX = Mathf.Clamp(_currentX, 0f, 75f);
+        _camDistance = Mathf.Clamp(_camDistance, _minCamDistance, _maxCamDistance);
         
         //set our z distance away from the PC
         Vector3 dir = new Vector3(0, 0, -_camDistance);

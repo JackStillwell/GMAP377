@@ -1,18 +1,37 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Shade/Assets/Models/objects-set/glass.obj.meta
 guid: bfaf7182d04ae614692c61536ef5ac1c
 timeCreated: 1525262283
+=======
+guid: f78bcb4ef3e2eb744931d50c9dc110e5
+timeCreated: 1525907396
+>>>>>>> master:Shade/Assets/Models/Enemies/Glob_grunt_rigged_2.fbx.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
+    100000: blob
+    100002: glasses
+    100004: //RootNode
+    100006: Glob_Spine_1
+    100008: Glob_Spine_2
+    100010: Glob_Spine_3
+    100012: Glob_Spine_4
+    400000: blob
+    400002: glasses
+    400004: //RootNode
+    400006: Glob_Spine_1
+    400008: Glob_Spine_2
+    400010: Glob_Spine_3
+    400012: Glob_Spine_4
+    2100000: phong1
+    2100002: phong2
+    2300000: glasses
+    3300000: glasses
+    4300000: blob
+    4300002: glasses
+    9500000: //RootNode
+    13700000: blob
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +106,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

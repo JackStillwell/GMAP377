@@ -1,30 +1,28 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Shade/Assets/Models/objects-set/lamp-parts.fbx.meta
 guid: 44d0d37d311272040bf6747cd86c6920
 timeCreated: 1525557551
+=======
+guid: 30b32eb2b19f9e74b88f560f896e879e
+timeCreated: 1525881009
+>>>>>>> master:Shade/Assets/Models/Objects/golden-slime-goal.fbx.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: bulb
-    100002: hanger
-    100004: lamp
-    100006: //RootNode
-    100008: shell
-    400000: bulb
-    400002: hanger
-    400004: lamp
-    400006: //RootNode
-    400008: shell
+    100000: //RootNode
+    100002: golden_slime
+    100004: stand
+    400000: //RootNode
+    400002: golden_slime
+    400004: stand
     2100000: phong1
-    2300000: bulb
-    2300002: hanger
-    2300004: shell
-    3300000: bulb
-    3300002: hanger
-    3300004: shell
-    4300000: hanger
-    4300002: bulb
-    4300004: shell
+    2300000: golden_slime
+    2300002: stand
+    3300000: golden_slime
+    3300002: stand
+    4300000: stand
+    4300002: golden_slime
     9500000: //RootNode
   externalObjects: {}
   materials:

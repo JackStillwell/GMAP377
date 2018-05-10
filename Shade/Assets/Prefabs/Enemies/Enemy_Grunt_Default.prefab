@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4978128561996342}
   - component: {fileID: 195918993739282338}
-  - component: {fileID: 114491883522505710}
   - component: {fileID: 114734077210649818}
   - component: {fileID: 114058926161828614}
   m_Layer: 0
@@ -60,6 +59,7 @@ GameObject:
   - component: {fileID: 23967912976476586}
   - component: {fileID: 95361784281006810}
   - component: {fileID: 64644277445046590}
+  - component: {fileID: 114609935046203672}
   m_Layer: 0
   m_Name: Enemy_FOV_Cone
   m_TagString: Untagged
@@ -151,8 +151,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476011874274784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0070082, y: 0.506, z: 0.058}
-  m_LocalScale: {x: 2.1099925, y: 0.5171603, z: 1.5081354}
+  m_LocalPosition: {x: -0.006848, y: 0.506, z: 0.335}
+  m_LocalScale: {x: 2.266368, y: 0.5171603, z: 3.3654}
   m_Children: []
   m_Father: {fileID: 4978128561996342}
   m_RootOrder: 0
@@ -164,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1209811205707130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.31674, y: -1.858334e-17, z: 18.439976}
+  m_LocalPosition: {x: 37.63, y: -1.858334e-17, z: 18.439976}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4788470827948036}
@@ -397,13 +397,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _catchDistance: 0.5
---- !u!114 &114491883522505710
+  _catchDistance: 3
+--- !u!114 &114609935046203672
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1209811205707130}
+  m_GameObject: {fileID: 1476011874274784}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9de51312815d40bb80306e2d7b8f864, type: 3}
@@ -433,7 +433,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195918993739282338
 NavMeshAgent:
@@ -447,7 +447,7 @@ NavMeshAgent:
   m_Speed: 10
   m_Acceleration: 5
   avoidancePriority: 50
-  m_AngularSpeed: 200
+  m_AngularSpeed: 400
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
