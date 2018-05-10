@@ -13,6 +13,7 @@ public class EnemyPatrolAI : MonoBehaviour
 	private int _nextPoint = 0; 
 	private float patrolTimer = 0f;
 	private float originalSpeed = 0f;
+	private Rigidbody rb;
 
 	void Start () 
 	{
@@ -20,6 +21,7 @@ public class EnemyPatrolAI : MonoBehaviour
 		_navAgent.autoBraking = false; 
 		_navAgent.updateRotation = true;
 		waitTime = Random.Range (0f, maxWaitTime);
+		rb = gameObject.GetComponent<Rigidbody> ();
 		Debug.Log (waitTime);
 		NextPoint();
 	
@@ -33,9 +35,13 @@ public class EnemyPatrolAI : MonoBehaviour
 		{
 			patrolTimer += Time.deltaTime;
 			Debug.Log (patrolTimer);
+			rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+			Debug.Log ("Freeze");
 			//originalSpeed = _navAgent.speed;
 			//_navAgent.speed = 0.01f;
+
 			if (patrolTimer > waitTime) {
+				rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
 				NextPoint ();
 				patrolTimer = 0f;
 				waitTime = Random.Range (0f, maxWaitTime);
