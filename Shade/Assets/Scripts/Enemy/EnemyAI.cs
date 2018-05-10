@@ -33,9 +33,11 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        _playerColor = _enemySight.GetPercievedColor();
         _playerVisible = _enemySight.IsPlayerVisible();
+        _playerColor = _enemySight.GetPercievedColor();
       
+        //Debug.Log("The Enemy Sees Player Color: " + _playerColor);
+        
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
             _navAgent.updatePosition = true;

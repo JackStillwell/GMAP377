@@ -8,11 +8,14 @@ public class ColorArray : MonoBehaviour
     private List<ColorName> _colorModifiers;
 
     [SerializeField] private Color _baseColor = Color.white;
+    [SerializeField] private float _alphaValue = .9f;
+    private Color _currentColor;
 
     private void Start()
     {
         _colorModifiers = new List<ColorName>();
         ApplyColor(_baseColor);
+        _currentColor = _baseColor;
     }
 
     private void ChangePlayerColor()
@@ -38,7 +41,11 @@ public class ColorArray : MonoBehaviour
         if (!setColor)
         {
             Debug.Log("APPLY COLOR FAILURE");
+            return;
         }
+
+        _currentColor = inColor;
+        // Debug.Log("Player Color is: " + inColor);
 	}
 
     private Color CombineColors()
@@ -46,26 +53,41 @@ public class ColorArray : MonoBehaviour
         Color combinedColor = new Color();
 
         // add all colors in the array
-        if (_colorModifiers.Count > 0)
+        if (_colorModifiers.Count > 1)
         {
             if (_baseColor != Color.white)
             {
                 combinedColor = _baseColor;
             }
-            
-            foreach (var color in _colorModifiers)
-            {
-                Color value = GetColorValue(color);
 
-                combinedColor.r = (combinedColor.r + value.r) / 2;
-                combinedColor.g = (combinedColor.g + value.g) / 2;
-                combinedColor.b = (combinedColor.b + value.b) / 2;
+            else
+            {
+                combinedColor = GetColorValue(_colorModifiers[0]);
+            }
+            
+            for(int i = 1; i < _colorModifiers.Count; i++)
+            {
+                Color value = GetColorValue(_colorModifiers[i]);
+                combinedColor = MixColors(combinedColor, value);
             }
 
             return combinedColor;
         }
+        
+        else if (_colorModifiers.Count == 1)
+        {
+            if (_baseColor == Color.white)
+            {
+                return GetColorValue(_colorModifiers[0]);
+            }
 
-        return _baseColor;
+            return MixColors(_baseColor, GetColorValue(_colorModifiers[0]));
+        }
+
+        else
+        {
+            return _baseColor;
+        }
     }
 
     private Color GetColorValue(ColorName c)
@@ -108,6 +130,18 @@ public class ColorArray : MonoBehaviour
         return colorValue;
     }
 
+    private Color MixColors(Color one, Color two)
+    {
+        Color combinedColor = new Color();
+        
+        combinedColor.r = (one.r + two.r) / 2;
+        combinedColor.g = (one.g + two.g) / 2;
+        combinedColor.b = (one.b + two.b) / 2;
+        combinedColor.a = _alphaValue;
+
+        return combinedColor;
+    }
+
     public void AddColor(ColorName inColor)
     {
         _colorModifiers.Add(inColor);
@@ -118,5 +152,10 @@ public class ColorArray : MonoBehaviour
     {
         _colorModifiers.Remove(inColor);
         ChangePlayerColor();
+    }
+
+    public Color GetCurrentColor()
+    {
+        return _currentColor == new Color() ? _baseColor : _currentColor;
     }
 }
