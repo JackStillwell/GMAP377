@@ -59,10 +59,15 @@ public class ColorArray : MonoBehaviour
             {
                 combinedColor = _baseColor;
             }
-            
-            foreach (var color in _colorModifiers)
+
+            else
             {
-                Color value = GetColorValue(color);
+                combinedColor = GetColorValue(_colorModifiers[0]);
+            }
+            
+            for(int i = 1; i < _colorModifiers.Count; i++)
+            {
+                Color value = GetColorValue(_colorModifiers[i]);
                 combinedColor = MixColors(combinedColor, value);
             }
 
