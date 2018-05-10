@@ -12,31 +12,28 @@ public class DemoControll : MonoBehaviour {
     private bool altarStarted, fadeInLight, altarStopped;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         lightMaxIntens = mainLight.intensity;
         //mainLight.intensity = 0;
         lightTargetIntens = lightMaxIntens;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         altarTF.Rotate(Vector3.up, 10 * Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            altarScript.ActivateDeactivateAltar();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-             if (lightTargetIntens != 0)
-                 lightTargetIntens = 0;
-             else lightTargetIntens = lightMaxIntens;
-        }
 
         mainLight.intensity = Mathf.MoveTowards(mainLight.intensity, lightTargetIntens, Time.deltaTime * 0.15f);
     }
 
+    public void OnTriggerEnter()
+    {
+        altarScript.ActivateDeactivateAltar();
+        if (lightTargetIntens != 0)
+                 lightTargetIntens = 0;
+             else lightTargetIntens = lightMaxIntens;
+    }
     public void ButtonToggleAltar()
     {
         altarScript.ActivateDeactivateAltar();
