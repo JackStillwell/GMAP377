@@ -17,7 +17,7 @@ public class EnemySight : MonoBehaviour
     private NavMeshAgent _nav; // may be used in future
     private EnemyPatrolAI _patrolAi;
 
-    private List<RaycastHit> _hitArray;
+    private RaycastHit[] _hitArray;
 
     void Start()
     {
@@ -58,7 +58,7 @@ public class EnemySight : MonoBehaviour
     private void VisibleCheck()
     {
         var direction = _player.transform.position - transform.position;
-        _hitArray = new List<RaycastHit>(Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude));
+        _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
 
         // ColorPercievedUpdate();
         
