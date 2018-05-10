@@ -14,6 +14,7 @@ TagManager:
   - Spawnpoint
   - SpawnManager
   - Enemy_Static
+  - Scenery
   layers:
   - Default
   - TransparentFX

@@ -70,7 +70,7 @@ public class EnemyAI : MonoBehaviour
         {
             foreach (var mat in rend.materials)
             {
-                if (mat.name == "Enemy (Instance)")
+                if (mat.name.Contains("Enemy"))
                     return mat.color;
             }
         }

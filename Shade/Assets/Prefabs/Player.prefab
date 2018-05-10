@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 1492681970819790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.96, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4162720262695946}
   - {fileID: 4002841447131104}
@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseColor: {r: 1, g: 1, b: 1, a: 1}
+  _alphaValue: 0.9
 --- !u!114 &114317709221724380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,7 +451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObj: {fileID: 1492681970819790}
-  _camDistance: 10
+  _maxCamDistance: 10
+  _minCamDistance: 7
+  _scrollSpeed: 1
 --- !u!114 &114831889981258468
 MonoBehaviour:
   m_ObjectHideFlags: 1
