@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 3.0f;
     [SerializeField] private float _jumpForce = 200f;
     [SerializeField] private float _groundDistance = 0.5f;
+    [SerializeField] private float _rotateSensitivity = 1f;
 
     private float _x;
     private float _y;
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _y = Input.GetAxis("Mouse X");
+        _y = Input.GetAxis("Mouse X") * _rotateSensitivity;
 
         _z = Input.GetAxis("Vertical") * Time.deltaTime * _moveSpeed;
         _x = Input.GetAxis("Horizontal") * Time.deltaTime * _moveSpeed;

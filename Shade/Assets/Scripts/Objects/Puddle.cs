@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class Puddle : MonoBehaviour
 {
-    
+
     private ColorName _colorName;
     [SerializeField] private int effectDuration;
 
     private void Start()
     {
-        _colorName = (ColorName)Enum.Parse(typeof(ColorName), transform.tag);
+        try
+        {
+            _colorName = (ColorName)Enum.Parse(typeof(ColorName), transform.tag);
+        }
+        catch
+        {
+            Debug.LogError("Tag the puddle, dumbass!");
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<ColorArray>().AddColor(_colorName);
+            other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
+        }
+        else if (this.CompareTag("Untagged"))
+        {
+            Debug.LogError("Tag the puddle, dumbass!");
         }
     }
 
@@ -32,7 +44,6 @@ public class Puddle : MonoBehaviour
     IEnumerator DelayColorRemove(Collider other)
     {
         yield return new WaitForSecondsRealtime(effectDuration);
-        Debug.Log("MUAKE IT RAOUNN BEIEBBBYYY");
-        other.gameObject.GetComponent<ColorArray>().RemoveColor(_colorName);
+        other.gameObject.GetComponentInChildren<ColorArray>().RemoveColor(_colorName);
     }
 }
