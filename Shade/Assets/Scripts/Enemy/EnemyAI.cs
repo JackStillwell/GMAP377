@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
         _playerColor = _enemySight.GetPercievedColor();
       
         //Debug.Log("The Enemy Sees Player Color: " + _playerColor);
+        Debug.Log(_enemyColor);
         
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
