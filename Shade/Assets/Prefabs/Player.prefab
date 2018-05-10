@@ -277,6 +277,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ed813f2a881f145de8d3aec36e47da8b, type: 2}
   m_StaticBatchInfo:
@@ -311,6 +312,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100002, guid: ec448d140ab115b4db99bd3e52bf806b, type: 3}
   m_StaticBatchInfo:
@@ -345,6 +347,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100002, guid: ec448d140ab115b4db99bd3e52bf806b, type: 3}
   m_StaticBatchInfo:
@@ -426,6 +429,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114248098839256906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -467,8 +471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 18
-  _jumpForce: 300
-  _groundDistance: 2
+  _jumpForce: 200
+  _groundDistance: 3
   _rotateSensitivity: 3
 --- !u!124 &124687885897283700
 Behaviour:
