@@ -6,7 +6,7 @@ public class Puddle : MonoBehaviour
 {
 
     private ColorName _colorName;
-    [SerializeField] private int effectDuration;
+    [SerializeField] private float effectDuration;
 
     private void Start()
     {
