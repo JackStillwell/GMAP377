@@ -16,6 +16,13 @@ public class StaticEnemyAI : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player Color: " + _sight.GetPercievedColor());
+            Debug.Log("Enemy Color: " + GetEnemyColor());
+			Debug.Log("Is Player Visible: " + _sight.IsPlayerVisible());
+        }
         if (other.CompareTag("Player") && _sight.IsPlayerVisible() && !IsEqualTo(_sight.GetPercievedColor(), GetEnemyColor()))
         {
             _spawnManager.TriggerRespawn(other.gameObject);

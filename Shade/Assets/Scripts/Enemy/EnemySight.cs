@@ -64,18 +64,19 @@ public class EnemySight : MonoBehaviour
         
         foreach (var hit in _hitArray)
         {
+			Debug.Log(hit.collider.gameObject);
             if (hit.collider.gameObject == _player)
             {
-                // Debug.Log("Player Visible");
+                Debug.Log("Player Visible");
                 _playerVisible = true;
                 ColorPercievedUpdate();
                 break;
             }
 
-            if (ChangesColor(hit.collider.tag)) ;
+            if (ChangesColor(hit.collider.tag));
                 // Debug.Log("Color Changing Between");  // Do Nothing and Continue
 
-            else if (hit.collider.name == "glasses") ;
+            else if (hit.collider.name == "glasses");
                 // Debug.Log("Glasses in the Way"); // Do Nothing and Continue
 
             else

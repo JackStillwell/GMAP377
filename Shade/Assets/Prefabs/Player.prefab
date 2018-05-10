@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 1492681970819790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.96, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4162720262695946}
   - {fileID: 4002841447131104}
@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseColor: {r: 1, g: 1, b: 1, a: 1}
+  _alphaValue: 0.9
 --- !u!114 &114317709221724380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,7 +451,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObj: {fileID: 1492681970819790}
-  _camDistance: 10
+  _maxCamDistance: 20
+  _minCamDistance: 7
+  _scrollSpeed: 5
+  _tiltSpeed: 2
 --- !u!114 &114831889981258468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,9 +466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3abd458733843a49d4cc82dfb91d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 13
-  _jumpForce: 0
+  _moveSpeed: 18
+  _jumpForce: 300
   _groundDistance: 2
+  _rotateSensitivity: 3
 --- !u!124 &124687885897283700
 Behaviour:
   m_ObjectHideFlags: 1
