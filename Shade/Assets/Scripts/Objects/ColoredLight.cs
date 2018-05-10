@@ -15,7 +15,7 @@ public class ColoredLight : MonoBehaviour
         //So this should work fine, but I can't figure out how to get the enum to be a global value so that I can reference it.
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<ColorArray>().AddColor(_colorName);
+            other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
         }
     }
 
@@ -23,7 +23,7 @@ public class ColoredLight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<ColorArray>().RemoveColor(_colorName);
+            other.gameObject.GetComponentInChildren<ColorArray>().RemoveColor(_colorName);
         }
     }
 }

@@ -13,6 +13,8 @@ TagManager:
   - Pink
   - Spawnpoint
   - SpawnManager
+  - Enemy_Static
+  - Scenery
   layers:
   - Default
   - TransparentFX
