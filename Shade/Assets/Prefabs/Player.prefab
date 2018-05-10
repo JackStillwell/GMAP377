@@ -454,6 +454,7 @@ MonoBehaviour:
   _maxCamDistance: 10
   _minCamDistance: 7
   _scrollSpeed: 1
+  _tiltSpeed: 1
 --- !u!114 &114831889981258468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,8 +467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 13
-  _jumpForce: 0
-  _groundDistance: 2
+  _jumpForce: 300
+  _groundDistance: 3
+  _rotateSensitivity: 1
 --- !u!124 &124687885897283700
 Behaviour:
   m_ObjectHideFlags: 1
