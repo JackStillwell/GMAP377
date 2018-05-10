@@ -451,10 +451,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObj: {fileID: 1492681970819790}
-  _maxCamDistance: 10
+  _maxCamDistance: 20
   _minCamDistance: 7
-  _scrollSpeed: 1
-  _tiltSpeed: 1
+  _scrollSpeed: 5
+  _tiltSpeed: 2
 --- !u!114 &114831889981258468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -469,7 +469,7 @@ MonoBehaviour:
   _moveSpeed: 13
   _jumpForce: 300
   _groundDistance: 3
-  _rotateSensitivity: 1
+  _rotateSensitivity: 3
 --- !u!124 &124687885897283700
 Behaviour:
   m_ObjectHideFlags: 1
