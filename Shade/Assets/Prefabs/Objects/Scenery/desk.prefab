@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 23524759461823462}
   - component: {fileID: 95749128961581360}
   - component: {fileID: 65749301530709944}
+  - component: {fileID: 208980653846567550}
   m_Layer: 0
   m_Name: desk
   m_TagString: Untagged
@@ -718,3 +719,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!208 &208980653846567550
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894115788068424}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.80300003, y: 0.65300006, z: 1.6060001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.65400004, z: 0}
+  m_TimeToStationary: 0.5
