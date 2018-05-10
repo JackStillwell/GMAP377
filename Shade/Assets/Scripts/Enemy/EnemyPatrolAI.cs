@@ -41,28 +41,28 @@ public class EnemyPatrolAI : MonoBehaviour
 		if (!_navAgent.pathPending && _navAgent.remainingDistance < 0.1f) 
 		{
 			
-			//patrolTimer += Time.deltaTime;
+			patrolTimer += Time.deltaTime;
 			//Debug.Log (patrolTimer);
 			//rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 			//Debug.Log (Time.deltaTime);
 			//
-			//originalSpeed = _navAgent.speed;
+			originalSpeed = _navAgent.speed;
 			//Debug.Log (originalSpeed);
 			//Debug.Log (_navAgent.remainingDistance);
 			//Debug.Log (_navAgent.pathPending);
 
-			//_navAgent.speed = 0f;
+			_navAgent.speed = 0f;
 
-//			if (patrolTimer > waitTime) {
+			if (patrolTimer > waitTime) {
 //				movingFlag = false;
 				//rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
-				//_navAgent.speed = originalSpeed;
+				_navAgent.speed = originalSpeed;
 
 				NextPoint ();
-//				patrolTimer = 0f;
-//				waitTime = Random.Range (0f, maxWaitTime);
-//				Debug.Log (waitTime);
-//			}
+				patrolTimer = 0f;
+				waitTime = Random.Range (0f, maxWaitTime);
+				Debug.Log (waitTime);
+			}
 
 		}
 	}
@@ -72,11 +72,11 @@ public class EnemyPatrolAI : MonoBehaviour
 	public void NextPoint() 
 	{		
 		
-
+		Debug.Log("ff");
 		if (_wayPoints.Length == 0)
 			return;
 		_navAgent.destination = _wayPoints[_nextPoint].position;
-
+		_nextPoint = (_nextPoint + 1) % _wayPoints.Length;
 	}
 
 
