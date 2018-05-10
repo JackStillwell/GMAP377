@@ -13,7 +13,7 @@ public class EnemyPatrolAI : MonoBehaviour
 	void Start () 
 	{
 		_navAgent = gameObject.GetComponent<NavMeshAgent>();
-		_navAgent.autoBraking = false; 
+		_navAgent.autoBraking = true; 
 		NextPoint();
 	}
 
