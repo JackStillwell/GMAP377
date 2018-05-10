@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,16 +17,15 @@ public class EnemySight : MonoBehaviour
     private NavMeshAgent _nav; // may be used in future
     private EnemyPatrolAI _patrolAi;
 
-    private RaycastHit[] _hitArray;
+    private List<RaycastHit> _hitArray;
 
     void Start()
     {
         _patrolAi = GetComponentInParent<EnemyPatrolAI> ();
         _nav = GetComponentInParent<NavMeshAgent> (); // may be used in future
-        _player = GameObject.FindGameObjectWithTag("Player");
 
-        _percievedPlayerColor = GetPlayerColor(_player);
         _player = GameObject.FindGameObjectWithTag("Player");
+        _percievedPlayerColor = GetPlayerColor(_player);
         _playerVisible = false;
     }
 
@@ -55,22 +58,29 @@ public class EnemySight : MonoBehaviour
     private void VisibleCheck()
     {
         var direction = _player.transform.position - transform.position;
-        _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
+        _hitArray = new List<RaycastHit>(Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude));
 
+        // ColorPercievedUpdate();
+        
         foreach (var hit in _hitArray)
         {
             if (hit.collider.gameObject == _player)
             {
-				Debug.Log("Player is Visible");
-                ColorPercievedUpdate();
-                Debug.Log("The Player's Color Is: " + _percievedPlayerColor);
+                // Debug.Log("Player Visible");
                 _playerVisible = true;
+                ColorPercievedUpdate();
                 break;
             }
 
-            if (ChangesColor(hit.collider.tag)) ;  // Do Nothing and Continue
+            if (ChangesColor(hit.collider.tag)) ;
+                // Debug.Log("Color Changing Between");  // Do Nothing and Continue
+
+            else if (hit.collider.name == "glasses") ;
+                // Debug.Log("Glasses in the Way"); // Do Nothing and Continue
+
             else
             {
+                // Debug.Log("View Obstructed");
                 break;
             }
         }
@@ -85,41 +95,40 @@ public class EnemySight : MonoBehaviour
         }
         */
 
-        if (_hitArray.Length > 1)
+        var colorUpdateArray = new List<Color>();
+
+        foreach (var hit in _hitArray)
+        {
+            if (hit.collider.CompareTag("Player"))
+                break;
+            if (ChangesColor(hit.collider.tag))
+                colorUpdateArray.Add(GetColorValue((ColorName) Enum.Parse(typeof(ColorName), hit.collider.tag)));
+        }
+
+        if (colorUpdateArray.Count > 0)
         {
             int index = 0;
-            
+
             if (_percievedPlayerColor == Color.white)
             {
-                Color objColor = GetColorValue((ColorName) Enum.Parse(typeof(ColorName), _hitArray[index].collider.tag));
-                _percievedPlayerColor = objColor;
+                _percievedPlayerColor = colorUpdateArray[index];
 
                 index++;
             }
             
-            while(index < _hitArray.Length)
+            while(index < colorUpdateArray.Count)
             {
-                var hitInfo = _hitArray[index];
-                
-                if (hitInfo.transform.gameObject != _player)
-                {
-                    Color objColor = GetColorValue((ColorName) Enum.Parse(typeof(ColorName), hitInfo.collider.tag));
+                var objColor = colorUpdateArray[index];
 
-                    Color newColor = new Color();
+                Color newColor = new Color();
 
-                    newColor.a = _percievedPlayerColor.a;
+                newColor.a = _percievedPlayerColor.a;
 
-                    newColor.r = (_percievedPlayerColor.r + objColor.r) / 2;
-                    newColor.g = (_percievedPlayerColor.g + objColor.g) / 2;
-                    newColor.b = (_percievedPlayerColor.b + objColor.b) / 2;
+                newColor.r = (_percievedPlayerColor.r + objColor.r) / 2;
+                newColor.g = (_percievedPlayerColor.g + objColor.g) / 2;
+                newColor.b = (_percievedPlayerColor.b + objColor.b) / 2;
 
-                    _percievedPlayerColor = newColor;
-                }
-
-                else
-                {
-                    break;
-                }
+                _percievedPlayerColor = newColor;
 
                 index++;
             }
@@ -127,11 +136,11 @@ public class EnemySight : MonoBehaviour
 
         else
         {
-            Debug.Log("Enemy sees only the Player");
+            // Debug.Log("Enemy sees only the Player");
             _percievedPlayerColor = GetPlayerColor(_player);
         }
         
-        Debug.Log("The Player's Percieved Color Is: " + _percievedPlayerColor);
+        // Debug.Log("The Player's Percieved Color Is: " + _percievedPlayerColor);
     }
 
     public Color GetPercievedColor()
@@ -185,19 +194,7 @@ public class EnemySight : MonoBehaviour
 
     private Color GetPlayerColor(GameObject player)
     {
-        foreach (var renderer in player.GetComponentsInChildren<Renderer>())
-        {
-            foreach (var mat in renderer.materials)
-            {
-                if (mat.name == "Player (Instance)")
-                {
-                    return mat.color;
-                }
-            }
-        }
-
-        Debug.Log("GET COLOR FAILURE");
-        return Color.white;
+        return _player.GetComponentInChildren<ColorArray>().GetCurrentColor();
     }
     
     private Color GetColorValue(ColorName c)

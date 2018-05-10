@@ -9,11 +9,13 @@ public class ColorArray : MonoBehaviour
 
     [SerializeField] private Color _baseColor = Color.white;
     [SerializeField] private float _alphaValue = .9f;
+    private Color _currentColor;
 
     private void Start()
     {
         _colorModifiers = new List<ColorName>();
         ApplyColor(_baseColor);
+        _currentColor = _baseColor;
     }
 
     private void ChangePlayerColor()
@@ -39,9 +41,11 @@ public class ColorArray : MonoBehaviour
         if (!setColor)
         {
             Debug.Log("APPLY COLOR FAILURE");
+            return;
         }
-        
-        Debug.Log("Player Color is: " + inColor);
+
+        _currentColor = inColor;
+        // Debug.Log("Player Color is: " + inColor);
 	}
 
     private Color CombineColors()
@@ -143,5 +147,10 @@ public class ColorArray : MonoBehaviour
     {
         _colorModifiers.Remove(inColor);
         ChangePlayerColor();
+    }
+
+    public Color GetCurrentColor()
+    {
+        return _currentColor == new Color() ? _baseColor : _currentColor;
     }
 }
