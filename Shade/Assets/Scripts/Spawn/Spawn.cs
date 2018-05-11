@@ -10,22 +10,24 @@ public class Spawn : MonoBehaviour
 	private int _currentSpawn;
 	
 	[SerializeField] private GameObject _playerPrefab;
+	[SerializeField] private ColorName _initialPlayerColor;
 	
 	// Use this for initialization
 	void Start ()
 	{
 		gameObject.tag = "SpawnManager";
 		
-		_currentSpawn = 0;
-		
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
 
 		_spawnPoints = new List<GameObject>(new GameObject[spawns.Length]);
-		
-		foreach (var go in spawns)
+
+		for (int i = 0; i < spawns.Length; i++)
 		{
-			SpawnPoint sp = go.GetComponent<SpawnPoint>();
-			_spawnPoints[sp.GetSpawnNumber()] = sp.gameObject;
+			_spawnPoints[i] = spawns[i];
+			spawns[i].GetComponent<SpawnPoint>().SetSpawnNumber(i);
+			
+			if (spawns[i].GetComponent<SpawnPoint>().IsInitialSpawn())
+				_currentSpawn = i;
 		}
 		
 		TriggerSpawn();
@@ -38,6 +40,7 @@ public class Spawn : MonoBehaviour
 
 	private void TriggerSpawn()
 	{
+		_playerPrefab.GetComponentInChildren<ColorArray>().SetBaseColor(_initialPlayerColor);
 		Instantiate(_playerPrefab, 
 			_spawnPoints[_currentSpawn].transform.position, 
 			_spawnPoints[_currentSpawn].transform.rotation);

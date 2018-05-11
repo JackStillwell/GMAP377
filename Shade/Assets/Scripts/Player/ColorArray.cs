@@ -158,4 +158,9 @@ public class ColorArray : MonoBehaviour
     {
         return _currentColor == new Color() ? _baseColor : _currentColor;
     }
+
+    public void SetBaseColor(ColorName inColor)
+    {
+        _baseColor = GetColorValue(inColor);
+    }
 }
