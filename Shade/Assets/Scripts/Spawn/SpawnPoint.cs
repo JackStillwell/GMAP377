@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] private int _spawnNumber;
+    [SerializeField] private bool _initialSpawn;
+    
+    private int _spawnNumber;
     private Spawn _spawnManager;
 
     // Use this for initialization
@@ -16,14 +18,19 @@ public class SpawnPoint : MonoBehaviour
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
     }
 
-    public int GetSpawnNumber()
+    public bool IsInitialSpawn()
     {
-        return _spawnNumber;
+        return _initialSpawn;
+    }
+
+    public void SetSpawnNumber(int index)
+    {
+        _spawnNumber = index;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-		if (other.tag=="Player")
+		if (other.CompareTag("Player"))
         {
             _spawnManager.SetCurrentSpawnNumber(_spawnNumber); 
         }
