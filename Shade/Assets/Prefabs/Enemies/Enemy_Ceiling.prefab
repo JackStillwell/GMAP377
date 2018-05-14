@@ -21,9 +21,12 @@ GameObject:
   - component: {fileID: 4704224420454766}
   - component: {fileID: 137327767329021274}
   - component: {fileID: 95333501379245718}
+  - component: {fileID: 65336949749941092}
+  - component: {fileID: 114097536277734442}
+  - component: {fileID: 114581721689369760}
   m_Layer: 0
   m_Name: Enemy_Ceiling
-  m_TagString: Untagged
+  m_TagString: Enemy_Static
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,12 +38,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1086649776409496}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -26.6, y: 17.06, z: 78.6}
   m_LocalScale: {x: 16.975933, y: 1, z: 16.975933}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65336949749941092
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086649776409496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.46285835, y: 19.438604, z: 0.4207383}
+  m_Center: {x: 0.0072684246, y: -9.298223, z: -0.0017478105}
 --- !u!95 &95333501379245718
 Animator:
   serializedVersion: 3
@@ -58,6 +73,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114097536277734442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086649776409496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846c2a531893c4c2aad042b33c492b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114581721689369760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086649776409496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9de51312815d40bb80306e2d7b8f864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137327767329021274
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -72,7 +109,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 535e290da76f94345b95f86f4010a5f2, type: 3}
+  - {fileID: 2100000, guid: bcc6ea483c6494acf83f9b095302dcd7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
