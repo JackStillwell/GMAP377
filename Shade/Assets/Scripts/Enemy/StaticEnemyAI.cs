@@ -31,7 +31,7 @@ public class StaticEnemyAI : MonoBehaviour
 
     private Color GetEnemyColor()
     {
-        foreach (var mat in transform.parent.GetComponentInChildren<Renderer>().materials)
+        foreach (var mat in transform.GetComponentInChildren<Renderer>().materials)
         {
             if (mat.name.Contains("Enemy") && !mat.name.Contains("FOV"))
                 return mat.color;

@@ -46,7 +46,7 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (_playerVisible && !transform.parent.CompareTag("Enemy_Static"))	
+            if (_playerVisible && !transform.CompareTag("Enemy_Static"))	
 				_patrolAi.NextPoint();
 				
             _playerVisible = false;
