@@ -32,10 +32,22 @@ public class CameraController : MonoBehaviour {
         _camDistance -= Input.GetAxis("Mouse ScrollWheel") * _scrollSpeed;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!other.transform.parent.CompareTag("Player"))
+        _camDistance -= 100f;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(!other.transform.parent.CompareTag("Player"))
+        _camDistance -= 100f;
+    }
+
     private void FixedUpdate()
     {
         // Clamp rotation to 90 degrees
-        _currentX = Mathf.Clamp(_currentX, 0f, 75f);
+        _currentX = Mathf.Clamp(_currentX, -15f, 75f);
         _camDistance = Mathf.Clamp(_camDistance, _minCamDistance, _maxCamDistance);
         
         //set our z distance away from the PC

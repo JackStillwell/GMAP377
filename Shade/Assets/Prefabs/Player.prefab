@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 124687885897283700}
   - component: {fileID: 81890212034746996}
   - component: {fileID: 114317709221724380}
+  - component: {fileID: 135116777098223604}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -441,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1110e9375b94a92bc698da98df1a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 1, g: 1, b: 1, a: 1}
+  _baseColor: {r: 1, g: 0, b: 0, a: 1}
   _alphaValue: 0.9
 --- !u!114 &114317709221724380
 MonoBehaviour:
@@ -481,6 +482,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032535803311886}
   m_Enabled: 1
+--- !u!135 &135116777098223604
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032535803311886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.00001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136391769410402760
 CapsuleCollider:
   m_ObjectHideFlags: 1
