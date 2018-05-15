@@ -37,10 +37,11 @@ public class EnemyAI : MonoBehaviour
         _playerColor = _enemySight.GetPercievedColor();
       
         //Debug.Log("The Enemy Sees Player Color: " + _playerColor);
-        Debug.Log(_enemyColor);
+        //Debug.Log(_enemyColor);
         
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
+            Debug.Log("I See You! You look: " + _playerColor);
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);
@@ -63,6 +64,11 @@ public class EnemyAI : MonoBehaviour
             isGreenSimilar = true;
         
         return isRedSimilar && isBlueSimilar && isGreenSimilar;
+    }
+
+    public Color EnemyColor()
+    {
+        return _enemyColor;
     }
 
     private Color GetEnemyColor()

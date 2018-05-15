@@ -9,20 +9,34 @@ public class EnemySight : MonoBehaviour
     private bool _playerVisible;
 
     private GameObject _player;
-    
+
     private Color _percievedPlayerColor;
+    private Color _enemyColor;
     private NavMeshAgent _nav; // may be used in future
     private EnemyPatrolAI _patrolAi;
+    private EnemyAI _enemyAi;
 
     private RaycastHit[] _hitArray;
 
     void Start()
     {
-        _patrolAi = GetComponentInParent<EnemyPatrolAI> ();
-        _nav = GetComponentInParent<NavMeshAgent> (); // may be used in future
+        _patrolAi = GetComponentInParent<EnemyPatrolAI>();
+        _nav = GetComponentInParent<NavMeshAgent>(); // may be used in future
+
+        if (!transform.parent.CompareTag("Static_Enemy"))
+        {
+            _enemyAi = GetComponentInParent<EnemyAI>();
+            _enemyColor = _enemyAi.EnemyColor();
+        }
+
+        else
+        {
+            _enemyColor = Color.white;
+        }
 
         _player = GameObject.FindGameObjectWithTag("Player");
         _percievedPlayerColor = GetPlayerColor(_player);
+        
         _playerVisible = false;
     }
 
@@ -38,17 +52,19 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-			VisibleCheck();
-        }	
+            VisibleCheck();
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (_playerVisible && !transform.CompareTag("Enemy_Static"))	
-				_patrolAi.NextPoint();
-				
+            if (_playerVisible && 
+                !transform.parent.CompareTag("Enemy_Static") &&
+                IsEqualTo(_percievedPlayerColor, _enemyColor))
+            _patrolAi.NextPoint();
+
             _playerVisible = false;
         }
     }
@@ -59,23 +75,23 @@ public class EnemySight : MonoBehaviour
         _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
 
         // ColorPercievedUpdate();
-        
+
         foreach (var hit in _hitArray)
         {
-			Debug.Log(hit.collider.gameObject);
+            // Debug.Log(hit.collider.gameObject);
             if (hit.collider.gameObject == _player)
             {
-                Debug.Log("Player Visible");
+                //Debug.Log("Player Visible");
                 _playerVisible = true;
                 ColorPercievedUpdate();
                 break;
             }
 
-            if (ChangesColor(hit.collider.tag));
-                // Debug.Log("Color Changing Between");  // Do Nothing and Continue
+            if (ChangesColor(hit.collider.tag)) ;
+            // Debug.Log("Color Changing Between");  // Do Nothing and Continue
 
-            else if (hit.collider.name == "glasses");
-                // Debug.Log("Glasses in the Way"); // Do Nothing and Continue
+            else if (hit.collider.name == "glasses") ;
+            // Debug.Log("Glasses in the Way"); // Do Nothing and Continue
 
             else
             {
@@ -114,8 +130,8 @@ public class EnemySight : MonoBehaviour
 
                 index++;
             }
-            
-            while(index < colorUpdateArray.Count)
+
+            while (index < colorUpdateArray.Count)
             {
                 var objColor = colorUpdateArray[index];
 
@@ -138,7 +154,7 @@ public class EnemySight : MonoBehaviour
             // Debug.Log("Enemy sees only the Player");
             _percievedPlayerColor = GetPlayerColor(_player);
         }
-        
+
         // Debug.Log("The Player's Percieved Color Is: " + _percievedPlayerColor);
     }
 
@@ -155,26 +171,30 @@ public class EnemySight : MonoBehaviour
     // Not currently used
     float CalculatePathLength(Vector3 targetPosition) // may be used in future
     {
-        NavMeshPath path = new NavMeshPath ();
+        NavMeshPath path = new NavMeshPath();
         if (_nav.enabled)
-            _nav.CalculatePath (targetPosition, path);
+            _nav.CalculatePath(targetPosition, path);
 
         Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
 
-        allWayPoints [0] = transform.position;
-        allWayPoints [allWayPoints.Length - 1] = targetPosition;
+        allWayPoints[0] = transform.position;
+        allWayPoints[allWayPoints.Length - 1] = targetPosition;
 
-        for (int i = 0; i < path.corners.Length; i++) {
-            allWayPoints [i + 1] = path.corners [i];
+        for (int i = 0; i < path.corners.Length; i++)
+        {
+            allWayPoints[i + 1] = path.corners[i];
 
-		
+
         }
+
         float pathLength = 0f;
-        for (int i = 0; i < allWayPoints.Length - 1; i++) {
-		
-            pathLength += Vector3.Distance (allWayPoints [i], allWayPoints [i + 1]);
+        for (int i = 0; i < allWayPoints.Length - 1; i++)
+        {
+
+            pathLength += Vector3.Distance(allWayPoints[i], allWayPoints[i + 1]);
 
         }
+
         return pathLength;
     }
 
@@ -195,11 +215,11 @@ public class EnemySight : MonoBehaviour
     {
         return _player.GetComponentInChildren<ColorArray>().GetCurrentColor();
     }
-    
+
     private Color GetColorValue(ColorName c)
     {
         Color colorValue;
-        
+
         switch (c)
         {
             case ColorName.Red:
@@ -233,6 +253,20 @@ public class EnemySight : MonoBehaviour
                 colorValue = Color.white;
                 break;
         }
+
         return colorValue;
+    }
+
+    private static bool IsEqualTo(Color me, Color other)
+    {
+        bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
+        if (Mathf.Abs(other.r - me.r) < .1)
+            isRedSimilar = true;
+        if (Mathf.Abs(other.b - me.b) < .1)
+            isBlueSimilar = true;
+        if (Mathf.Abs(other.g - me.g) < .1)
+            isGreenSimilar = true;
+
+        return isRedSimilar && isBlueSimilar && isGreenSimilar;
     }
 }
