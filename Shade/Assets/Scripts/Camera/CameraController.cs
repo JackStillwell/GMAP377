@@ -17,15 +17,11 @@ public class CameraController : MonoBehaviour {
 
     private Rigidbody _followObjRigidbody;
 
-	private Vector3 camPosition; 
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _followObjRigidbody = FollowObj.GetComponent<Rigidbody>();
-
-		camPosition = gameObject.transform.position;
     }
     
     private void Update()
@@ -70,17 +66,20 @@ public class CameraController : MonoBehaviour {
             transform.position, 
             FollowObj.transform.position + rotation * dir, 
             8f * Time.deltaTime);
+	    
 		HitWall(FollowObj.transform.position, transform.position);
+	    
         transform.LookAt(FollowObj.transform.position);
 
     }
+	
 	private void HitWall(Vector3 playerVector, Vector3 camVector)
 	{
-		Debug.DrawLine (playerVector, transform.position, Color.cyan);
+		// Debug.DrawLine (playerVector, camVector, Color.cyan);
 		RaycastHit wallHit = new RaycastHit();
-		if(Physics.Linecast(playerVector, transform.position, out wallHit))
+		if(Physics.Linecast(playerVector, camVector, out wallHit))
 		{
-			Debug.DrawLine (wallHit.point, Vector3.left, Color.red);
+			// Debug.DrawLine (wallHit.point, Vector3.left, Color.red);
 			transform.position = new Vector3 (wallHit.point.x, transform.position.y, wallHit.point.z);
 		}
 	}
