@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class EnemyPatrolAI : MonoBehaviour 
 {
 	[SerializeField] private Transform[] _wayPoints;
-	[SerializeField] private float maxWaitTime = 0.2f;
+	[SerializeField] private float minWaitTime = 1f;
+	[SerializeField] private float maxWaitTime = 1f;
 	private float waitTime;
 	private NavMeshAgent _navAgent;	 
 	private int _nextPoint = 0; 	 	
@@ -18,9 +19,9 @@ public class EnemyPatrolAI : MonoBehaviour
 	void Start () 
 	{
 		_navAgent = gameObject.GetComponent<NavMeshAgent>();
-		_navAgent.autoBraking = false; 
+		_navAgent.autoBraking = true; 
 		_navAgent.updateRotation = true;
-		waitTime = Random.Range (0f, maxWaitTime);
+		waitTime = Random.Range (minWaitTime, maxWaitTime);
 		rb = gameObject.GetComponent<Rigidbody> ();
 		Debug.Log (waitTime);
 		_navAgent.Stop ();
@@ -32,7 +33,7 @@ public class EnemyPatrolAI : MonoBehaviour
 	{
 
 
-		if (!_navAgent.pathPending && _navAgent.remainingDistance < 2f) 
+		if (!_navAgent.pathPending && _navAgent.remainingDistance < 4f) 
 		{
 
 			patrolTimer += Time.deltaTime;
@@ -43,8 +44,8 @@ public class EnemyPatrolAI : MonoBehaviour
 
 				NextPoint ();
 				patrolTimer = 0f;
-				waitTime = Random.Range (0f, maxWaitTime);
-				Debug.Log (waitTime);
+				waitTime = Random.Range (minWaitTime, maxWaitTime);
+				//Debug.Log (waitTime);
 			}
 
 		}
