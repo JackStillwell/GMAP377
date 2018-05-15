@@ -22,11 +22,21 @@ public class EnemySight : MonoBehaviour
     {
         _patrolAi = GetComponentInParent<EnemyPatrolAI>();
         _nav = GetComponentInParent<NavMeshAgent>(); // may be used in future
-        _enemyAi = GetComponentInParent<EnemyAI>();
+
+        if (!transform.parent.CompareTag("Static_Enemy"))
+        {
+            _enemyAi = GetComponentInParent<EnemyAI>();
+            _enemyColor = _enemyAi.EnemyColor();
+        }
+
+        else
+        {
+            _enemyColor = Color.white;
+        }
 
         _player = GameObject.FindGameObjectWithTag("Player");
         _percievedPlayerColor = GetPlayerColor(_player);
-        _enemyColor = _enemyAi.EnemyColor();
+        
         _playerVisible = false;
     }
 
@@ -51,8 +61,8 @@ public class EnemySight : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (_playerVisible && 
-                IsEqualTo(_percievedPlayerColor, _enemyColor) && 
-                !transform.parent.CompareTag("Enemy_Static"))
+                !transform.parent.CompareTag("Enemy_Static") &&
+                IsEqualTo(_percievedPlayerColor, _enemyColor))
             _patrolAi.NextPoint();
 
             _playerVisible = false;
