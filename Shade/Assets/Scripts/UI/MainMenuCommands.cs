@@ -11,7 +11,8 @@ public class MainMenuCommands : MonoBehaviour {
 
     public void Start()
     {
-        //load file, if there is one. Not touching right now.
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void NewGame()

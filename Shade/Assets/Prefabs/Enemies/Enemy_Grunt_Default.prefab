@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 114609935046203672}
   m_Layer: 0
   m_Name: Enemy_FOV_Cone
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ Transform:
   - {fileID: 4095675866395386}
   - {fileID: 4286358179207556}
   m_Father: {fileID: 4978128561996342}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4788470827948036
 Transform:
@@ -151,11 +151,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476011874274784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.006848, y: 0.506, z: 0.335}
+  m_LocalPosition: {x: -0.006848, y: 0.506, z: 0.459}
   m_LocalScale: {x: 2.266368, y: 0.5171603, z: 3.3654}
   m_Children: []
   m_Father: {fileID: 4978128561996342}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4978128561996342
 Transform:
@@ -164,11 +164,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1209811205707130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.63, y: -1.858334e-17, z: 18.439976}
+  m_LocalPosition: {x: 114.739075, y: 4.2654468e-17, z: -38.419727}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
-  - {fileID: 4788470827948036}
   - {fileID: 4639279948526864}
+  - {fileID: 4788470827948036}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,6 +185,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 62205d97d13f554499b2194b8fe76c98, type: 3}
   m_StaticBatchInfo:
@@ -219,6 +220,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: bcc6ea483c6494acf83f9b095302dcd7, type: 2}
   m_StaticBatchInfo:
@@ -253,6 +255,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 35ed0ced02638b64f82739fc536d602a, type: 2}
   m_StaticBatchInfo:
@@ -369,6 +372,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95970976716159620
 Animator:
   serializedVersion: 3
@@ -386,6 +390,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114058926161828614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -397,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _catchDistance: 3
+  _catchDistance: 4
 --- !u!114 &114609935046203672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,9 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475ae935b941e46a68acb504e8e5c72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  _wayPoints: []
 --- !u!135 &135508855964787716
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -444,13 +447,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 5
+  m_Speed: 20
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 400
-  m_StoppingDistance: 0
+  m_AngularSpeed: 200
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: -0.11

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 95474564773899816}
   - component: {fileID: 65764456002703706}
   - component: {fileID: 65617936749491730}
+  - component: {fileID: 208297079861209404}
   m_Layer: 0
   m_Name: chair-no-wheels
   m_TagString: Untagged
@@ -256,3 +257,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!208 &208297079861209404
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129693906483866}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

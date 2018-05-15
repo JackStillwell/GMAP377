@@ -6,13 +6,18 @@ public class Puddle : MonoBehaviour
 {
 
     private ColorName _colorName;
-    [SerializeField] private int effectDuration;
+    [SerializeField] private float effectDuration;
 
     private void Start()
     {
-        _colorName = (ColorName)Enum.Parse(typeof(ColorName), transform.tag);
-
-        //playerArray = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<ColorArray>();
+        try
+        {
+            _colorName = (ColorName)Enum.Parse(typeof(ColorName), transform.tag);
+        }
+        catch
+        {
+            Debug.LogError("Tag the puddle, dumbass!");
+        }
 
     }
 
@@ -22,7 +27,6 @@ public class Puddle : MonoBehaviour
         {
             other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
         }
-        
         else if (this.CompareTag("Untagged"))
         {
             Debug.LogError("Tag the puddle, dumbass!");

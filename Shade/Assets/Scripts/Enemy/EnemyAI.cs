@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
         _playerColor = _enemySight.GetPercievedColor();
       
         //Debug.Log("The Enemy Sees Player Color: " + _playerColor);
+        Debug.Log(_enemyColor);
         
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
@@ -70,7 +71,7 @@ public class EnemyAI : MonoBehaviour
         {
             foreach (var mat in rend.materials)
             {
-                if (mat.name == "Enemy (Instance)")
+                if (mat.name.Contains("Enemy"))
                     return mat.color;
             }
         }
