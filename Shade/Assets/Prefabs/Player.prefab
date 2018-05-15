@@ -278,7 +278,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ed813f2a881f145de8d3aec36e47da8b, type: 2}
   m_StaticBatchInfo:
@@ -313,7 +312,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100002, guid: ec448d140ab115b4db99bd3e52bf806b, type: 3}
   m_StaticBatchInfo:
@@ -348,7 +346,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100002, guid: ec448d140ab115b4db99bd3e52bf806b, type: 3}
   m_StaticBatchInfo:
@@ -430,7 +427,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114248098839256906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,7 +486,7 @@ SphereCollider:
   m_GameObject: {fileID: 1032535803311886}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.00001
   m_Center: {x: 0, y: 0, z: 0}

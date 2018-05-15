@@ -17,11 +17,15 @@ public class CameraController : MonoBehaviour {
 
     private Rigidbody _followObjRigidbody;
 
+	private Vector3 camPosition; 
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _followObjRigidbody = FollowObj.GetComponent<Rigidbody>();
+
+		camPosition = gameObject.transform.position;
     }
     
     private void Update()
@@ -32,17 +36,17 @@ public class CameraController : MonoBehaviour {
         _camDistance -= Input.GetAxis("Mouse ScrollWheel") * _scrollSpeed;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(!other.transform.parent.CompareTag("Player"))
-        _camDistance -= 100f;
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if(!other.transform.parent.CompareTag("Player"))
-        _camDistance -= 100f;
-    }
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        if(!other.transform.parent.CompareTag("Player"))
+//        _camDistance -= 100f;
+//    }
+//
+//    private void OnTriggerStay(Collider other)
+//    {
+//        if(!other.transform.parent.CompareTag("Player"))
+//        _camDistance -= 100f;
+//    }
 
     private void FixedUpdate()
     {
@@ -61,10 +65,23 @@ public class CameraController : MonoBehaviour {
 
         //lerp camera positon to new position
         //multiplying a position by a quaternion rotates the positon
+
         transform.position = Vector3.Lerp(
             transform.position, 
             FollowObj.transform.position + rotation * dir, 
             8f * Time.deltaTime);
+		HitWall(FollowObj.transform.position, transform.position);
         transform.LookAt(FollowObj.transform.position);
+
     }
+	private void HitWall(Vector3 playerVector, Vector3 camVector)
+	{
+		Debug.DrawLine (playerVector, transform.position, Color.cyan);
+		RaycastHit wallHit = new RaycastHit();
+		if(Physics.Linecast(playerVector, transform.position, out wallHit))
+		{
+			Debug.DrawLine (wallHit.point, Vector3.left, Color.red);
+			transform.position = new Vector3 (wallHit.point.x, transform.position.y, wallHit.point.z);
+		}
+	}
 }
