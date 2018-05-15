@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Shade/Assets/Models/objects-set/glass.obj.meta
+guid: bfaf7182d04ae614692c61536ef5ac1c
+timeCreated: 1525262283
+=======
 guid: f78bcb4ef3e2eb744931d50c9dc110e5
 timeCreated: 1525907396
+>>>>>>> master:Shade/Assets/Models/Enemies/Glob_grunt_rigged_2.fbx.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 22

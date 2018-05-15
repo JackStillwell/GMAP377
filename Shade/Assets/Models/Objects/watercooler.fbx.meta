@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Shade/Assets/Models/objects-set/glass-parts.fbx.meta
+guid: 766eca8862e1a884591c366b2fb74b76
+timeCreated: 1525557401
+=======
 guid: 1b50535186fb4cf42a8ca8c2d64a8202
 timeCreated: 1525870838
+>>>>>>> master:Shade/Assets/Models/Objects/watercooler.fbx.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 22

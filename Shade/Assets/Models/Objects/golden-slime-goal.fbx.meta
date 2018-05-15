@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Shade/Assets/Models/objects-set/lamp-parts.fbx.meta
+guid: 44d0d37d311272040bf6747cd86c6920
+timeCreated: 1525557551
+=======
 guid: 30b32eb2b19f9e74b88f560f896e879e
 timeCreated: 1525881009
+>>>>>>> master:Shade/Assets/Models/Objects/golden-slime-goal.fbx.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
