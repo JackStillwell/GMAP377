@@ -32,10 +32,22 @@ public class CameraController : MonoBehaviour {
         _camDistance -= Input.GetAxis("Mouse ScrollWheel") * _scrollSpeed;
     }
 
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        if(!other.transform.parent.CompareTag("Player"))
+//        _camDistance -= 100f;
+//    }
+//
+//    private void OnTriggerStay(Collider other)
+//    {
+//        if(!other.transform.parent.CompareTag("Player"))
+//        _camDistance -= 100f;
+//    }
+
     private void FixedUpdate()
     {
         // Clamp rotation to 90 degrees
-        _currentX = Mathf.Clamp(_currentX, 0f, 75f);
+        _currentX = Mathf.Clamp(_currentX, -15f, 75f);
         _camDistance = Mathf.Clamp(_camDistance, _minCamDistance, _maxCamDistance);
         
         //set our z distance away from the PC
@@ -49,10 +61,26 @@ public class CameraController : MonoBehaviour {
 
         //lerp camera positon to new position
         //multiplying a position by a quaternion rotates the positon
+
         transform.position = Vector3.Lerp(
             transform.position, 
             FollowObj.transform.position + rotation * dir, 
             8f * Time.deltaTime);
+	    
+		HitWall(FollowObj.transform.position, transform.position);
+	    
         transform.LookAt(FollowObj.transform.position);
+
     }
+	
+	private void HitWall(Vector3 playerVector, Vector3 camVector)
+	{
+		// Debug.DrawLine (playerVector, camVector, Color.cyan);
+		RaycastHit wallHit = new RaycastHit();
+		if(Physics.Linecast(playerVector, camVector, out wallHit))
+		{
+			// Debug.DrawLine (wallHit.point, Vector3.left, Color.red);
+			transform.position = new Vector3 (wallHit.point.x, wallHit.point.y, wallHit.point.z);
+		}
+	}
 }
