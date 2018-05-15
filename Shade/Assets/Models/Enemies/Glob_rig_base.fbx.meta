@@ -1,18 +1,35 @@
 fileFormatVersion: 2
-guid: eee8c650c12b44c459726d24a5b1b93f
-timeCreated: 1525207760
+guid: 7e7cdaa7f819f564384aa95443ac8dab
+timeCreated: 1526416288
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: box
-    100002: //RootNode
-    400000: box
-    400002: //RootNode
-    2100000: boxMat
-    2300000: box
-    3300000: box
-    4300000: box
+    100000: blob
+    100002: glasses
+    100004: //RootNode
+    100006: Glob_Spine_1
+    100008: Glob_Spine_2
+    100010: Glob_Spine_3
+    100012: Glob_Spine_4
+    100014: SphericalBoi
+    400000: blob
+    400002: glasses
+    400004: //RootNode
+    400006: Glob_Spine_1
+    400008: Glob_Spine_2
+    400010: Glob_Spine_3
+    400012: Glob_Spine_4
+    400014: SphericalBoi
+    2100000: phong1
+    2100002: phong2
+    2300000: glasses
+    3300000: glasses
+    4300000: blob
+    4300002: glasses
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: blob
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +104,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
