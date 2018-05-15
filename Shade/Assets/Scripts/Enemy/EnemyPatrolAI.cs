@@ -24,39 +24,23 @@ public class EnemyPatrolAI : MonoBehaviour
 		waitTime = Random.Range (0f, maxWaitTime);
 		rb = gameObject.GetComponent<Rigidbody> ();
 		Debug.Log (waitTime);
+		_navAgent.Stop ();
 		NextPoint();
 	
 	}
 
 	void Update () 
 	{
-//		if (_navAgent.pathPending) {
-//			Debug.Log ("gg");
-//		}
-//		if (movingFlag) {
-//			patrolTimer += Time.deltaTime;
-//
-//		}
 
-		if (!_navAgent.pathPending && _navAgent.remainingDistance < 0.1f) 
+
+		if (!_navAgent.pathPending && _navAgent.remainingDistance < 2f) 
 		{
 			
 			patrolTimer += Time.deltaTime;
-			//Debug.Log (patrolTimer);
-			//rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-			//Debug.Log (Time.deltaTime);
-			//
-			originalSpeed = _navAgent.speed;
-			//Debug.Log (originalSpeed);
-			//Debug.Log (_navAgent.remainingDistance);
-			//Debug.Log (_navAgent.pathPending);
 
-			_navAgent.speed = 0f;
-
+			_navAgent.Stop ();
 			if (patrolTimer > waitTime) {
-//				movingFlag = false;
-				//rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
-				_navAgent.speed = originalSpeed;
+
 
 				NextPoint ();
 				patrolTimer = 0f;
@@ -71,8 +55,8 @@ public class EnemyPatrolAI : MonoBehaviour
 
 	public void NextPoint() 
 	{		
-		
-		Debug.Log("ff");
+		_navAgent.Resume ();
+
 		if (_wayPoints.Length == 0)
 			return;
 		_navAgent.destination = _wayPoints[_nextPoint].position;
