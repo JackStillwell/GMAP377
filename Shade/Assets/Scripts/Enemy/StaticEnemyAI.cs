@@ -31,7 +31,14 @@ public class StaticEnemyAI : MonoBehaviour
 
     private Color GetEnemyColor()
     {
-        return transform.parent.GetComponentInChildren<Renderer>().material.color;
+        foreach (var mat in transform.GetComponentInChildren<Renderer>().materials)
+        {
+            if (mat.name.Contains("Enemy") && !mat.name.Contains("FOV"))
+                return mat.color;
+        }
+        
+        Debug.Log("GET ENEMY COLOR FAILURE");
+        return Color.white;
     }
 
     private static bool IsEqualTo(Color me, Color other)

@@ -1,16 +1,58 @@
 fileFormatVersion: 2
-guid: 535e290da76f94345b95f86f4010a5f2
-timeCreated: 1524701732
+guid: 67d2fb62ec99d9e4593f6efa0d6d9e91
+timeCreated: 1526271378
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert1
-    4300000: pCube1
+    100000: blob_rig_23:ArmL
+    100002: blob_rig_23:ArmR
+    100004: blob_rig_23:base
+    100006: blob_rig_23:Eugene_body
+    100008: blob_rig_23:eyes1
+    100010: blob_rig_23:head
+    100012: blob_rig_23:head2
+    100014: blob_rig_23:L_eye
+    100016: blob_rig_23:L_eye 1
+    100018: blob_rig_23:neck
+    100020: blob_rig_23:R_Eye
+    100022: blob_rig_23:R_eye
+    100024: blob_rig_23:spine1
+    100026: blob_rig_23:spine2
+    100028: blob_rig_23:spine3
+    100030: blob_rig_23:tail1
+    100032: blob_rig_23:tail2
+    100034: //RootNode
+    400000: blob_rig_23:ArmL
+    400002: blob_rig_23:ArmR
+    400004: blob_rig_23:base
+    400006: blob_rig_23:Eugene_body
+    400008: blob_rig_23:eyes1
+    400010: blob_rig_23:head
+    400012: blob_rig_23:head2
+    400014: blob_rig_23:L_eye
+    400016: blob_rig_23:L_eye 1
+    400018: blob_rig_23:neck
+    400020: blob_rig_23:R_Eye
+    400022: blob_rig_23:R_eye
+    400024: blob_rig_23:spine1
+    400026: blob_rig_23:spine2
+    400028: blob_rig_23:spine3
+    400030: blob_rig_23:tail1
+    400032: blob_rig_23:tail2
+    400034: //RootNode
+    2100000: blob_rig_23_lambert2
+    2100002: blob_rig_23_eyes
+    2300000: blob_rig_23:L_eye 1
+    2300002: blob_rig_23:R_eye
+    3300000: blob_rig_23:L_eye 1
+    3300002: blob_rig_23:R_eye
+    4300000: blob_rig_23:Eugene_body
+    4300002: blob_rig_23:L_eye
+    4300004: blob_rig_23:R_eye
+    7400000: Take 001
     9500000: //RootNode
-    13700000: //RootNode
+    13700000: blob_rig_23:Eugene_body
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -41,7 +83,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
