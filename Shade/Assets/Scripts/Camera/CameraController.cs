@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour {
 		if(Physics.Linecast(playerVector, camVector, out wallHit))
 		{
 			// Debug.DrawLine (wallHit.point, Vector3.left, Color.red);
-			transform.position = new Vector3 (wallHit.point.x, transform.position.y, wallHit.point.z);
+			transform.position = new Vector3 (wallHit.point.x, wallHit.point.y, wallHit.point.z);
 		}
 	}
 }
