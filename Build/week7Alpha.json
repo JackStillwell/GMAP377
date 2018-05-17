@@ -1,0 +1,13 @@
+{
+"companyName": "DefaultCompany",
+"productName": "Shade",
+"dataUrl": "week7Alpha.data.unityweb",
+"asmCodeUrl": "week7Alpha.asm.code.unityweb",
+"asmMemoryUrl": "week7Alpha.asm.memory.unityweb",
+"asmFrameworkUrl": "week7Alpha.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
