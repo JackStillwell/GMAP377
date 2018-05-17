@@ -1,30 +1,51 @@
 fileFormatVersion: 2
-guid: eaff4f53ac153e14c97d0f6d6c64e674
-timeCreated: 1526565062
+guid: a9eca7613f80f0b41889ff09eb2a6114
+timeCreated: 1526497933
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: puddle_body
-    100004: Puddle_Leye
-    100006: Puddle_Reye
-    400000: //RootNode
-    400002: puddle_body
-    400004: Puddle_Leye
-    400006: Puddle_Reye
-    2100000: puddle_bodyMat
-    2100002: Puddle_LeyeMat
-    2100004: Puddle_ReyeMat
-    2300000: puddle_body
-    2300002: Puddle_Leye
-    2300004: Puddle_Reye
-    3300000: puddle_body
-    3300002: Puddle_Leye
-    3300004: Puddle_Reye
-    4300000: puddle_body
-    4300002: Puddle_Leye
-    4300004: Puddle_Reye
+    100000: leaf1
+    100002: leaf2
+    100004: leaf3
+    100006: leaf4
+    100008: leaf6
+    100010: leaf7
+    100012: leaves
+    100014: //RootNode
+    100016: planter
+    400000: leaf1
+    400002: leaf2
+    400004: leaf3
+    400006: leaf4
+    400008: leaf6
+    400010: leaf7
+    400012: leaves
+    400014: //RootNode
+    400016: planter
+    2100000: lambert1
+    2300000: leaf1
+    2300002: leaf2
+    2300004: leaf3
+    2300006: leaf4
+    2300008: leaf6
+    2300010: leaf7
+    2300012: planter
+    3300000: leaf1
+    3300002: leaf2
+    3300004: leaf3
+    3300006: leaf4
+    3300008: leaf6
+    3300010: leaf7
+    3300012: planter
+    4300000: leaf7
+    4300002: leaf6
+    4300004: leaf4
+    4300006: leaf3
+    4300008: leaf2
+    4300010: leaf1
+    4300012: planter
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -99,7 +120,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -1,30 +1,58 @@
 fileFormatVersion: 2
-guid: eaff4f53ac153e14c97d0f6d6c64e674
-timeCreated: 1526565062
+guid: 7cb431f15521fc84a8a1ae36814d457b
+timeCreated: 1526569399
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: puddle_body
-    100004: Puddle_Leye
-    100006: Puddle_Reye
-    400000: //RootNode
-    400002: puddle_body
-    400004: Puddle_Leye
-    400006: Puddle_Reye
-    2100000: puddle_bodyMat
-    2100002: Puddle_LeyeMat
-    2100004: Puddle_ReyeMat
-    2300000: puddle_body
-    2300002: Puddle_Leye
-    2300004: Puddle_Reye
-    3300000: puddle_body
-    3300002: Puddle_Leye
-    3300004: Puddle_Reye
-    4300000: puddle_body
-    4300002: Puddle_Leye
-    4300004: Puddle_Reye
+    100000: ArmL
+    100002: ArmR
+    100004: base
+    100006: Eugene_body
+    100008: //RootNode
+    100010: eyes1
+    100012: head
+    100014: head2
+    100016: L_eye
+    100018: L_eye 1
+    100020: neck
+    100022: R_Eye
+    100024: R_eye
+    100026: spine1
+    100028: spine2
+    100030: spine3
+    100032: tail1
+    100034: tail2
+    400000: ArmL
+    400002: ArmR
+    400004: base
+    400006: Eugene_body
+    400008: //RootNode
+    400010: eyes1
+    400012: head
+    400014: head2
+    400016: L_eye
+    400018: L_eye 1
+    400020: neck
+    400022: R_Eye
+    400024: R_eye
+    400026: spine1
+    400028: spine2
+    400030: spine3
+    400032: tail1
+    400034: tail2
+    2100000: lambert2
+    2100002: eyes
+    2300000: L_eye 1
+    2300002: R_eye
+    3300000: L_eye 1
+    3300002: R_eye
+    4300000: Eugene_body
+    4300002: L_eye
+    4300004: R_eye
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Eugene_body
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -99,7 +127,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
