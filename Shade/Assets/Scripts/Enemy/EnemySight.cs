@@ -23,7 +23,7 @@ public class EnemySight : MonoBehaviour
         _patrolAi = GetComponentInParent<EnemyPatrolAI>();
         _nav = GetComponentInParent<NavMeshAgent>(); // may be used in future
 
-        if (!transform.parent.CompareTag("Static_Enemy"))
+        if (!transform.parent.CompareTag("Enemy_Static"))
         {
             _enemyAi = GetComponentInParent<EnemyAI>();
             _enemyColor = _enemyAi.EnemyColor();
