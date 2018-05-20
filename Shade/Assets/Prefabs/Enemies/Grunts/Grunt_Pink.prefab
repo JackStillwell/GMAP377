@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 195918993739282338}
   - component: {fileID: 114734077210649818}
   - component: {fileID: 114058926161828614}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grunt_Pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33547762680676022}
   - component: {fileID: 23177976991961700}
   - component: {fileID: 64894395180277622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: glasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 95361784281006810}
   - component: {fileID: 64644277445046590}
   - component: {fileID: 114609935046203672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_FOV_Cone
   m_TagString: Red
   m_Icon: {fileID: 0}
@@ -77,8 +77,24 @@ GameObject:
   - component: {fileID: 4095675866395386}
   - component: {fileID: 33407016511940024}
   - component: {fileID: 23474424577845092}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: blob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1705971602279912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4069775983261620}
+  - component: {fileID: 108509955990929740}
+  m_Layer: 8
+  m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,13 +112,26 @@ GameObject:
   - component: {fileID: 54102009375154844}
   - component: {fileID: 64846407027362844}
   - component: {fileID: 135508855964787716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4069775983261620
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705971602279912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.043023746, y: 0.46388674, z: 0.033400536}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+  m_Children: []
+  m_Father: {fileID: 4978128561996342}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4095675866395386
 Transform:
   m_ObjectHideFlags: 1
@@ -164,11 +193,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1209811205707130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.573231, y: 7.1774257e-17, z: -71.11335}
+  m_LocalPosition: {x: -10.689072, y: 0, z: 4.9897985}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4639279948526864}
   - {fileID: 4788470827948036}
+  - {fileID: 4069775983261620}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -386,6 +416,42 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &108509955990929740
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705971602279912}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 0.21323526, b: 1, a: 1}
+  m_Intensity: 1.2
+  m_Range: 2.9724493
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114058926161828614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPoints: []
+  minWaitTime: 1
   maxWaitTime: 0.2
 --- !u!135 &135508855964787716
 SphereCollider:
