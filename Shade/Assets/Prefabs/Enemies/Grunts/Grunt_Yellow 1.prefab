@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPoints: []
   minWaitTime: 1
-  maxWaitTime: 0.2
+  maxWaitTime: 1
 --- !u!135 &135353364475990246
 SphereCollider:
   m_ObjectHideFlags: 1
