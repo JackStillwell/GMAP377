@@ -17,6 +17,7 @@ public class CameraShake : MonoBehaviour {
 
 	public static void Shake()
 	{
+		camOriginalPos = gameObject.transform.localPosition;
 		instance.StopAllCoroutines ();
 		instance.StartCoroutine (instance.doShake ());
 	}
