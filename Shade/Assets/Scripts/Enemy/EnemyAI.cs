@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+
+
         _enemyColor = GetEnemyColor(); 
         _enemySight = GetComponentInChildren<EnemySight>();
         _navAgent = GetComponent<NavMeshAgent>();
@@ -48,6 +51,7 @@ public class EnemyAI : MonoBehaviour
 
             if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
             {
+				CameraShake.Shake ();
                 _spawnManager.TriggerRespawn(_player);
             }
         }
