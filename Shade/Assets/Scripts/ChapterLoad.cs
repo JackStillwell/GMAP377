@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class ChapterLoad : MonoBehaviour {
 
-	public void chapterLoad(int i)
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+
+        }
+    }
+
+    public void chapterLoad(int i)
     {
 
 
