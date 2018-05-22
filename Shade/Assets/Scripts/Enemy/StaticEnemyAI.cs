@@ -8,8 +8,10 @@ public class StaticEnemyAI : MonoBehaviour
     private Spawn _spawnManager;
     private EnemySight _sight;
 
+
     private void Start()
     {
+
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
         _sight = GetComponent<EnemySight>();
     }
@@ -25,6 +27,7 @@ public class StaticEnemyAI : MonoBehaviour
         }
         if (other.CompareTag("Player") && _sight.IsPlayerVisible() && !IsEqualTo(_sight.GetPercievedColor(), GetEnemyColor()))
         {
+			CameraShake.Shake ();
             _spawnManager.TriggerRespawn(other.gameObject);
         }
     }
