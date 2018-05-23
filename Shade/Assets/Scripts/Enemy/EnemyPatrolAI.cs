@@ -24,7 +24,7 @@ public class EnemyPatrolAI : MonoBehaviour
 		waitTime = Random.Range (minWaitTime, maxWaitTime);
 		rb = gameObject.GetComponent<Rigidbody> ();
 		Debug.Log (waitTime);
-		_navAgent.Stop ();
+		_navAgent.isStopped = true;
 		NextPoint();
 
 	}
@@ -38,7 +38,7 @@ public class EnemyPatrolAI : MonoBehaviour
 
 			patrolTimer += Time.deltaTime;
 
-			_navAgent.Stop ();
+			_navAgent.isStopped = true;
 			if (patrolTimer > waitTime) {
 
 
@@ -55,7 +55,7 @@ public class EnemyPatrolAI : MonoBehaviour
 
 	public void NextPoint() 
 	{		
-		_navAgent.Resume ();
+		_navAgent.isStopped = false;
 
 		if (_wayPoints.Length == 0)
 			return;
