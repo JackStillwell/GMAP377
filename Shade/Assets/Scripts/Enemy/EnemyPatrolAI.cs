@@ -22,26 +22,23 @@ public class EnemyPatrolAI : MonoBehaviour
 		_navAgent.autoBraking = true; 
 		_navAgent.updateRotation = true;
 		waitTime = Random.Range (minWaitTime, maxWaitTime);
-		rb = gameObject.GetComponent<Rigidbody> ();
-		Debug.Log (waitTime);
-		_navAgent.Stop ();
+		rb = gameObject.GetComponent<Rigidbody>();
+		Debug.Log(waitTime);
+		_navAgent.isStopped = true;
 		NextPoint();
 
 	}
 
 	void Update () 
 	{
-
-
 		if (!_navAgent.pathPending && _navAgent.remainingDistance < 4f) 
 		{
-
 			patrolTimer += Time.deltaTime;
-
-			_navAgent.Stop ();
-			if (patrolTimer > waitTime) {
-
-
+			
+			this.gameObject.GetComponentInChildren<Animator>().SetBool("isMoving", false);
+			_navAgent.isStopped = true;
+			if (patrolTimer > waitTime) 
+			{
 				NextPoint ();
 				patrolTimer = 0f;
 				waitTime = Random.Range (minWaitTime, maxWaitTime);
@@ -55,7 +52,8 @@ public class EnemyPatrolAI : MonoBehaviour
 
 	public void NextPoint() 
 	{		
-		_navAgent.Resume ();
+		_navAgent.isStopped = false;
+		this.gameObject.GetComponentInChildren<Animator>().SetBool("isMoving", true);
 
 		if (_wayPoints.Length == 0)
 			return;

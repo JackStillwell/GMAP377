@@ -44,6 +44,7 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            _nav.isStopped = false;
             VisibleCheck();
         }
     }
