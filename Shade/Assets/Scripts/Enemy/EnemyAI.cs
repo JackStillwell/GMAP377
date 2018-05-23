@@ -46,6 +46,7 @@ public class EnemyAI : MonoBehaviour
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);
             this.gameObject.GetComponentInChildren<Animator>().SetBool("isMoving", true);
+            _navAgent.isStopped = false;
             if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
             {
 				CameraShake.Shake();
