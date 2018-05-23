@@ -11,13 +11,13 @@ public class CameraShake : MonoBehaviour {
 
 
 	void Start () {
-		camOriginalPos = gameObject.transform.localPosition;
+		camOriginalPos = this.gameObject.transform.localPosition;
 		instance = this;
 	}
 
 	public static void Shake()
 	{
-		camOriginalPos = gameObject.transform.localPosition;
+		instance.camOriginalPos = instance.gameObject.transform.localPosition;
 		instance.StopAllCoroutines ();
 		instance.StartCoroutine (instance.doShake ());
 	}
