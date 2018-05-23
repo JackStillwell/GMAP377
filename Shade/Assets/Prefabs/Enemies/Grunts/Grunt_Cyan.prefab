@@ -487,8 +487,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPoints: []
+<<<<<<< Updated upstream
   minWaitTime: 1
   maxWaitTime: 1
+=======
+  minWaitTime: 0.2
+  maxWaitTime: 0.2
+>>>>>>> Stashed changes
 --- !u!135 &135508855964787716
 SphereCollider:
   m_ObjectHideFlags: 1

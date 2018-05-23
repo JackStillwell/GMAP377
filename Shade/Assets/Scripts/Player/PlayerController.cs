@@ -14,13 +14,16 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _pcRigidbody;
 
+    private Animator animator;
+
     void Start()
     {
         _pcRigidbody = GetComponent<Rigidbody>();
         // Freezes X and Z rotation so the player cannot fall over and can only rotate side to side.
-        _pcRigidbody.constraints = (RigidbodyConstraints) 80;
+        _pcRigidbody.constraints = (RigidbodyConstraints)80;
         _pcRigidbody.useGravity = true;
         _pcRigidbody.isKinematic = false;
+        animator = transform.GetComponent<Animator>();
     }
 
     void Update()
@@ -34,13 +37,17 @@ public class PlayerController : MonoBehaviour
         {
             _pcRigidbody.AddForce(Vector3.up * _jumpForce);
         }
+        if (_z > 0 || _x > 0)
+            animator.SetBool("isMoving", true);
+        else
+            animator.SetBool("isMoving", false);
     }
 
     private void FixedUpdate()
     {
         Vector3 moveVector = _pcRigidbody.position + _pcRigidbody.rotation * new Vector3(_x, 0, _z);
         Quaternion moveQuaternion = Quaternion.Euler(new Vector3(0, _y, 0));
-        
+
         _pcRigidbody.MoveRotation(transform.rotation * moveQuaternion);
         _pcRigidbody.MovePosition(moveVector);
     }

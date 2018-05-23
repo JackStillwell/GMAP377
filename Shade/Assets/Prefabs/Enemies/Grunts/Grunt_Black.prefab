@@ -193,7 +193,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1209811205707130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 7.7060633, y: 0, z: 4.5214148}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4639279948526864}
@@ -487,7 +491,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPoints: []
+<<<<<<< Updated upstream
   minWaitTime: 1
+=======
+  minWaitTime: 0.2
+>>>>>>> Stashed changes
   maxWaitTime: 1
 --- !u!135 &135508855964787716
 SphereCollider:

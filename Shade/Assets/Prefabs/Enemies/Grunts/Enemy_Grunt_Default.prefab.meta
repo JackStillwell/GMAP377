@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Shade/Assets/Prefabs/Enemies/Grunts/Enemy_Grunt_Default.prefab.meta
 guid: 221a9279799be4257bac8103dd773eaa
 timeCreated: 1525810180
+=======
+guid: 98d7f9a3d741040ad9c2a954ae776e2a
+timeCreated: 1526414897
+>>>>>>> Stashed changes:Shade/Assets/Prefabs/Enemies/Grunts/Grunt_Yellow.prefab.meta
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}
