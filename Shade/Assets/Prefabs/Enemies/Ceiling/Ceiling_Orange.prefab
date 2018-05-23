@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65336949749941092}
   - component: {fileID: 114097536277734442}
   - component: {fileID: 114581721689369760}
+  - component: {fileID: 114455974722627122}
   m_Layer: 0
   m_Name: Ceiling_Orange
   m_TagString: Enemy_Static
@@ -84,6 +85,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846c2a531893c4c2aad042b33c492b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114455974722627122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086649776409496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _catchDistance: 0
 --- !u!114 &114581721689369760
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -77,7 +77,8 @@ public class CameraController : MonoBehaviour {
 	{
 		// Debug.DrawLine (playerVector, camVector, Color.cyan);
 		RaycastHit wallHit = new RaycastHit();
-		if(Physics.Linecast(playerVector, camVector, out wallHit))
+		if(Physics.Linecast(playerVector, camVector, out wallHit) && 
+            wallHit.collider.CompareTag("Wall"))
 		{
 			// Debug.DrawLine (wallHit.point, Vector3.left, Color.red);
 			transform.position = new Vector3 (wallHit.point.x, wallHit.point.y, wallHit.point.z);
