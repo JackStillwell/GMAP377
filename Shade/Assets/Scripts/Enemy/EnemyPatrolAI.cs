@@ -37,7 +37,8 @@ public class EnemyPatrolAI : MonoBehaviour
 		{
 
 			patrolTimer += Time.deltaTime;
-
+			
+			this.gameObject.GetComponentInChildren<Animator>().SetBool("isMoving", false);
 			_navAgent.isStopped = true;
 			if (patrolTimer > waitTime) {
 
@@ -56,6 +57,7 @@ public class EnemyPatrolAI : MonoBehaviour
 	public void NextPoint() 
 	{		
 		_navAgent.isStopped = false;
+		this.gameObject.GetComponentInChildren<Animator>().SetBool("isMoving", true);
 
 		if (_wayPoints.Length == 0)
 			return;

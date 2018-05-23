@@ -19,9 +19,6 @@ public class EnemyAI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-
-
         _enemyColor = GetEnemyColor(); 
         _enemySight = GetComponentInChildren<EnemySight>();
         _navAgent = GetComponent<NavMeshAgent>();
@@ -34,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         _playerVisible = _enemySight.IsPlayerVisible();
         _playerColor = _enemySight.GetPercievedColor();
@@ -48,10 +45,10 @@ public class EnemyAI : MonoBehaviour
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);
-
+            this.gameObject.GetComponentInChildren<Animator>().SetBool("isMoving", true);
             if (!_navAgent.pathPending && _navAgent.remainingDistance < _catchDistance)
             {
-				CameraShake.Shake ();
+				CameraShake.Shake();
                 _spawnManager.TriggerRespawn(_player);
             }
         }
