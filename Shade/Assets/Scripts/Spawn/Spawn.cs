@@ -9,6 +9,8 @@ public class Spawn : MonoBehaviour
     private List<GameObject> _spawnPoints;
     private int _currentSpawn;
 
+    private CameraFade fader;
+
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private ColorName _initialPlayerColor;
 
@@ -55,6 +57,9 @@ public class Spawn : MonoBehaviour
     }
     public IEnumerator sceneReloadCoroutine()
     {
+
+        fader = GameObject.FindObjectOfType<CameraFade>();
+        fader.fadeOut(.6f);
         yield return new WaitForSeconds(1);
         Application.LoadLevel(Application.loadedLevel);
 
