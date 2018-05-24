@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 114409339606223098}
   m_Layer: 0
   m_Name: Grunt_Orange
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

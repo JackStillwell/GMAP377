@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         _pcRigidbody.constraints = (RigidbodyConstraints)80;
         _pcRigidbody.useGravity = true;
         _pcRigidbody.isKinematic = false;
-        animator = transform.GetComponent<Animator>();
+        animator = transform.GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -37,13 +37,10 @@ public class PlayerController : MonoBehaviour
         {
             _pcRigidbody.AddForce(Vector3.up * _jumpForce);
         }
-        /*
-                if (_z > 0 || _x > 0)
+        if (_z > 0 || _x > 0)
             animator.SetBool("isMoving", true);
         else
             animator.SetBool("isMoving", false);
-         */
-
     }
 
     private void FixedUpdate()
