@@ -1,24 +1,47 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DemonicAltarController : MonoBehaviour {
+public class DemonicAltarController : MonoBehaviour
+{
+    public enum Showlightning
+    {
+        on,
+        off
+    }
 
-    public enum Showlightning { on, off};
-    public Showlightning lightningEffects;
-    [Space(10)]
+    private bool activateAltar,
+        activateCircle,
+        portalActive,
+        inTransition,
+        checkLightIntensity,
+        flickerLight,
+        portalAudioFade;
 
-    public Renderer altarRend;
-    public ParticleSystem runeCircleParticles, runeCircleExplosionParticles, portalParticles, lightningParticles, sparksParticles;
-    public Transform runeCircleTF;
-    public Light portalLight, explosionLight;
+    private Material altarMat;
+
+    [Space(10)] public Renderer altarRend;
+
     public AudioSource effectsAudio1, effectsAudio2;
     public AudioClip[] effectsClips;
+    public Showlightning lightningEffects;
+    private Color matColor = new Color(0, 0, 0, 0);
+    public Light portalLight, explosionLight;
 
-    private Vector3 runeCircleStartPosition = new Vector3(0.18f,1.2f,0), runeCircleEndPosition = new Vector3(0.18f, 6.5f, 0);
-    private bool activateAltar, activateCircle, portalActive, inTransition, checkLightIntensity, flickerLight, portalAudioFade;
-    private float targetValueColor, runeCircleSpeed, randLightning, targetLightIntensity, portalAudioStartVolume, explosionLightTimer;
-    private Material altarMat;
-    private Color matColor= new Color(0,0,0,0);
+    public ParticleSystem runeCircleParticles,
+        runeCircleExplosionParticles,
+        portalParticles,
+        lightningParticles,
+        sparksParticles;
+
+    private readonly Vector3 runeCircleStartPosition = new Vector3(0.18f, 1.2f, 0);
+    private readonly Vector3 runeCircleEndPosition = new Vector3(0.18f, 6.5f, 0);
+    public Transform runeCircleTF;
+
+    private float targetValueColor,
+        runeCircleSpeed,
+        randLightning,
+        targetLightIntensity,
+        portalAudioStartVolume,
+        explosionLightTimer;
 
     private void Start()
     {
@@ -33,22 +56,22 @@ public class DemonicAltarController : MonoBehaviour {
             //fades the Emission of the alter material in and out.
             if (matColor[3] != targetValueColor)
             {
-                float ra = Mathf.MoveTowards(matColor[3], targetValueColor, 0.2f * Time.deltaTime);
-                matColor[0] = ra;//R
-                matColor[1] = ra * 0.3f;//G
+                var ra = Mathf.MoveTowards(matColor[3], targetValueColor, 0.2f * Time.deltaTime);
+                matColor[0] = ra; //R
+                matColor[1] = ra * 0.3f; //G
                 //B doesn`t change
-                matColor[3] = ra;//A
+                matColor[3] = ra; //A
                 altarMat.SetColor("_EmissionColor", matColor);
             }
             else
             {
-                if (targetValueColor == 0)//when deactivate
+                if (targetValueColor == 0) //when deactivate
                     inTransition = false;
             }
         }
 
         if (activateCircle)
-        {       
+        {
             if (runeCircleTF.localPosition != runeCircleEndPosition)
             {
                 //spinning circle moving up
@@ -56,8 +79,9 @@ public class DemonicAltarController : MonoBehaviour {
 
                 runeCircleSpeed += 0.4f * Time.deltaTime;
 
-                runeCircleTF.localPosition = Vector3.MoveTowards(runeCircleTF.localPosition, runeCircleEndPosition, runeCircleSpeed * Time.deltaTime);
-                runeCircleTF.Rotate(runeCircleTF.up, (runeCircleSpeed * 205) * Time.deltaTime);
+                runeCircleTF.localPosition = Vector3.MoveTowards(runeCircleTF.localPosition, runeCircleEndPosition,
+                    runeCircleSpeed * Time.deltaTime);
+                runeCircleTF.Rotate(runeCircleTF.up, runeCircleSpeed * 205 * Time.deltaTime);
             }
             else //spinning circle in top position.
             {
@@ -75,7 +99,7 @@ public class DemonicAltarController : MonoBehaviour {
                     activateCircle = false;
                     checkLightIntensity = true;
 
-                    if (inTransition)//when activating
+                    if (inTransition) //when activating
                         inTransition = false;
                 }
             }
@@ -83,7 +107,7 @@ public class DemonicAltarController : MonoBehaviour {
 
         if (portalActive)
         {
-            if (!effectsAudio2.isPlaying)//rumbling portal sound
+            if (!effectsAudio2.isPlaying) //rumbling portal sound
             {
                 effectsAudio2.clip = effectsClips[1];
                 effectsAudio2.volume = portalAudioStartVolume;
@@ -106,16 +130,18 @@ public class DemonicAltarController : MonoBehaviour {
                     lightningParticles.Emit(1);
                     sparksParticles.Emit(30);
 
-                    randLightning = Random.Range(4f, 12f);//random time till next lightning strike
+                    randLightning = Random.Range(4f, 12f); //random time till next lightning strike
                 }
                 else if (!checkLightIntensity)
                 {
                     if (flickerLight)
                     {
                         if (portalLight.intensity != targetLightIntensity)
-                            portalLight.intensity = Mathf.MoveTowards(portalLight.intensity, targetLightIntensity, 20f * Time.deltaTime);
+                            portalLight.intensity = Mathf.MoveTowards(portalLight.intensity, targetLightIntensity,
+                                20f * Time.deltaTime);
                         else flickerLight = false;
                     }
+
                     randLightning -= Time.deltaTime;
                 }
             }
@@ -125,18 +151,17 @@ public class DemonicAltarController : MonoBehaviour {
             //fade out portal audio
             if (portalAudioFade)
             {
-                if (effectsAudio2.volume>0)
-                {
+                if (effectsAudio2.volume > 0)
                     effectsAudio2.volume -= 0.12f * Time.deltaTime;
-                }
                 else portalAudioFade = false;
             }
         }
-        
+
         if (checkLightIntensity)
         {
             if (portalLight.intensity != targetLightIntensity)
-                portalLight.intensity = Mathf.MoveTowards(portalLight.intensity, targetLightIntensity, 1.6f * Time.deltaTime);
+                portalLight.intensity =
+                    Mathf.MoveTowards(portalLight.intensity, targetLightIntensity, 1.6f * Time.deltaTime);
             else checkLightIntensity = false;
         }
     }
@@ -144,7 +169,7 @@ public class DemonicAltarController : MonoBehaviour {
     //Call this to activate/Deactivate the altar(effects).
     public void ActivateDeactivateAltar()
     {
-        if (inTransition)//wait for the effects to fully play out before being able activate/Deactivate again.
+        if (inTransition) //wait for the effects to fully play out before being able activate/Deactivate again.
             return;
 
         activateAltar = !activateAltar;
@@ -156,7 +181,7 @@ public class DemonicAltarController : MonoBehaviour {
 
             targetValueColor = 1;
             targetLightIntensity = 4;
-            randLightning = 6;//little delay for the portal to form befor the lightning starts.
+            randLightning = 6; //little delay for the portal to form befor the lightning starts.
         }
         else //Deactivate Altar
         {
@@ -181,7 +206,7 @@ public class DemonicAltarController : MonoBehaviour {
         inTransition = true;
     }
 
-    void LightExplode()
+    private void LightExplode()
     {
         explosionLight.intensity = 6;
     }

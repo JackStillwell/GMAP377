@@ -2,10 +2,10 @@ namespace UnityEngine.PostProcessing
 {
     public class PostProcessingContext
     {
-        public PostProcessingProfile profile;
         public Camera camera;
 
         public MaterialFactory materialFactory;
+        public PostProcessingProfile profile;
         public RenderTextureFactory renderTextureFactory;
 
         public bool interrupted { get; private set; }
@@ -26,6 +26,7 @@ namespace UnityEngine.PostProcessing
         }
 
         #region Helpers
+
         public bool isGBufferAvailable
         {
             get { return camera.actualRenderingPath == RenderingPath.DeferredShading; }
@@ -55,6 +56,7 @@ namespace UnityEngine.PostProcessing
         {
             get { return camera.rect; } // Normalized coordinates
         }
+
         #endregion
     }
 }
