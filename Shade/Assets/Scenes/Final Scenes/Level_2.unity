@@ -2111,6 +2111,11 @@ Prefab:
       propertyPath: _wayPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114105352527509654, guid: d4eb7f9e6596443dfa51efbdff9d6b84,
+        type: 2}
+      propertyPath: _wayPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4978128561996342, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
       propertyPath: m_LocalPosition.x
       value: 17.64
@@ -2158,6 +2163,16 @@ Prefab:
       propertyPath: m_Speed
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114105352527509654, guid: d4eb7f9e6596443dfa51efbdff9d6b84,
+        type: 2}
+      propertyPath: _wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1386381350}
+    - target: {fileID: 114105352527509654, guid: d4eb7f9e6596443dfa51efbdff9d6b84,
+        type: 2}
+      propertyPath: _wayPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1109835299}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
   m_IsPrefabParent: 0
