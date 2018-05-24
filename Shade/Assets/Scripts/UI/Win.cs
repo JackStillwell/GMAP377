@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Win : MonoBehaviour
 {
     public int winScreen;
+
+    private CameraFade fader;
 
     // Use this for initialization
     private void Start()
@@ -18,6 +21,16 @@ public class Win : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            SceneManager.LoadScene(winScreen);
+        {
+            StartCoroutine(LoadScene());
+        }
+    }
+
+    public IEnumerator LoadScene()
+    {
+        fader = GameObject.FindObjectOfType<CameraFade>();
+        fader.fadeOut(.6f);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(winScreen);
     }
 }
