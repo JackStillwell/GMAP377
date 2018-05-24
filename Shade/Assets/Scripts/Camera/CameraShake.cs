@@ -1,42 +1,41 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShake : MonoBehaviour {
+public class CameraShake : MonoBehaviour
+{
+    public static float shakeAmount = 0.3f;
+    public static float shakeDuration = 2f;
+    private static CameraShake instance;
 
-	private Vector3 camOriginalPos;
-	public static float shakeAmount = 0.3f;
-	public static float shakeDuration = 2f;
-	private static CameraShake instance; 
-
-
-	void Start () {
-		camOriginalPos = this.gameObject.transform.localPosition;
-		instance = this;
-	}
-
-	public static void Shake()
-	{
-		instance.camOriginalPos = instance.gameObject.transform.localPosition;
-		instance.StopAllCoroutines ();
-		instance.StartCoroutine (instance.doShake ());
-	}
+    private Vector3 camOriginalPos;
 
 
-	public IEnumerator doShake()
-	{
-		float endTime = Time.time + shakeDuration;
+    private void Start()
+    {
+        camOriginalPos = gameObject.transform.localPosition;
+        instance = this;
+    }
 
-		while (Time.time < endTime) 
-		{
-			transform.localPosition = camOriginalPos + Random.insideUnitSphere * shakeAmount;
-			//shakeDuration -= Time.deltaTime;
+    public static void Shake()
+    {
+        instance.camOriginalPos = instance.gameObject.transform.localPosition;
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.doShake());
+    }
 
-			yield return null;
-		}
 
-		transform.localPosition = camOriginalPos;
-	}
-	
+    public IEnumerator doShake()
+    {
+        var endTime = Time.time + shakeDuration;
 
+        while (Time.time < endTime)
+        {
+            transform.localPosition = camOriginalPos + Random.insideUnitSphere * shakeAmount;
+            //shakeDuration -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.localPosition = camOriginalPos;
+    }
 }

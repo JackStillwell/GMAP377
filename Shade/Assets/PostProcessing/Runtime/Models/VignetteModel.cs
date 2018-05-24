@@ -11,32 +11,45 @@ namespace UnityEngine.PostProcessing
             Masked
         }
 
+        [SerializeField] private Settings m_Settings = Settings.defaultSettings;
+
+        public Settings settings
+        {
+            get { return m_Settings; }
+            set { m_Settings = value; }
+        }
+
+        public override void Reset()
+        {
+            m_Settings = Settings.defaultSettings;
+        }
+
         [Serializable]
         public struct Settings
         {
-            [Tooltip("Use the \"Classic\" mode for parametric controls. Use the \"Masked\" mode to use your own texture mask.")]
+            [Tooltip(
+                "Use the \"Classic\" mode for parametric controls. Use the \"Masked\" mode to use your own texture mask.")]
             public Mode mode;
 
-            [ColorUsage(false)]
-            [Tooltip("Vignette color. Use the alpha channel for transparency.")]
+            [ColorUsage(false)] [Tooltip("Vignette color. Use the alpha channel for transparency.")]
             public Color color;
 
             [Tooltip("Sets the vignette center point (screen center is [0.5,0.5]).")]
             public Vector2 center;
 
-            [Range(0f, 1f), Tooltip("Amount of vignetting on screen.")]
+            [Range(0f, 1f)] [Tooltip("Amount of vignetting on screen.")]
             public float intensity;
 
-            [Range(0.01f, 1f), Tooltip("Smoothness of the vignette borders.")]
+            [Range(0.01f, 1f)] [Tooltip("Smoothness of the vignette borders.")]
             public float smoothness;
 
-            [Range(0f, 1f), Tooltip("Lower values will make a square-ish vignette.")]
+            [Range(0f, 1f)] [Tooltip("Lower values will make a square-ish vignette.")]
             public float roundness;
 
             [Tooltip("A black and white mask to use as a vignette.")]
             public Texture mask;
 
-            [Range(0f, 1f), Tooltip("Mask opacity.")]
+            [Range(0f, 1f)] [Tooltip("Mask opacity.")]
             public float opacity;
 
             [Tooltip("Should the vignette be perfectly round or be dependent on the current aspect ratio?")]
@@ -60,19 +73,6 @@ namespace UnityEngine.PostProcessing
                     };
                 }
             }
-        }
-
-        [SerializeField]
-        Settings m_Settings = Settings.defaultSettings;
-        public Settings settings
-        {
-            get { return m_Settings; }
-            set { m_Settings = value; }
-        }
-
-        public override void Reset()
-        {
-            m_Settings = Settings.defaultSettings;
         }
     }
 }

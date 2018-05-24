@@ -5,13 +5,26 @@ namespace UnityEngine.PostProcessing
     [Serializable]
     public class BloomModel : PostProcessingModel
     {
+        [SerializeField] private Settings m_Settings = Settings.defaultSettings;
+
+        public Settings settings
+        {
+            get { return m_Settings; }
+            set { m_Settings = value; }
+        }
+
+        public override void Reset()
+        {
+            m_Settings = Settings.defaultSettings;
+        }
+
         [Serializable]
         public struct BloomSettings
         {
-            [Min(0f), Tooltip("Strength of the bloom filter.")]
+            [Min(0f)] [Tooltip("Strength of the bloom filter.")]
             public float intensity;
 
-            [Min(0f), Tooltip("Filters out pixels under this level of brightness.")]
+            [Min(0f)] [Tooltip("Filters out pixels under this level of brightness.")]
             public float threshold;
 
             public float thresholdLinear
@@ -20,10 +33,11 @@ namespace UnityEngine.PostProcessing
                 get { return Mathf.GammaToLinearSpace(threshold); }
             }
 
-            [Range(0f, 1f), Tooltip("Makes transition between under/over-threshold gradual (0 = hard threshold, 1 = soft threshold).")]
+            [Range(0f, 1f)]
+            [Tooltip("Makes transition between under/over-threshold gradual (0 = hard threshold, 1 = soft threshold).")]
             public float softKnee;
 
-            [Range(1f, 7f), Tooltip("Changes extent of veiling effects in a screen resolution-independent fashion.")]
+            [Range(1f, 7f)] [Tooltip("Changes extent of veiling effects in a screen resolution-independent fashion.")]
             public float radius;
 
             [Tooltip("Reduces flashing noise with an additional filter.")]
@@ -39,7 +53,7 @@ namespace UnityEngine.PostProcessing
                         threshold = 1.1f,
                         softKnee = 0.5f,
                         radius = 4f,
-                        antiFlicker = false,
+                        antiFlicker = false
                     };
                 }
             }
@@ -51,7 +65,7 @@ namespace UnityEngine.PostProcessing
             [Tooltip("Dirtiness texture to add smudges or dust to the lens.")]
             public Texture texture;
 
-            [Min(0f), Tooltip("Amount of lens dirtiness.")]
+            [Min(0f)] [Tooltip("Amount of lens dirtiness.")]
             public float intensity;
 
             public static LensDirtSettings defaultSettings
@@ -84,19 +98,6 @@ namespace UnityEngine.PostProcessing
                     };
                 }
             }
-        }
-
-        [SerializeField]
-        Settings m_Settings = Settings.defaultSettings;
-        public Settings settings
-        {
-            get { return m_Settings; }
-            set { m_Settings = value; }
-        }
-
-        public override void Reset()
-        {
-            m_Settings = Settings.defaultSettings;
         }
     }
 }
