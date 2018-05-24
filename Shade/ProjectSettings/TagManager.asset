@@ -15,6 +15,7 @@ TagManager:
   - SpawnManager
   - Enemy_Static
   - Scenery
+  - Wall
   layers:
   - Default
   - TransparentFX
