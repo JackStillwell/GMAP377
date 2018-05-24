@@ -164,6 +164,10 @@ Prefab:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a9787bf1fc4a49a4dba4331a96373aa1, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9787bf1fc4a49a4dba4331a96373aa1, type: 3}
   m_IsPrefabParent: 0
@@ -2573,7 +2577,7 @@ GameObject:
   - component: {fileID: 1955339744}
   m_Layer: 0
   m_Name: Floor (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
