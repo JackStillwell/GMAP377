@@ -30,7 +30,7 @@ public class Win : MonoBehaviour
     {
         fader = GameObject.FindObjectOfType<CameraFade>();
         fader.fadeOut(.6f);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(winScreen);
     }
 }
