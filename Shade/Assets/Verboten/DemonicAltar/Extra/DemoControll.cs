@@ -1,30 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DemoControll : MonoBehaviour
 {
-
-    public Transform altarTF;
-    public Light mainLight;
     public DemonicAltarController altarScript;
-    public Material demonSky;
-    public Material standardSky;
-    public GameObject privacyWall;
-    private float lightMaxIntens, lightTargetIntens, timer;
     private bool altarStarted, fadeInLight, altarStopped;
 
+    public Transform altarTF;
+    public Material demonSky;
+    private float lightMaxIntens, lightTargetIntens, timer;
+    public Light mainLight;
+    public GameObject privacyWall;
+    public Material standardSky;
+
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         lightMaxIntens = mainLight.intensity;
         //mainLight.intensity = 0;
         lightTargetIntens = lightMaxIntens;
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         altarTF.Rotate(Vector3.up, 10 * Time.deltaTime);
 
@@ -33,10 +30,7 @@ public class DemoControll : MonoBehaviour
 
     public void OnTriggerEnter()
     {
-        if (privacyWall.activeInHierarchy)
-        {
-            privacyWall.SetActive(false);
-        }
+        if (privacyWall.activeInHierarchy) privacyWall.SetActive(false);
         if (RenderSettings.skybox.name == "standardSky")
         {
             RenderSettings.skybox = demonSky;
@@ -53,6 +47,7 @@ public class DemoControll : MonoBehaviour
             lightTargetIntens = 0;
         else lightTargetIntens = lightMaxIntens;
     }
+
     public void ButtonToggleAltar()
     {
         altarScript.ActivateDeactivateAltar();

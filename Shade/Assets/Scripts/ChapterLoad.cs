@@ -1,24 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ChapterLoad : MonoBehaviour {
-
+public class ChapterLoad : MonoBehaviour
+{
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Escape))
-        {
-
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-
-        }
+        if (Input.GetKey(KeyCode.Escape)) SceneManager.LoadScene(1);
     }
 
     public void chapterLoad(int i)
     {
-
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene(i);
-
+        SceneManager.LoadScene(i);
     }
 }
