@@ -18,14 +18,14 @@ public class CameraFade : MonoBehaviour {
 	
     public void fadeIn(float duration)
     {
-        //fadeTo.DOColor
+        fadeTo.DOColor(Color.clear, fadeTime);
 
     }
 
     public void fadeOut(float duration)
     {
 
-        //fadeTo.DOColor(Color.black, duration);
+        fadeTo.DOColor(Color.black, duration);
 
     }
 

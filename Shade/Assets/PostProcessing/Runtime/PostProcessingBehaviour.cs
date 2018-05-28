@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine.Rendering;
 
 namespace UnityEngine.PostProcessing
@@ -107,8 +107,8 @@ namespace UnityEngine.PostProcessing
             //  - Temporal Antialiasing
             //  - Depth of Field
             //  - Motion blur
-            m_RenderingInSceneView = SceneView.currentDrawingSceneView != null
-                                     && SceneView.currentDrawingSceneView.camera == m_Camera;
+            //m_RenderingInSceneView = SceneView.currentDrawingSceneView != null
+                                 //    && SceneView.currentDrawingSceneView.camera == m_Camera;
 #endif
 
             // Prepare context
