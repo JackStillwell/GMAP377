@@ -43,7 +43,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1066796010415232
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -387,15 +386,6 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1691435461979116}
-  m_LocalRotation: {x: 0.5464185, y: -0.37126985, z: 0.5981806, w: -0.4536138}
-  m_LocalPosition: {x: -0.000000009985169, y: -0.0000018942355, z: -9.349425e-10}
-  m_LocalScale: {x: 0.5165309, y: 0.5165309, z: 0.5165309}
-  m_Children: []
-  m_Father: {fileID: 4410476994188714}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4187804136351800
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -567,10 +557,6 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440082156791192}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0070736357, y: -1.5706626e-18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4150456191015452}
   - {fileID: 4418293476061030}
@@ -803,12 +789,10 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114263309499869766
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1924659660563756}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92011e3e91fae4358b13e0ec4c4ce1bd, type: 3}
@@ -818,8 +802,6 @@ MonoBehaviour:
   _minCamDistance: 7
   _scrollSpeed: 5
   _tiltSpeed: 2
-  FollowObj: {fileID: 0}
---- !u!114 &114307595600342486
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -832,9 +814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundDistance: 0.5
   _jumpForce: 200
-  _moveSpeed: 15
-  _rotateSensitivity: 1
---- !u!114 &114665021233255008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -889,64 +868,3 @@ CapsuleCollider:
   m_Radius: 0.04
   m_Height: 0.07193463
   m_Direction: 1
-  m_Center: {x: 0.000000011738178, y: 0.03596698, z: -0.00027096277}
---- !u!137 &137027126394571186
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1777689451554866}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: c4de595da8e847f41a6874b02ae45314, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 5bae8687e0d30c74ca9da65606610272, type: 3}
-  m_Bones:
-  - {fileID: 4256163386303048}
-  - {fileID: 4003982167012822}
-  - {fileID: 4077703884107460}
-  - {fileID: 4902109459931226}
-  - {fileID: 4987138328805100}
-  - {fileID: 4418293476061030}
-  - {fileID: 4515440584165740}
-  - {fileID: 4410476994188714}
-  - {fileID: 4229136380119608}
-  - {fileID: 4999601938858820}
-  - {fileID: 4808930645332092}
-  - {fileID: 4641860897830866}
-  - {fileID: 4220682567518386}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 4256163386303048}
-  m_AABB:
-    m_Center: {x: -0.035966977, y: -0.000000007450581, z: 0.00027096272}
-    m_Extent: {x: 0.035967313, y: 0.036779564, z: 0.024520714}
-  m_DirtyAABB: 0
