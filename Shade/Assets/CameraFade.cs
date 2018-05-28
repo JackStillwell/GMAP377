@@ -6,12 +6,12 @@ using DG.Tweening;
 
 public class CameraFade : MonoBehaviour {
 
-    public SpriteRenderer fadeTo;
+    public Image fadeTo;
     public float fadeTime;
 
 	// Use this for initialization
 	void Start () {
-        fadeTo = GetComponent<SpriteRenderer>();
+        fadeTo = GetComponent<Image>();
         fadeTo.color = Color.black;
         fadeIn(fadeTime);
 	}
