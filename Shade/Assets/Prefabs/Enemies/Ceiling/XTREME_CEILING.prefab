@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 137437312624763614}
   - component: {fileID: 95570183513648664}
   - component: {fileID: 65429893916154166}
+  - component: {fileID: 114774240864109128}
+  - component: {fileID: 114488699779935940}
+  - component: {fileID: 114284342753851246}
   m_Layer: 0
   m_Name: XTREME_CEILING
   m_TagString: Untagged
@@ -72,6 +75,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114284342753851246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916035477195340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9de51312815d40bb80306e2d7b8f864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114488699779935940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916035477195340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _catchDistance: 0.5
+--- !u!114 &114774240864109128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916035477195340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846c2a531893c4c2aad042b33c492b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137437312624763614
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

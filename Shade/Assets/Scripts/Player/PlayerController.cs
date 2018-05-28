@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var moveVector = _pcRigidbody.position + _pcRigidbody.rotation * new Vector3(_x, 0, _z);
+        var moveVector = _pcRigidbody.position + _pcRigidbody.rotation * new Vector3(-_x, 0, -_z);
         var moveQuaternion = Quaternion.Euler(new Vector3(0, _y, 0));
 
         _pcRigidbody.MoveRotation(transform.rotation * moveQuaternion);
