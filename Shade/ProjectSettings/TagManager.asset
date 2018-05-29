@@ -16,6 +16,7 @@ TagManager:
   - Enemy_Static
   - Scenery
   - Wall
+  - Blue
   layers:
   - Default
   - TransparentFX
