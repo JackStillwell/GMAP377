@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 1
     m_BakeResolution: 8
-    m_TextureWidth: 256
-    m_TextureHeight: 1024
+    m_AtlasSize: 256
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -5195,6 +5195,10 @@ Prefab:
       propertyPath: m_TagString
       value: Violet
       objectReference: {fileID: 0}
+    - target: {fileID: 1100889520347274, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
+      propertyPath: m_TagString
+      value: Violet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
   m_IsPrefabParent: 0
@@ -5368,6 +5372,10 @@ Prefab:
     - target: {fileID: 1100889520347274, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
       propertyPath: m_Name
       value: Light_Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100889520347274, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
+      propertyPath: m_TagString
+      value: Yellow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
@@ -6099,6 +6107,10 @@ Prefab:
     - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
       propertyPath: m_Name
       value: cone-light-orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
+      propertyPath: m_TagString
+      value: Orange
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
@@ -6994,6 +7006,10 @@ Prefab:
     - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
       propertyPath: m_Name
       value: cone-light-green
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
+      propertyPath: m_TagString
+      value: Green
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
@@ -9377,6 +9393,10 @@ Prefab:
       value: 3.2140718
       objectReference: {fileID: 0}
     - target: {fileID: 1607290256176894, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
+      propertyPath: m_TagString
+      value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100889520347274, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
@@ -12610,6 +12630,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1100889520347274, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
+      propertyPath: m_TagString
+      value: Cyan
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
   m_IsPrefabParent: 0
@@ -12943,6 +12967,10 @@ Prefab:
     - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
       propertyPath: m_Name
       value: cone-light-yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
+      propertyPath: m_TagString
+      value: Yellow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
@@ -13405,6 +13433,10 @@ Prefab:
       value: 9.6368
       objectReference: {fileID: 0}
     - target: {fileID: 1607290256176894, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
+      propertyPath: m_TagString
+      value: Orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100889520347274, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
       propertyPath: m_TagString
       value: Orange
       objectReference: {fileID: 0}
@@ -14603,6 +14635,10 @@ Prefab:
       propertyPath: m_Name
       value: cone-light-violet
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
+      propertyPath: m_TagString
+      value: Violet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
   m_IsPrefabParent: 0
@@ -14665,6 +14701,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 780362e68a04f28408fc91303c1d85fd, type: 2}
   m_StaticBatchInfo:

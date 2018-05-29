@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemySight : MonoBehaviour
 {
     private EnemyAI _enemyAi;
+    private StaticEnemyAI _staticEnemyAI;
+
     private Color _enemyColor;
 
     private RaycastHit[] _hitArray;
@@ -21,20 +23,24 @@ public class EnemySight : MonoBehaviour
 
     private void Start()
     {
-        _patrolAi = GetComponentInParent<EnemyPatrolAI>();
-        _nav = GetComponentInParent<NavMeshAgent>(); // may be used in future
-
-        if (!transform.parent.CompareTag("Enemy_Static"))
+        if (this.CompareTag("Enemy_Static"))
+        {
+            _staticEnemyAI = GetComponentInParent<StaticEnemyAI>();
+            _enemyColor = _staticEnemyAI.GetEnemyColor();
+        }
+        else 
         {
             _enemyAi = GetComponentInParent<EnemyAI>();
             _enemyColor = _enemyAi.EnemyColor();
+            _patrolAi = GetComponentInParent<EnemyPatrolAI>();
+            _nav = GetComponentInParent<NavMeshAgent>(); // may be used in future
         }
-
-        else
+        /*/
+        else 
         {
             _enemyColor = Color.white;
         }
-
+*/
         _player = GameObject.FindGameObjectWithTag("Player");
         _percievedPlayerColor = GetPlayerColor(_player);
 
@@ -45,23 +51,23 @@ public class EnemySight : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _nav.isStopped = false;
+            if (_enemyAi)
+                _nav.isStopped = false;
             VisibleCheck();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player")) VisibleCheck();
+        if (other.CompareTag("Player"))
+            VisibleCheck();
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (_playerVisible &&
-                !transform.parent.CompareTag("Enemy_Static") &&
-                IsEqualTo(_percievedPlayerColor, _enemyColor))
+            if (_playerVisible && !this.CompareTag("Enemy_Static") && IsEqualTo(_percievedPlayerColor, _enemyColor))
                 _patrolAi.NextPoint();
 
             _playerVisible = false;
@@ -72,7 +78,6 @@ public class EnemySight : MonoBehaviour
     {
         var direction = _player.transform.position - transform.position;
         _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
-
         // ColorPercievedUpdate();
 
         foreach (var hit in _hitArray)
@@ -113,7 +118,7 @@ public class EnemySight : MonoBehaviour
             if (hit.collider.CompareTag("Player"))
                 break;
             if (ColorEnum.ChangesColor(hit.collider.tag))
-                colorUpdateArray.Add(ColorEnum.GetColorValue((ColorName) Enum.Parse(typeof(ColorName), hit.collider.tag)));
+                colorUpdateArray.Add(ColorEnum.GetColorValue((ColorName)Enum.Parse(typeof(ColorName), hit.collider.tag)));
         }
 
         if (colorUpdateArray.Count > 0)
@@ -165,6 +170,7 @@ public class EnemySight : MonoBehaviour
     }
 
     // Not currently used
+    /* 
     private float CalculatePathLength(Vector3 targetPosition) // may be used in future
     {
         var path = new NavMeshPath();
@@ -185,11 +191,13 @@ public class EnemySight : MonoBehaviour
         return pathLength;
     }
 
+    */
+
     private Color GetPlayerColor(GameObject player)
     {
-        return _player.GetComponentInChildren<ColorArray>().GetCurrentColor();
+        return _player.GetComponent<ColorArray>().GetCurrentColor();
     }
-    
+
     private static bool IsEqualTo(Color me, Color other)
     {
         bool isRedSimilar = false, isGreenSimilar = false, isBlueSimilar = false;
