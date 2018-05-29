@@ -36,6 +36,7 @@ public class EnemySight : MonoBehaviour
         }
 
         _player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(_player);
         _percievedPlayerColor = GetPlayerColor(_player);
 
         _playerVisible = false;
@@ -72,16 +73,19 @@ public class EnemySight : MonoBehaviour
     {
         var direction = _player.transform.position - transform.position;
         _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
-
+        Debug.Log("Beep");
         // ColorPercievedUpdate();
 
         foreach (var hit in _hitArray)
         {
+            Debug.Log(hit.collider.gameObject.name);
+            Debug.Log(_player.name);
             // Debug.Log(hit.collider.gameObject);
             if (hit.collider.gameObject == _player)
             {
                 //Debug.Log("Player Visible");
                 _playerVisible = true;
+                Debug.Log("Player seen");
                 ColorPercievedUpdate();
                 break;
             }
@@ -187,7 +191,7 @@ public class EnemySight : MonoBehaviour
 
     private Color GetPlayerColor(GameObject player)
     {
-        return _player.GetComponentInChildren<ColorArray>().GetCurrentColor();
+        return _player.GetComponent<ColorArray>().GetCurrentColor();
     }
     
     private static bool IsEqualTo(Color me, Color other)

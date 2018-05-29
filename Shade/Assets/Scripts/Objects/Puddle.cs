@@ -22,7 +22,10 @@ public class Puddle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
+            Debug.Log(other.name);
             other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
+        }
         else if (CompareTag("Untagged")) Debug.LogError("Tag the puddle, dumbass!");
     }
 

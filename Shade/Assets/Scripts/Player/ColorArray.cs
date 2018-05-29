@@ -24,7 +24,7 @@ public class ColorArray : MonoBehaviour
     private void ApplyColor(Color inColor)
     {
         var setColor = false;
-        foreach (var rend in GetComponentsInParent<Renderer>())
+        foreach (var rend in GetComponentsInChildren<Renderer>())
         foreach (var mat in rend.materials)
             if (mat.name == "Player (Instance)")
             {
@@ -39,7 +39,7 @@ public class ColorArray : MonoBehaviour
         }
 
         _currentColor = inColor;
-        // Debug.Log("Player Color is: " + inColor);
+        Debug.Log("Player Color is: " + inColor);
     }
 
     private Color CombineColors()
