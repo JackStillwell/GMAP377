@@ -346,6 +346,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ed813f2a881f145de8d3aec36e47da8b, type: 2}
   m_StaticBatchInfo:
@@ -380,6 +381,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100002, guid: ec448d140ab115b4db99bd3e52bf806b, type: 3}
   m_StaticBatchInfo:
@@ -414,6 +416,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100002, guid: ec448d140ab115b4db99bd3e52bf806b, type: 3}
   m_StaticBatchInfo:
@@ -495,6 +498,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!108 &108910951455331486
 Light:
   m_ObjectHideFlags: 1
@@ -558,8 +562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1110e9375b94a92bc698da98df1a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 1, g: 1, b: 1, a: 1}
   _alphaValue: 0.9
+  _baseColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114303967677979594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -598,11 +602,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92011e3e91fae4358b13e0ec4c4ce1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowObj: {fileID: 1492681970819790}
   _maxCamDistance: 20
   _minCamDistance: 7
   _scrollSpeed: 5
   _tiltSpeed: 2
+  FollowObj: {fileID: 1492681970819790}
 --- !u!114 &114320328110769520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,9 +639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3abd458733843a49d4cc82dfb91d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 18
-  _jumpForce: 200
   _groundDistance: 3
+  _jumpForce: 200
+  _moveSpeed: 15
   _rotateSensitivity: 3
 --- !u!114 &114857980124593850
 MonoBehaviour:
