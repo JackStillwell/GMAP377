@@ -7,7 +7,6 @@ public enum ColorName
     Yellow,
     Green,
     Cyan,
-    Blue,
     Violet,
     Pink,
     Null,
@@ -49,9 +48,6 @@ public class ColorEnum
             case ColorName.Null:
                 colorValue = new Color(0, 0, 0, 0);
                 break;
-            case ColorName.Blue:
-                colorValue = new Color(0,0,1,0);
-                break;
             default:
                 colorValue = Color.white;
                 break;
@@ -67,7 +63,6 @@ public class ColorEnum
                tag.Equals("Yellow") ||
                tag.Equals("Green") ||
                tag.Equals("Cyan") ||
-               tag.Equals("Blue") ||
                tag.Equals("Violet") ||
                tag.Equals("Pink") ||
                tag.Equals("White") ||
