@@ -14,22 +14,22 @@ public class StaticEnemyAI : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log(_sight.IsPlayerVisible());
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Color: " + _sight.GetPercievedColor());
-            Debug.Log("Enemy Color: " + GetEnemyColor());
-            Debug.Log("Is Player Visible: " + _sight.IsPlayerVisible());
+            //Debug.Log("Player Color: " + _sight.GetPercievedColor());
+            //Debug.Log("Enemy Color: " + GetEnemyColor());
+            //Debug.Log("Is Player Visible: " + _sight.IsPlayerVisible());
         }
 
-        if (other.CompareTag("Player") && _sight.IsPlayerVisible() &&
-            !IsEqualTo(_sight.GetPercievedColor(), GetEnemyColor()))
+        if (other.CompareTag("Player") && _sight.IsPlayerVisible() && !IsEqualTo(_sight.GetPercievedColor(), GetEnemyColor()))
         {
             CameraShake.Shake();
             _spawnManager.TriggerRespawn(other.gameObject);
         }
     }
 
-    private Color GetEnemyColor()
+    public Color GetEnemyColor()
     {
         foreach (var mat in transform.GetComponentInChildren<Renderer>().materials)
             if (mat.name.Contains("Enemy") && !mat.name.Contains("FOV"))

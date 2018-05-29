@@ -21,7 +21,7 @@ public class EnemyPatrolAI : MonoBehaviour
         _navAgent.updateRotation = true;
         waitTime = Random.Range(minWaitTime, maxWaitTime);
         rb = gameObject.GetComponent<Rigidbody>();
-        Debug.Log(waitTime);
+        //Debug.Log(waitTime);
         _navAgent.isStopped = true;
         NextPoint();
     }

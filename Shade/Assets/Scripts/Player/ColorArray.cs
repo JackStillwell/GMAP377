@@ -39,7 +39,7 @@ public class ColorArray : MonoBehaviour
         }
 
         _currentColor = inColor;
-        Debug.Log("Player Color is: " + inColor);
+        //Debug.Log("Player Color is: " + inColor);
     }
 
     private Color CombineColors()
