@@ -6918,6 +6918,10 @@ Prefab:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 1303565322734022, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
+      propertyPath: m_TagString
+      value: Green
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
   m_IsPrefabParent: 0
@@ -7444,6 +7448,10 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1344108029389720, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
+      propertyPath: m_TagString
+      value: Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303565322734022, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
       propertyPath: m_TagString
       value: Yellow
       objectReference: {fileID: 0}
@@ -8580,6 +8588,10 @@ Prefab:
       value: 0.66176474
       objectReference: {fileID: 0}
     - target: {fileID: 1344108029389720, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
+      propertyPath: m_TagString
+      value: Orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303565322734022, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
       propertyPath: m_TagString
       value: Orange
       objectReference: {fileID: 0}
@@ -11395,6 +11407,10 @@ Prefab:
       propertyPath: m_TagString
       value: Violet
       objectReference: {fileID: 0}
+    - target: {fileID: 1303565322734022, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
+      propertyPath: m_TagString
+      value: Violet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
   m_IsPrefabParent: 0
@@ -12321,6 +12337,10 @@ Prefab:
       value: 
       objectReference: {fileID: 2100000, guid: 0e2bfcfd757594512ad1cf8c1c0cdf86, type: 2}
     - target: {fileID: 1344108029389720, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
+      propertyPath: m_TagString
+      value: Cyan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303565322734022, guid: d4eb7f9e6596443dfa51efbdff9d6b84, type: 2}
       propertyPath: m_TagString
       value: Cyan
       objectReference: {fileID: 0}
