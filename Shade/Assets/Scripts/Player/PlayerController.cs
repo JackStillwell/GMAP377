@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         _x = Input.GetAxis("Horizontal") * Time.deltaTime * _moveSpeed;
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) _pcRigidbody.AddForce(Vector3.up * _jumpForce);
-        if (_z > 0 || _x > 0)
+        if (_z != 0 || _x != 0)
             animator.SetBool("isMoving", true);
         else
             animator.SetBool("isMoving", false);
