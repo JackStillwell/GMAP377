@@ -6,6 +6,7 @@ public class MainMenuCommands : MonoBehaviour
     public int chapterSelectScene;
 
     public int startScene;
+    public int menuScene;
 
     public void Start()
     {
@@ -21,6 +22,20 @@ public class MainMenuCommands : MonoBehaviour
     public void Continue()
     {
         SceneManager.LoadScene(startScene);
+    }
+
+    public void UnPause(GameObject self)
+    {
+
+        self.SetActive(false);
+
+    }
+
+    public void backToMenu()
+    {
+
+        SceneManager.LoadScene(menuScene);
+
     }
 
     public void OptionsMenu()
