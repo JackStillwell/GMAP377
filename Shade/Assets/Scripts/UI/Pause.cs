@@ -17,7 +17,7 @@ public class Pause : MonoBehaviour
             Toggle();
     }
 
-    private void Toggle()
+    public void Toggle()
     {
         if (Time.timeScale == 0)
         {
