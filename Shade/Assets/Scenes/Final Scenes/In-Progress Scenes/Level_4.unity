@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,7 +39,6 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
-  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -55,10 +54,11 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 512
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -1001,14 +1001,14 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4af4e54c8521540b6be6e12ea590b15d, type: 2}
+      objectReference: {fileID: 2100000, guid: 94eb8957b18924148a2a3fed5271ede4, type: 2}
     - target: {fileID: 1750026008056414, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
       propertyPath: m_Name
       value: Room1_Puddle_Cyan
       objectReference: {fileID: 0}
     - target: {fileID: 1750026008056414, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
       propertyPath: m_TagString
-      value: Cyan
+      value: Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
@@ -2151,7 +2151,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 780362e68a04f28408fc91303c1d85fd, type: 2}
   m_StaticBatchInfo:
@@ -3447,14 +3446,14 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4af4e54c8521540b6be6e12ea590b15d, type: 2}
+      objectReference: {fileID: 2100000, guid: 94eb8957b18924148a2a3fed5271ede4, type: 2}
     - target: {fileID: 1750026008056414, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
       propertyPath: m_Name
       value: Room1_Puddle_Cyab
       objectReference: {fileID: 0}
     - target: {fileID: 1750026008056414, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
       propertyPath: m_TagString
-      value: Cyan
+      value: Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
@@ -3518,10 +3517,14 @@ Prefab:
     - target: {fileID: 2300000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2bfcfd757594512ad1cf8c1c0cdf86, type: 2}
+      objectReference: {fileID: 2100000, guid: a76a5515c92d16f4fa301ccfe8be0444, type: 2}
     - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
       propertyPath: m_Name
       value: cone-light (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
+      propertyPath: m_TagString
+      value: Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91130b5df315a1b4596ca713303a7a3c, type: 3}
@@ -3968,12 +3971,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1100889520347274, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
       propertyPath: m_TagString
-      value: Cyan
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 108999218510132058, guid: 6678ec9800d64c44fadcd798e344fe25,
         type: 2}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108999218510132058, guid: 6678ec9800d64c44fadcd798e344fe25,
         type: 2}
@@ -3986,7 +3989,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1607290256176894, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
       propertyPath: m_TagString
-      value: Cyan
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 65348527720952162, guid: 6678ec9800d64c44fadcd798e344fe25,
         type: 2}
@@ -3997,6 +4000,16 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 7.7721767
+      objectReference: {fileID: 0}
+    - target: {fileID: 108999218510132058, guid: 6678ec9800d64c44fadcd798e344fe25,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108999218510132058, guid: 6678ec9800d64c44fadcd798e344fe25,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6678ec9800d64c44fadcd798e344fe25, type: 2}
@@ -4663,6 +4676,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1086649776409496, guid: 8b1a425884561410a86bf4af7b657be9, type: 2}
+      propertyPath: m_TagString
+      value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 137327767329021274, guid: 8b1a425884561410a86bf4af7b657be9,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 866019ba138679c48a6dbacf7ecccf1e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b1a425884561410a86bf4af7b657be9, type: 2}
   m_IsPrefabParent: 0
