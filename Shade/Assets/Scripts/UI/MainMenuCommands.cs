@@ -1,12 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MainMenuCommands : MonoBehaviour
-{
-    public int chapterSelectScene;
+public class MainMenuCommands : MonoBehaviour {
 
     public int startScene;
-    public int menuScene;
+
+    public int chapterSelectScene;
 
     public void Start()
     {
@@ -16,39 +17,28 @@ public class MainMenuCommands : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene(startScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(startScene);
     }
 
     public void Continue()
     {
-        SceneManager.LoadScene(startScene);
-    }
-
-    public void UnPause(GameObject self)
-    {
-
-        self.SetActive(false);
-
-    }
-
-    public void backToMenu()
-    {
-
-        SceneManager.LoadScene(menuScene);
-
+        UnityEngine.SceneManagement.SceneManager.LoadScene(startScene);
     }
 
     public void OptionsMenu()
     {
+
     }
 
     public void ChapterSelect()
     {
-        SceneManager.LoadScene(chapterSelectScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(chapterSelectScene);
+
     }
 
     public void Exit()
     {
         Application.Quit();
+
     }
 }

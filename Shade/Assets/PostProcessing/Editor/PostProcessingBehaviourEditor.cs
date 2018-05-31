@@ -7,7 +7,7 @@ namespace UnityEditor.PostProcessing
     [CustomEditor(typeof(PostProcessingBehaviour))]
     public class PostProcessingBehaviourEditor : Editor
     {
-        private SerializedProperty m_Profile;
+        SerializedProperty m_Profile;
 
         public void OnEnable()
         {
@@ -23,7 +23,7 @@ namespace UnityEditor.PostProcessing
             serializedObject.ApplyModifiedProperties();
         }
 
-        private SerializedProperty FindSetting<T, TValue>(Expression<Func<T, TValue>> expr)
+        SerializedProperty FindSetting<T, TValue>(Expression<Func<T, TValue>> expr)
         {
             return serializedObject.FindProperty(ReflectionUtils.GetFieldPath(expr));
         }

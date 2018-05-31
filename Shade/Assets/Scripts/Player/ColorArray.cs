@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+public enum ColorName { Red, Orange, Yellow, Green, Cyan, Violet, Pink, Null, White };
+
 public class ColorArray : MonoBehaviour
 {
-    [SerializeField] private float _alphaValue = .9f;
+    private List<ColorName> _colorModifiers;
 
     [SerializeField] private Color _baseColor = Color.white;
-    private List<ColorName> _colorModifiers;
+    [SerializeField] private float _alphaValue = .9f;
     private Color _currentColor;
 
     private void Start()
@@ -17,20 +19,24 @@ public class ColorArray : MonoBehaviour
     }
 
     private void ChangePlayerColor()
-    {
+	{
         ApplyColor(CombineColors());
-    }
+	}
 
     private void ApplyColor(Color inColor)
     {
-        var setColor = false;
-        foreach (var rend in GetComponentsInChildren<Renderer>())
-        foreach (var mat in rend.materials)
-            if (mat.name == "Player (Instance)")
-            {
-                mat.color = inColor;
-                setColor = true;
-            }
+        bool setColor = false;
+	    foreach (var rend in GetComponentsInParent<Renderer>())
+	    {
+	        foreach (var mat in rend.materials)
+	        {
+	            if (mat.name == "Player (Instance)")
+	            {
+	                mat.color = inColor;
+	                setColor = true;
+	            }
+	        }
+	    }
 
         if (!setColor)
         {
@@ -39,45 +45,95 @@ public class ColorArray : MonoBehaviour
         }
 
         _currentColor = inColor;
-        //Debug.Log("Player Color is: " + inColor);
-    }
+        // Debug.Log("Player Color is: " + inColor);
+	}
 
     private Color CombineColors()
     {
-        var combinedColor = new Color();
+        Color combinedColor = new Color();
 
         // add all colors in the array
         if (_colorModifiers.Count > 1)
         {
             if (_baseColor != Color.white)
+            {
                 combinedColor = _baseColor;
+            }
 
             else
-                combinedColor = ColorEnum.GetColorValue(_colorModifiers[0]);
-
-            for (var i = 1; i < _colorModifiers.Count; i++)
             {
-                var value = ColorEnum.GetColorValue(_colorModifiers[i]);
+                combinedColor = GetColorValue(_colorModifiers[0]);
+            }
+            
+            for(int i = 1; i < _colorModifiers.Count; i++)
+            {
+                Color value = GetColorValue(_colorModifiers[i]);
                 combinedColor = MixColors(combinedColor, value);
             }
 
             return combinedColor;
         }
-
-        if (_colorModifiers.Count == 1)
+        
+        else if (_colorModifiers.Count == 1)
         {
-            if (_baseColor == Color.white) return ColorEnum.GetColorValue(_colorModifiers[0]);
+            if (_baseColor == Color.white)
+            {
+                return GetColorValue(_colorModifiers[0]);
+            }
 
-            return MixColors(_baseColor, ColorEnum.GetColorValue(_colorModifiers[0]));
+            return MixColors(_baseColor, GetColorValue(_colorModifiers[0]));
         }
 
-        return _baseColor;
+        else
+        {
+            return _baseColor;
+        }
+    }
+
+    private Color GetColorValue(ColorName c)
+    {
+        Color colorValue;
+        
+        switch (c)
+        {
+            case ColorName.Red:
+                colorValue = Color.red;
+                break;
+            case ColorName.Orange:
+                colorValue = new Color(1, .5f, 0, 1);
+                break;
+            case ColorName.Yellow:
+                colorValue = Color.yellow;
+                break;
+            case ColorName.Green:
+                colorValue = Color.green;
+                break;
+            case ColorName.Cyan:
+                colorValue = Color.cyan;
+                break;
+            case ColorName.Violet:
+                colorValue = new Color(.5f, 0, 1, 1);
+                break;
+            case ColorName.Pink:
+                colorValue = new Color(1, .4f, .87f, 1);
+                break;
+            case ColorName.White:
+                colorValue = new Color(1, 1, 1, 1);
+                break;
+            case ColorName.Null:
+                colorValue = new Color(0, 0, 0, 0);
+                break;
+            default:
+                colorValue = Color.white;
+                break;
+        }
+        return colorValue;
     }
 
     private Color MixColors(Color one, Color two)
     {
-        var combinedColor = new Color();
-
+        Color combinedColor = new Color();
+        
         combinedColor.r = (one.r + two.r) / 2;
         combinedColor.g = (one.g + two.g) / 2;
         combinedColor.b = (one.b + two.b) / 2;
@@ -91,7 +147,7 @@ public class ColorArray : MonoBehaviour
         _colorModifiers.Add(inColor);
         ChangePlayerColor();
     }
-
+    
     public void RemoveColor(ColorName inColor)
     {
         _colorModifiers.Remove(inColor);
@@ -105,6 +161,6 @@ public class ColorArray : MonoBehaviour
 
     public void SetBaseColor(ColorName inColor)
     {
-        _baseColor = ColorEnum.GetColorValue(inColor);
+        _baseColor = GetColorValue(inColor);
     }
 }

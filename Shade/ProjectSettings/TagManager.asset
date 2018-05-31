@@ -15,8 +15,6 @@ TagManager:
   - SpawnManager
   - Enemy_Static
   - Scenery
-  - Wall
-  - Blue
   layers:
   - Default
   - TransparentFX
@@ -26,9 +24,9 @@ TagManager:
   - UI
   - 
   - 
-  - Enemy
-  - Eugene
-  - wall
+  - 
+  - 
+  - 
   - 
   - 
   - 

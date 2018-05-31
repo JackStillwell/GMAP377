@@ -1,18 +1,25 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class PressEnterToStart : MonoBehaviour
-{
+public class PressEnterToStart : MonoBehaviour {
+
     public int nextSceneIndex;
 
-    // Use this for initialization
-    private void Start()
-    {
-    }
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
 
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Return)) SceneManager.LoadScene(nextSceneIndex);
-    }
+        if(Input.GetKey(KeyCode.Return))
+        {
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
+
+        }
+		
+	}
 }

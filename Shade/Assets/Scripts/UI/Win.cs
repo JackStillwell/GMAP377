@@ -1,36 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class Win : MonoBehaviour
+public class Win : MonoBehaviour 
 {
-    public int winScreen;
 
-    private CameraFade fader;
+	public int winScreen;
+	// Use this for initialization
+	void Start () 
+	{
+		
+	}
+	
+	// Update is called once per frame
+	void Update () 
+	{
+		
+	}
 
-    // Use this for initialization
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            StartCoroutine(LoadScene());
-        }
-    }
-
-    public IEnumerator LoadScene()
-    {
-        fader = GameObject.FindObjectOfType<CameraFade>();
-        fader.fadeOut(.6f);
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(winScreen);
-    }
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+			UnityEngine.SceneManagement.SceneManager.LoadScene(winScreen);
+	}
+	 
 }

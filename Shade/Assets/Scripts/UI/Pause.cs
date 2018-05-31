@@ -1,23 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
     public GameObject pause_screen;
-
     // Use this for initialization
-    private void Start()
+    void Start()
     {
         pause_screen.SetActive(false);
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             Toggle();
+
     }
 
-    public void Toggle()
+    void Toggle()
     {
         if (Time.timeScale == 0)
         {

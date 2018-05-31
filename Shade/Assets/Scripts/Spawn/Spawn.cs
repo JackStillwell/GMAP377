@@ -1,65 +1,54 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class Spawn : MonoBehaviour
 {
-    private int _currentSpawn;
-    [SerializeField] private ColorName _initialPlayerColor;
+	private List<GameObject> _spawnPoints;
+	private int _currentSpawn;
+	
+	[SerializeField] private GameObject _playerPrefab;
+	[SerializeField] private ColorName _initialPlayerColor;
+	
+	// Use this for initialization
+	void Start ()
+	{
+		gameObject.tag = "SpawnManager";
+		
+		GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
 
-    private CameraFade fader;
+		_spawnPoints = new List<GameObject>(new GameObject[spawns.Length]);
 
-    [SerializeField] private GameObject _playerPrefab;
-    private List<GameObject> _spawnPoints;
+		for (int i = 0; i < spawns.Length; i++)
+		{
+			_spawnPoints[i] = spawns[i];
+			spawns[i].GetComponent<SpawnPoint>().SetSpawnNumber(i);
+			
+			if (spawns[i].GetComponent<SpawnPoint>().IsInitialSpawn())
+				_currentSpawn = i;
+		}
+		
+		TriggerSpawn();
+	}
 
-    // Use this for initialization
-    private void Start()
-    {
-        gameObject.tag = "SpawnManager";
+	public void SetCurrentSpawnNumber(int number)
+	{
+		_currentSpawn = number;
+	}
 
-        var spawns = GameObject.FindGameObjectsWithTag("Spawnpoint");
-
-        _spawnPoints = new List<GameObject>(new GameObject[spawns.Length]);
-
-        for (var i = 0; i < spawns.Length; i++)
-        {
-            _spawnPoints[i] = spawns[i];
-            spawns[i].GetComponent<SpawnPoint>().SetSpawnNumber(i);
-
-            if (spawns[i].GetComponent<SpawnPoint>().IsInitialSpawn())
-                _currentSpawn = i;
-        }
-
-        TriggerSpawn();
-    }
-
-    public void SetCurrentSpawnNumber(int number)
-    {
-        _currentSpawn = number;
-    }
-
-    private void TriggerSpawn()
-    {
-        _playerPrefab.GetComponentInChildren<ColorArray>().SetBaseColor(_initialPlayerColor);
-        Instantiate(_playerPrefab,
-            _spawnPoints[_currentSpawn].transform.position,
-            _spawnPoints[_currentSpawn].transform.rotation);
-    }
-
-    public void TriggerRespawn(GameObject player)
-    {
-        StartCoroutine(sceneReloadCoroutine());
-
-        // player.transform.position = _spawnPoints[_currentSpawn].transform.position;
-        //player.transform.rotation = _spawnPoints[_currentSpawn].transform.rotation;
-    }
-
-    public IEnumerator sceneReloadCoroutine()
-    {
-
-        fader = GameObject.FindObjectOfType<CameraFade>();
-        fader.fadeOut(.6f);
-        yield return new WaitForSeconds(1);
-        Application.LoadLevel(Application.loadedLevel);
-    }
+	private void TriggerSpawn()
+	{
+		_playerPrefab.GetComponentInChildren<ColorArray>().SetBaseColor(_initialPlayerColor);
+		Instantiate(_playerPrefab, 
+			_spawnPoints[_currentSpawn].transform.position, 
+			_spawnPoints[_currentSpawn].transform.rotation);
+	}
+	
+	public void TriggerRespawn(GameObject player)
+	{
+		player.transform.position = _spawnPoints[_currentSpawn].transform.position;
+		player.transform.rotation = _spawnPoints[_currentSpawn].transform.rotation;
+	}
 }

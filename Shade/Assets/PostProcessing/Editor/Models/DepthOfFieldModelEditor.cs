@@ -2,22 +2,24 @@ using UnityEngine.PostProcessing;
 
 namespace UnityEditor.PostProcessing
 {
+    using Settings = DepthOfFieldModel.Settings;
+
     [PostProcessingModelEditor(typeof(DepthOfFieldModel))]
     public class DepthOfFieldModelEditor : PostProcessingModelEditor
     {
-        private SerializedProperty m_Aperture;
-        private SerializedProperty m_FocalLength;
-        private SerializedProperty m_FocusDistance;
-        private SerializedProperty m_KernelSize;
-        private SerializedProperty m_UseCameraFov;
+        SerializedProperty m_FocusDistance;
+        SerializedProperty m_Aperture;
+        SerializedProperty m_FocalLength;
+        SerializedProperty m_UseCameraFov;
+        SerializedProperty m_KernelSize;
 
         public override void OnEnable()
         {
-            m_FocusDistance = FindSetting((DepthOfFieldModel.Settings x) => x.focusDistance);
-            m_Aperture = FindSetting((DepthOfFieldModel.Settings x) => x.aperture);
-            m_FocalLength = FindSetting((DepthOfFieldModel.Settings x) => x.focalLength);
-            m_UseCameraFov = FindSetting((DepthOfFieldModel.Settings x) => x.useCameraFov);
-            m_KernelSize = FindSetting((DepthOfFieldModel.Settings x) => x.kernelSize);
+            m_FocusDistance = FindSetting((Settings x) => x.focusDistance);
+            m_Aperture = FindSetting((Settings x) => x.aperture);
+            m_FocalLength = FindSetting((Settings x) => x.focalLength);
+            m_UseCameraFov = FindSetting((Settings x) => x.useCameraFov);
+            m_KernelSize = FindSetting((Settings x) => x.kernelSize);
         }
 
         public override void OnInspectorGUI()

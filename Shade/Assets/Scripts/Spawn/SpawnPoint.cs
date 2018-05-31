@@ -1,16 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] private bool _initialSpawn;
+    
+    private int _spawnNumber;
     private Spawn _spawnManager;
 
-    private int _spawnNumber;
-
     // Use this for initialization
-    private void Start()
+    void Start ()
     {
-        gameObject.tag = "Spawnpoint";
+	    gameObject.tag = "Spawnpoint";
 
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
     }
@@ -27,6 +30,9 @@ public class SpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) _spawnManager.SetCurrentSpawnNumber(_spawnNumber);
+		if (other.CompareTag("Player"))
+        {
+            _spawnManager.SetCurrentSpawnNumber(_spawnNumber); 
+        }
     }
 }

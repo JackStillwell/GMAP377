@@ -4,15 +4,17 @@ using UnityEngine.PostProcessing;
 
 namespace UnityEditor.PostProcessing
 {
+    using HistogramMode = PostProcessingProfile.MonitorSettings.HistogramMode;
+
     public class HistogramMonitor : PostProcessingMonitor
     {
-        private static readonly GUIContent s_MonitorTitle = new GUIContent("Histogram");
-        private ComputeBuffer m_Buffer;
+        static GUIContent s_MonitorTitle = new GUIContent("Histogram");
 
-        private readonly ComputeShader m_ComputeShader;
-        private RenderTexture m_HistogramTexture;
-        private Material m_Material;
-        private Rect m_MonitorAreaRect;
+        ComputeShader m_ComputeShader;
+        ComputeBuffer m_Buffer;
+        Material m_Material;
+        RenderTexture m_HistogramTexture;
+        Rect m_MonitorAreaRect;
 
         public HistogramMonitor()
         {
@@ -46,14 +48,11 @@ namespace UnityEditor.PostProcessing
         {
             EditorGUI.BeginChangeCheck();
 
-            var refreshOnPlay = m_MonitorSettings.refreshOnPlay;
+            bool refreshOnPlay = m_MonitorSettings.refreshOnPlay;
             var mode = m_MonitorSettings.histogramMode;
 
-            refreshOnPlay = GUILayout.Toggle(refreshOnPlay,
-                new GUIContent(FxStyles.playIcon,
-                    "Keep refreshing the histogram in play mode; this may impact performances."), FxStyles.preButton);
-            mode = (PostProcessingProfile.MonitorSettings.HistogramMode) EditorGUILayout.EnumPopup(mode,
-                FxStyles.preDropdown, GUILayout.MaxWidth(100f));
+            refreshOnPlay = GUILayout.Toggle(refreshOnPlay, new GUIContent(FxStyles.playIcon, "Keep refreshing the histogram in play mode; this may impact performances."), FxStyles.preButton);
+            mode = (HistogramMode)EditorGUILayout.EnumPopup(mode, FxStyles.preDropdown, GUILayout.MaxWidth(100f));
 
             if (EditorGUI.EndChangeCheck())
             {
@@ -73,18 +72,18 @@ namespace UnityEditor.PostProcessing
                     InternalEditorUtility.RepaintAllViews();
 
                 // Sizing
-                var width = m_HistogramTexture != null
+                float width = m_HistogramTexture != null
                     ? Mathf.Min(m_HistogramTexture.width, r.width - 65f)
                     : r.width;
-                var height = m_HistogramTexture != null
+                float height = m_HistogramTexture != null
                     ? Mathf.Min(m_HistogramTexture.height, r.height - 45f)
                     : r.height;
 
                 m_MonitorAreaRect = new Rect(
-                    Mathf.Floor(r.x + r.width / 2f - width / 2f),
-                    Mathf.Floor(r.y + r.height / 2f - height / 2f - 5f),
-                    width, height
-                );
+                        Mathf.Floor(r.x + r.width / 2f - width / 2f),
+                        Mathf.Floor(r.y + r.height / 2f - height / 2f - 5f),
+                        width, height
+                        );
 
                 if (m_HistogramTexture != null)
                 {
@@ -94,7 +93,7 @@ namespace UnityEditor.PostProcessing
                     const float kTickSize = 5f;
 
                     // Rect, lines & ticks points
-                    if (m_MonitorSettings.histogramMode == PostProcessingProfile.MonitorSettings.HistogramMode.RGBSplit)
+                    if (m_MonitorSettings.histogramMode == HistogramMode.RGBSplit)
                     {
                         //  A B C D E
                         //  N       F
@@ -247,9 +246,9 @@ namespace UnityEditor.PostProcessing
             if (Mathf.Approximately(m_MonitorAreaRect.width, 0) || Mathf.Approximately(m_MonitorAreaRect.height, 0))
                 return;
 
-            var ratio = source.width / (float) source.height;
-            var h = 512;
-            var w = Mathf.FloorToInt(h * ratio);
+            float ratio = (float)source.width / (float)source.height;
+            int h = 512;
+            int w = Mathf.FloorToInt(h * ratio);
 
             var rt = RenderTexture.GetTemporary(w, h, 0, source.format);
             Graphics.Blit(source, rt);
@@ -258,12 +257,12 @@ namespace UnityEditor.PostProcessing
             RenderTexture.ReleaseTemporary(rt);
         }
 
-        private void CreateBuffer(int width, int height)
+        void CreateBuffer(int width, int height)
         {
             m_Buffer = new ComputeBuffer(width * height, sizeof(uint) << 2);
         }
 
-        private void ComputeHistogram(RenderTexture source)
+        void ComputeHistogram(RenderTexture source)
         {
             if (m_Buffer == null)
             {
@@ -276,35 +275,23 @@ namespace UnityEditor.PostProcessing
             }
 
             if (m_Material == null)
-                m_Material =
-                    new Material(Shader.Find("Hidden/Post FX/Monitors/Histogram Render"))
-                    {
-                        hideFlags = HideFlags.DontSave
-                    };
+            {
+                m_Material = new Material(Shader.Find("Hidden/Post FX/Monitors/Histogram Render")) { hideFlags = HideFlags.DontSave };
+            }
 
             var channels = Vector4.zero;
             switch (m_MonitorSettings.histogramMode)
             {
-                case PostProcessingProfile.MonitorSettings.HistogramMode.Red:
-                    channels.x = 1f;
-                    break;
-                case PostProcessingProfile.MonitorSettings.HistogramMode.Green:
-                    channels.y = 1f;
-                    break;
-                case PostProcessingProfile.MonitorSettings.HistogramMode.Blue:
-                    channels.z = 1f;
-                    break;
-                case PostProcessingProfile.MonitorSettings.HistogramMode.Luminance:
-                    channels.w = 1f;
-                    break;
-                default:
-                    channels = new Vector4(1f, 1f, 1f, 0f);
-                    break;
+                case HistogramMode.Red: channels.x = 1f; break;
+                case HistogramMode.Green: channels.y = 1f; break;
+                case HistogramMode.Blue: channels.z = 1f; break;
+                case HistogramMode.Luminance: channels.w = 1f; break;
+                default: channels = new Vector4(1f, 1f, 1f, 0f); break;
             }
 
             var cs = m_ComputeShader;
 
-            var kernel = cs.FindKernel("KHistogramClear");
+            int kernel = cs.FindKernel("KHistogramClear");
             cs.SetBuffer(kernel, "_Histogram", m_Buffer);
             cs.Dispatch(kernel, 1, 1, 1);
 
@@ -320,12 +307,10 @@ namespace UnityEditor.PostProcessing
             cs.SetBuffer(kernel, "_Histogram", m_Buffer);
             cs.Dispatch(kernel, 1, 1, 1);
 
-            if (m_HistogramTexture == null || m_HistogramTexture.width != source.width ||
-                m_HistogramTexture.height != source.height)
+            if (m_HistogramTexture == null || m_HistogramTexture.width != source.width || m_HistogramTexture.height != source.height)
             {
                 GraphicsUtils.Destroy(m_HistogramTexture);
-                m_HistogramTexture = new RenderTexture(source.width, source.height, 0, RenderTextureFormat.ARGB32,
-                    RenderTextureReadWrite.Linear)
+                m_HistogramTexture = new RenderTexture(source.width, source.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Linear)
                 {
                     hideFlags = HideFlags.DontSave,
                     wrapMode = TextureWrapMode.Clamp,
@@ -339,12 +324,12 @@ namespace UnityEditor.PostProcessing
             m_Material.SetColor("_ColorG", new Color(0f, 1f, 0f, 1f));
             m_Material.SetColor("_ColorB", new Color(0f, 0f, 1f, 1f));
             m_Material.SetColor("_ColorL", new Color(1f, 1f, 1f, 1f));
-            m_Material.SetInt("_Channel", (int) m_MonitorSettings.histogramMode);
+            m_Material.SetInt("_Channel", (int)m_MonitorSettings.histogramMode);
 
-            var pass = 0;
-            if (m_MonitorSettings.histogramMode == PostProcessingProfile.MonitorSettings.HistogramMode.RGBMerged)
+            int pass = 0;
+            if (m_MonitorSettings.histogramMode == HistogramMode.RGBMerged)
                 pass = 1;
-            else if (m_MonitorSettings.histogramMode == PostProcessingProfile.MonitorSettings.HistogramMode.RGBSplit)
+            else if (m_MonitorSettings.histogramMode == HistogramMode.RGBSplit)
                 pass = 2;
 
             Graphics.Blit(null, m_HistogramTexture, m_Material, pass);

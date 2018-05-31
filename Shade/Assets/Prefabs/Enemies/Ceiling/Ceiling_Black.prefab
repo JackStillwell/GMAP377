@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 65336949749941092}
   - component: {fileID: 114097536277734442}
   - component: {fileID: 114581721689369760}
-  - component: {fileID: 114984495568948932}
   m_Layer: 0
   m_Name: Ceiling_Black
   m_TagString: Enemy_Static
@@ -96,18 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9de51312815d40bb80306e2d7b8f864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114984495568948932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086649776409496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _catchDistance: 0
 --- !u!137 &137327767329021274
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

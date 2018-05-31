@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
 public class StaticEnemyAI : MonoBehaviour
 {
-    private EnemySight _sight;
     private Spawn _spawnManager;
-
+    private EnemySight _sight;
 
     private void Start()
     {
@@ -14,27 +16,27 @@ public class StaticEnemyAI : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(_sight.IsPlayerVisible());
+
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("Player Color: " + _sight.GetPercievedColor());
-            //Debug.Log("Enemy Color: " + GetEnemyColor());
-            //Debug.Log("Is Player Visible: " + _sight.IsPlayerVisible());
+            Debug.Log("Player Color: " + _sight.GetPercievedColor());
+            Debug.Log("Enemy Color: " + GetEnemyColor());
+			Debug.Log("Is Player Visible: " + _sight.IsPlayerVisible());
         }
-
         if (other.CompareTag("Player") && _sight.IsPlayerVisible() && !IsEqualTo(_sight.GetPercievedColor(), GetEnemyColor()))
         {
-            CameraShake.Shake();
             _spawnManager.TriggerRespawn(other.gameObject);
         }
     }
 
-    public Color GetEnemyColor()
+    private Color GetEnemyColor()
     {
         foreach (var mat in transform.GetComponentInChildren<Renderer>().materials)
+        {
             if (mat.name.Contains("Enemy") && !mat.name.Contains("FOV"))
                 return mat.color;
-
+        }
+        
         Debug.Log("GET ENEMY COLOR FAILURE");
         return Color.white;
     }

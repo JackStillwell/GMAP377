@@ -3,16 +3,18 @@ using UnityEngine.PostProcessing;
 
 namespace UnityEditor.PostProcessing
 {
+    using Settings = UserLutModel.Settings;
+
     [PostProcessingModelEditor(typeof(UserLutModel))]
     public class UserLutModelEditor : PostProcessingModelEditor
     {
-        private SerializedProperty m_Contribution;
-        private SerializedProperty m_Texture;
+        SerializedProperty m_Texture;
+        SerializedProperty m_Contribution;
 
         public override void OnEnable()
         {
-            m_Texture = FindSetting((UserLutModel.Settings x) => x.lut);
-            m_Contribution = FindSetting((UserLutModel.Settings x) => x.contribution);
+            m_Texture = FindSetting((Settings x) => x.lut);
+            m_Contribution = FindSetting((Settings x) => x.contribution);
         }
 
         public override void OnInspectorGUI()
@@ -22,15 +24,15 @@ namespace UnityEditor.PostProcessing
             // Checks import settings on the lut, offers to fix them if invalid
             if (lut != null)
             {
-                var importer = (TextureImporter) AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(lut));
+                var importer = (TextureImporter)AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(lut));
 
                 if (importer != null) // Fails when using an internal texture
                 {
 #if UNITY_5_5_OR_NEWER
-                    var valid = importer.anisoLevel == 0
-                                && importer.mipmapEnabled == false
-                                && importer.sRGBTexture == false
-                                && importer.textureCompression == TextureImporterCompression.Uncompressed;
+                    bool valid = importer.anisoLevel == 0
+                        && importer.mipmapEnabled == false
+                        && importer.sRGBTexture == false
+                        && (importer.textureCompression == TextureImporterCompression.Uncompressed);
 #else
                     bool valid = importer.anisoLevel == 0
                         && importer.mipmapEnabled == false
@@ -51,10 +53,8 @@ namespace UnityEditor.PostProcessing
                                 SetLUTImportSettings(importer);
                                 AssetDatabase.Refresh();
                             }
-
                             GUILayout.Space(8);
                         }
-
                         GUILayout.Space(11);
                     }
                 }
@@ -68,7 +68,7 @@ namespace UnityEditor.PostProcessing
             EditorGUILayout.PropertyField(m_Contribution);
         }
 
-        private void SetLUTImportSettings(TextureImporter importer)
+        void SetLUTImportSettings(TextureImporter importer)
         {
 #if UNITY_5_5_OR_NEWER
             importer.textureType = TextureImporterType.Default;
