@@ -21,11 +21,15 @@ public class Pause : MonoBehaviour
     {
         if (Time.timeScale == 0)
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
             pause_screen.SetActive(false);
         }
         else if (Time.timeScale == 1)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 0;
             pause_screen.SetActive(true);
         }

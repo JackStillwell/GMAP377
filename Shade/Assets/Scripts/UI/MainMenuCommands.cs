@@ -26,16 +26,12 @@ public class MainMenuCommands : MonoBehaviour
 
     public void UnPause(GameObject self)
     {
-
         self.SetActive(false);
-
     }
 
     public void backToMenu()
     {
-
         SceneManager.LoadScene(menuScene);
-
     }
 
     public void OptionsMenu()
