@@ -44,6 +44,7 @@ public class Spawn : MonoBehaviour
         Instantiate(_playerPrefab,
             _spawnPoints[_currentSpawn].transform.position,
             _spawnPoints[_currentSpawn].transform.rotation);
+        fader.fadeIn(fader.fadeTime);
     }
 
     public void TriggerRespawn(GameObject player)
@@ -61,5 +62,6 @@ public class Spawn : MonoBehaviour
         fader.fadeOut(.6f);
         yield return new WaitForSeconds(1);
         Application.LoadLevel(Application.loadedLevel);
+        fader.fadeIn(fader.fadeTime);
     }
 }
