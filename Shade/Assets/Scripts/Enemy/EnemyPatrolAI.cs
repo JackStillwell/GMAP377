@@ -8,10 +8,7 @@ public class EnemyPatrolAI : MonoBehaviour
     [SerializeField] private Transform[] _wayPoints;
     [SerializeField] private float maxWaitTime = 1f;
     [SerializeField] private float minWaitTime = 1f;
-    private bool movingFlag = false;
-    private float originalSpeed = 0f;
     private float patrolTimer;
-    private Rigidbody rb;
     private float waitTime;
 
     private void Start()
@@ -20,7 +17,7 @@ public class EnemyPatrolAI : MonoBehaviour
         _navAgent.autoBraking = true;
         _navAgent.updateRotation = true;
         waitTime = Random.Range(minWaitTime, maxWaitTime);
-        rb = gameObject.GetComponent<Rigidbody>();
+
         //Debug.Log(waitTime);
         _navAgent.isStopped = true;
         NextPoint();
