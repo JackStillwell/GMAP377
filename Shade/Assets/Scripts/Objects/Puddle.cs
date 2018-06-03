@@ -7,6 +7,9 @@ public class Puddle : MonoBehaviour
     private ColorName _colorName;
     [SerializeField] private int _effectDuration;
 
+    private EugeneTimer timer;
+    private EugeneFill correspondingFill;
+
     private void Start()
     {
         try
@@ -17,6 +20,10 @@ public class Puddle : MonoBehaviour
         {
             Debug.LogError("Tag the puddle, dumbass!");
         }
+
+
+        timer = GameObject.FindObjectOfType<EugeneTimer>();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,14 +31,20 @@ public class Puddle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.GetComponentInChildren<ColorArray>().AddColor(_colorName);
+            correspondingFill = timer.addColor(ColorEnum.GetColorValue(_colorName), _effectDuration);
+            
         }
         else if (CompareTag("Untagged")) Debug.LogError("Tag the puddle, dumbass!");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
+        {
             other.gameObject.GetComponentInChildren<ColorArray>()
                 .RemoveColorAfterSeconds(_colorName, _effectDuration);
+            correspondingFill.decreasing = true;
+        }
+
     }
 }
