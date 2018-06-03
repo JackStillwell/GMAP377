@@ -5,7 +5,7 @@ using UnityEngine;
 public class Puddle : MonoBehaviour
 {
     private ColorName _colorName;
-    [SerializeField] private float effectDuration;
+    [SerializeField] private int _effectDuration;
 
     private void Start()
     {
@@ -30,12 +30,8 @@ public class Puddle : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) StartCoroutine(DelayColorRemove(other));
-    }
-
-    private IEnumerator DelayColorRemove(Collider other)
-    {
-        yield return new WaitForSecondsRealtime(effectDuration);
-        other.gameObject.GetComponentInChildren<ColorArray>().RemoveColor(_colorName);
+        if (other.CompareTag("Player")) 
+            other.gameObject.GetComponentInChildren<ColorArray>()
+                .RemoveColorAfterSeconds(_colorName, _effectDuration);
     }
 }
