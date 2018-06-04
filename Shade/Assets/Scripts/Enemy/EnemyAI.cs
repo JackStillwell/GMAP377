@@ -8,9 +8,11 @@ public class EnemyAI : MonoBehaviour
     private Color _enemyColor;
     private EnemySight _enemySight;
     private NavMeshAgent _navAgent;
-    private GameObject _player;
+    public GameObject _player;
     private Color _playerColor;
     private bool _playerVisible;
+
+    public ColorArray playerArray;
 
     private Spawn _spawnManager;
 
@@ -24,8 +26,10 @@ public class EnemyAI : MonoBehaviour
         _enemySight = GetComponentInChildren<EnemySight>();
         _navAgent = GetComponent<NavMeshAgent>();
 
-        _player = GameObject.FindGameObjectWithTag("Player");
+        // _player = GameObject.FindGameObjectWithTag("Player");
 
+        _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
+        playerArray = _player.GetComponentInChildren<ColorArray>();
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
 
         _playerColor = _enemySight.GetPercievedColor();
@@ -38,9 +42,9 @@ public class EnemyAI : MonoBehaviour
     {
         _playerVisible = _enemySight.IsPlayerVisible();
         _playerColor = _enemySight.GetPercievedColor();
-
-        //Debug.Log("The Enemy Sees Player Color: " + _playerColor);
-        //Debug.Log(_enemyColor);
+       // Debug.Log(_playerColor);
+        Debug.Log("The Enemy Sees Player Color: " + _playerColor);
+        Debug.Log(_enemyColor);
 
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
