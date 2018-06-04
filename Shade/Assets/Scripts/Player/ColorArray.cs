@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorArray : MonoBehaviour
@@ -86,9 +87,9 @@ public class ColorArray : MonoBehaviour
         return combinedColor;
     }
 
-    public void AddColor(ColorName inColor)
+    public void AddColor(ColorName color)
     {
-        _colorModifiers.Add(inColor);
+        _colorModifiers.Add(color);
         ChangePlayerColor();
     }
 
@@ -96,6 +97,11 @@ public class ColorArray : MonoBehaviour
     {
         _colorModifiers.Remove(inColor);
         ChangePlayerColor();
+    }
+
+    public void RemoveColorAfterSeconds(ColorName color, int duration)
+    {
+        StartCoroutine(DelayColorRemove(color, duration));
     }
 
     public Color GetCurrentColor()
@@ -106,5 +112,11 @@ public class ColorArray : MonoBehaviour
     public void SetBaseColor(ColorName inColor)
     {
         _baseColor = ColorEnum.GetColorValue(inColor);
+    }
+
+    private IEnumerator DelayColorRemove(ColorName color, int duration)
+    {
+        yield return new WaitForSecondsRealtime(duration);
+        RemoveColor(color);
     }
 }
