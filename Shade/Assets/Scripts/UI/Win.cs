@@ -7,10 +7,13 @@ public class Win : MonoBehaviour
     public int winScreen;
 
     private CameraFade fader;
+    private SoundManager sm;
 
     // Use this for initialization
     private void Start()
     {
+
+        sm = GameObject.FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class Win : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sm.playTriumph();
             StartCoroutine(LoadScene());
         }
     }

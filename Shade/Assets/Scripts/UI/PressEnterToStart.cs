@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PressEnterToStart : MonoBehaviour
 {
     public int nextSceneIndex;
+    public SoundManager sm;
 
     // Use this for initialization
     private void Start()
@@ -13,6 +14,11 @@ public class PressEnterToStart : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Return)) SceneManager.LoadScene(nextSceneIndex);
+        if (Input.GetKey(KeyCode.Return))
+        {
+            sm.playRoll();
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+
     }
 }

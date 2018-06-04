@@ -8,6 +8,8 @@ public class MainMenuCommands : MonoBehaviour
     public int startScene;
     public int menuScene;
 
+    public int credits;
+
     public void Start()
     {
         Cursor.visible = true;
@@ -36,6 +38,7 @@ public class MainMenuCommands : MonoBehaviour
 
     public void OptionsMenu()
     {
+        SceneManager.LoadScene(credits);
     }
 
     public void ChapterSelect()
