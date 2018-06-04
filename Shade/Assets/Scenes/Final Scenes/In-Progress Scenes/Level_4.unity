@@ -1514,6 +1514,11 @@ Prefab:
       propertyPath: m_TagString
       value: Red
       objectReference: {fileID: 0}
+    - target: {fileID: 114750297988798014, guid: 87dea37312ee74ca091f70143e5b1b0c,
+        type: 2}
+      propertyPath: _effectDuration
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
   m_IsPrefabParent: 0
@@ -3689,6 +3694,11 @@ Prefab:
     - target: {fileID: 1750026008056414, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
       propertyPath: m_TagString
       value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750297988798014, guid: 87dea37312ee74ca091f70143e5b1b0c,
+        type: 2}
+      propertyPath: _effectDuration
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87dea37312ee74ca091f70143e5b1b0c, type: 2}
