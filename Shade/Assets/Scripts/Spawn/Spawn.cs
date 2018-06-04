@@ -14,7 +14,7 @@ public class Spawn : MonoBehaviour
     private List<GameObject> _spawnPoints;
 
     // Use this for initialization
-    public void Start()
+    private void Start()
     {
         gameObject.tag = "SpawnManager";
 		fader = main_cam.GetComponent<CameraFade> ();
@@ -39,7 +39,7 @@ public class Spawn : MonoBehaviour
         _currentSpawn = number;
     }
 
-    public void TriggerSpawn()
+    private void TriggerSpawn()
     {
         _playerPrefab.GetComponentInChildren<ColorArray>().SetBaseColor(_initialPlayerColor);
         Instantiate(_playerPrefab,
