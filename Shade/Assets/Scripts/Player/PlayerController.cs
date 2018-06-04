@@ -19,13 +19,18 @@ public class PlayerController : MonoBehaviour
     {
         _pcRigidbody = GetComponent<Rigidbody>();
         // Freezes X and Z rotation so the player cannot fall over and can only rotate side to side.
-        _pcRigidbody.constraints = (RigidbodyConstraints) 80;
+        _pcRigidbody.constraints = (RigidbodyConstraints)80;
         _pcRigidbody.useGravity = true;
         _pcRigidbody.isKinematic = false;
         animator = transform.GetComponentInChildren<Animator>();
     }
 
     private void Update()
+    {
+
+    }
+
+    private void FixedUpdate()
     {
         _y = Input.GetAxis("Mouse X") * _rotateSensitivity;
 
@@ -37,10 +42,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMoving", true);
         else
             animator.SetBool("isMoving", false);
-    }
-
-    private void FixedUpdate()
-    {
         var moveVector = _pcRigidbody.position + _pcRigidbody.rotation * new Vector3(_x, 0, _z);
         var moveQuaternion = Quaternion.Euler(new Vector3(0, _y, 0));
 
