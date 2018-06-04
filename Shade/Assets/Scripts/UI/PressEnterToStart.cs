@@ -9,6 +9,8 @@ public class PressEnterToStart : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+
+        sm = GameObject.FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
