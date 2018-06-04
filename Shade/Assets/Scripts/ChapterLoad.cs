@@ -10,7 +10,7 @@ public class ChapterLoad : MonoBehaviour
 
     public void chapterLoad(int i)
     {
-        Application.LoadLevel(i);
+		SceneManager.LoadScene(i);
     }
 
 }

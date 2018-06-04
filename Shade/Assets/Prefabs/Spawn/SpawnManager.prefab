@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ce74fbea3db4c7e8dd43790dac2667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 1492681970819790, guid: 1ff1e14e2ecd345e1baa587594c053b7,
-    type: 2}
   _initialPlayerColor: 8
+  main_cam: {fileID: 20446463242264196, guid: 1ff1e14e2ecd345e1baa587594c053b7, type: 2}
+  _playerPrefab: {fileID: 1459400990989530, guid: 1ff1e14e2ecd345e1baa587594c053b7,
+    type: 2}
