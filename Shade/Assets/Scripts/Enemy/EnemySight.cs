@@ -14,6 +14,8 @@ public class EnemySight : MonoBehaviour
     private NavMeshAgent _nav; // may be used in future
     private EnemyPatrolAI _patrolAi;
 
+    public ColorArray playerArray;
+
     private Color _percievedPlayerColor;
 
     private GameObject _player;
@@ -41,7 +43,8 @@ public class EnemySight : MonoBehaviour
             _enemyColor = Color.white;
         }
 */
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
+        playerArray = _player.GetComponentInChildren<ColorArray>();
         _percievedPlayerColor = GetPlayerColor(_player);
 
         _playerVisible = false;
@@ -78,14 +81,15 @@ public class EnemySight : MonoBehaviour
     {
         var direction = _player.transform.position - transform.position;
         _hitArray = Physics.RaycastAll(transform.position, direction.normalized, direction.magnitude);
-        // ColorPercievedUpdate();
+        ColorPercievedUpdate();
+        //Debug.Log("VisibleCheckCalled");
+        
 
         foreach (var hit in _hitArray)
         {
-            // Debug.Log(hit.collider.gameObject);
-            if (hit.collider.gameObject == _player)
+            //Debug.Log(hit.collider.gameObject);
+            if (hit.collider.gameObject.CompareTag("Player"))
             {
-                //Debug.Log("Player Visible");
                 _playerVisible = true;
                 ColorPercievedUpdate();
                 break;
@@ -195,7 +199,7 @@ public class EnemySight : MonoBehaviour
 
     private Color GetPlayerColor(GameObject player)
     {
-        return _player.GetComponent<ColorArray>().GetCurrentColor();
+        return playerArray.GetCurrentColor();
     }
 
     private static bool IsEqualTo(Color me, Color other)
