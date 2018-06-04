@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/Main_Menu.unity
     guid: 5e23eb0b13ffff347a290bb601064f7a
   - enabled: 1
-    path: Assets/Scenes/In-Progress Scenes/Chapter_Select.unity
+    path: Assets/Scenes/Final Scenes/In-Progress Scenes/Chapter_Select.unity
     guid: d6f0e3592404e46488e826afb4773776
   - enabled: 1
     path: Assets/Scenes/Final Scenes/Level_1.unity
@@ -21,10 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/Level_2.unity
     guid: 7bc2762f9a60f4018bc023e5a23ef4a9
   - enabled: 1
-    path: Assets/Scenes/In-Progress Scenes/Level_3.unity
+    path: Assets/Scenes/Final Scenes/In-Progress Scenes/Level_3.unity
     guid: 2e514ed6634f34c8796bbebb559ea131
   - enabled: 1
-    path: Assets/Scenes/In-Progress Scenes/Level_4.unity
+    path: Assets/Scenes/Final Scenes/In-Progress Scenes/Level_4.unity
     guid: ff64072c7aadb4e95888c751f8f67cba
   - enabled: 1
     path: Assets/Scenes/Final Scenes/Level_3.unity
@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Scenes/Win_Screen.unity
     guid: db897b205ebfa49378b282296573f817
+  - enabled: 1
+    path: Assets/Scenes/Final Scenes/Credits.unity
+    guid: 37cfa902d58f21c4d9ce451a89181fb2

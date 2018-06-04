@@ -14,6 +14,9 @@ public class EnemyAI : MonoBehaviour
 
     private Spawn _spawnManager;
 
+    private SoundManager sm;
+
+
     // Use this for initialization
     private void Start()
     {
@@ -26,6 +29,8 @@ public class EnemyAI : MonoBehaviour
         _spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<Spawn>();
 
         _playerColor = _enemySight.GetPercievedColor();
+
+        sm = GameObject.FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -40,6 +45,7 @@ public class EnemyAI : MonoBehaviour
         if (_playerVisible && !IsEqualTo(_playerColor, _enemyColor))
         {
             Debug.Log("I See You! You look: " + _playerColor);
+            sm.playSiren();
             _navAgent.updatePosition = true;
             _navAgent.updateRotation = true;
             _navAgent.SetDestination(_player.transform.position);

@@ -3,11 +3,13 @@
 public class Pause : MonoBehaviour
 {
     public GameObject pause_screen;
+    private SoundManager sm;
 
     // Use this for initialization
     private void Start()
     {
         pause_screen.SetActive(false);
+        sm = GameObject.FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class Pause : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
+            sm.playRoll();
             Time.timeScale = 0;
             pause_screen.SetActive(true);
         }
