@@ -62,7 +62,7 @@ public class Spawn : MonoBehaviour
         fader = GameObject.FindObjectOfType<CameraFade>();
         fader.fadeOut(.6f);
         yield return new WaitForSeconds(1);
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		SceneManager.LoadScene(Application.loadedLevel);
         fader.fadeIn();
     }
 }
