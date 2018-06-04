@@ -356,7 +356,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100002, guid: c9860ddf408c15f44a2ff30d0d947821, type: 3}
   m_StaticBatchInfo:
@@ -391,7 +390,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 9a1014d4972693f4bab4bca31dd3097a, type: 2}
   m_StaticBatchInfo:
@@ -473,7 +471,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!108 &108536927373218950
 Light:
   m_ObjectHideFlags: 1
@@ -546,7 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2beeb3c07c8e419e30af8152ebf39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _catchDistance: 4
+  _catchDistance: 5
 --- !u!135 &135648895737868826
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -572,7 +569,6 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e3a74b560b86b45c2a8b9312b98b0b39, type: 2}
   m_StaticBatchInfo:

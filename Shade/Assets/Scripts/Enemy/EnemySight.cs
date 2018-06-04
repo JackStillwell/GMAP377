@@ -83,7 +83,7 @@ public class EnemySight : MonoBehaviour
         foreach (var hit in _hitArray)
         {
             // Debug.Log(hit.collider.gameObject);
-            if (hit.collider.gameObject == _player)
+            if (hit.collider.gameObject.CompareTag("Player"))
             {
                 //Debug.Log("Player Visible");
                 _playerVisible = true;
@@ -195,7 +195,7 @@ public class EnemySight : MonoBehaviour
 
     private Color GetPlayerColor(GameObject player)
     {
-        return _player.GetComponent<ColorArray>().GetCurrentColor();
+        return _player.GetComponentInChildren<ColorArray>().GetCurrentColor();
     }
 
     private static bool IsEqualTo(Color me, Color other)
