@@ -944,8 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92011e3e91fae4358b13e0ec4c4ce1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCamDistance: 20
-  _minCamDistance: 7
+  _maxCamDistance: 25
+  _minCamDistance: 10
   _scrollSpeed: 5
   _tiltSpeed: 2
   FollowObj: {fileID: 1459400990989530}
