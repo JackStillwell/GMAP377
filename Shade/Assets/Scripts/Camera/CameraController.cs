@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour
         _camDistance = Mathf.Clamp(_camDistance, _minCamDistance, _maxCamDistance);
 
         //set our z distance away from the PC
-        var dir = new Vector3(0, 0, -_camDistance);
+        var dir = new Vector3(0, .5f, -_camDistance);
 
         //set the rotation of the camera
         var followObjEuler = _followObjRigidbody.rotation.eulerAngles;
