@@ -2985,15 +2985,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4044144965958532, guid: ced704e818d7a804e97e78d36efaa795, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 91.235
-      objectReference: {fileID: 0}
-    - target: {fileID: 114033264003050246, guid: ced704e818d7a804e97e78d36efaa795,
-        type: 2}
-      propertyPath: winScreen
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ced704e818d7a804e97e78d36efaa795, type: 2}
   m_IsPrefabParent: 0
