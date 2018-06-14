@@ -2924,6 +2924,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.7988186
       objectReference: {fileID: 0}
+    - target: {fileID: 114033264003050246, guid: ced704e818d7a804e97e78d36efaa795,
+        type: 2}
+      propertyPath: winScreen
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ced704e818d7a804e97e78d36efaa795, type: 2}
   m_IsPrefabParent: 0
