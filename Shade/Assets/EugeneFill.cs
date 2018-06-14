@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class EugeneFill : MonoBehaviour {
 
     public Image fill;
-
+    public EugeneTimer parent;
     public float timeTotal;
-    private float timeRemaining;
+    public float timeRemaining;
     public bool decreasing;
+
+    public Color interiorColor;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +30,7 @@ public class EugeneFill : MonoBehaviour {
             timeRemaining -= Time.deltaTime;
             if (timeRemaining <= 0)
             {
+                parent.allFills.Remove(this);
                 GameObject.Destroy(gameObject);
 
             }
